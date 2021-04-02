@@ -1,0 +1,45 @@
+{
+  "name": "calendar-course",
+  "private": true,
+  "scripts": {
+    "start": "meteor run",
+    "development": "meteor --settings development.json",
+    "production": "DEPLOY_HOSTNAME=galaxy.meteor.com meteor deploy www.wombo.io --settings production.json",
+    "test": "meteor test --once --driver-package meteortesting:mocha",
+    "test-app": "TEST_WATCH=1 meteor test --full-app --driver-package meteortesting:mocha",
+    "visualize": "meteor --production --extra-packages bundle-visualizer"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.11.2",
+    "@stripe/react-stripe-js": "^1.1.2",
+    "@stripe/stripe-js": "^1.10.0",
+    "aws-sdk": "^2.782.0",
+    "axios": "^0.21.1",
+    "bcrypt": "^5.0.0",
+    "history": "^5.0.0",
+    "ical-generator": "^1.15.1",
+    "meteor-node-stubs": "^1.0.1",
+    "moment": "^2.29.0",
+    "moment-timezone": "^0.5.31",
+    "react": "^16.13.1",
+    "react-add-to-calendar": "^0.1.5",
+    "react-copy-to-clipboard": "^5.0.2",
+    "react-datepicker": "^3.3.0",
+    "react-dom": "^16.13.1",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
+    "shortid": "^2.2.15",
+    "simpl-schema": "^1.10.1",
+    "simple-peer": "^9.7.2",
+    "stripe": "^8.114.0",
+    "twilio": "^3.55.0",
+    "webrtc-adapter": "^7.7.0"
+  },
+  "meteor": {
+    "mainModule": {
+      "client": "client/main.jsx",
+      "server": "server/main.js"
+    },
+    "testModule": "tests/main.js"
+  }
+}

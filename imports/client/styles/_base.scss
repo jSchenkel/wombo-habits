@@ -1,0 +1,62 @@
+// @import url('https://fonts.googleapis.com/css?family=Modak|Roboto');
+@import url('https://fonts.googleapis.com/css2?family=Modak&display=swap');
+@import url('https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css');
+@import url('https://use.fontawesome.com/releases/v5.14.0/css/all.css');
+
+.wombo-logo {
+  font-family: 'Modak', sans-serif;
+}
+
+.navbar-brand-image {
+  height: 3.5rem;
+  margin: 0 0.5rem;
+}
+
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.image-not-draggable {
+  user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+.image-overlay {
+  border-radius: 1%;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.has-pointer {
+  // don't allow text to be selectable
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  cursor: pointer !important;
+}
+
+.z-99 {
+  z-index: 99 !important;
+}
+
+.overflow-y-scroll {
+  overflow-y: auto;
+}
+
+.overflow-y-scroll::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 7px;
+}
+
+.overflow-y-scroll::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, .5);
+  box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+}
