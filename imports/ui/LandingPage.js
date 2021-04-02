@@ -3,7 +3,6 @@ import { Meteor } from 'meteor/meteor';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 import Navbar from './Navbar/Navbar.js';
-import QuestionAnswer from './QuestionAnswers/QuestionAnswer.js';
 import Footer from './Footer.js';
 
 const LandingPage = () => {
@@ -96,7 +95,7 @@ const LandingPage = () => {
             <div className="columns is-centered mb-6">
               <div className="column is-half">
                 <div className="columns is-centered">
-                  <QuestionAnswer question={QUESTION} />
+                  <div className="notification is-warning">DEMO</div>
                 </div>
               </div>
             </div>

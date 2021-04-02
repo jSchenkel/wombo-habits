@@ -11,10 +11,6 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.11.2",
-    "@stripe/react-stripe-js": "^1.1.2",
-    "@stripe/stripe-js": "^1.10.0",
-    "aws-sdk": "^2.782.0",
-    "axios": "^0.21.1",
     "bcrypt": "^5.0.0",
     "history": "^5.0.0",
     "ical-generator": "^1.15.1",
@@ -29,11 +25,7 @@
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "shortid": "^2.2.15",
-    "simpl-schema": "^1.10.1",
-    "simple-peer": "^9.7.2",
-    "stripe": "^8.114.0",
-    "twilio": "^3.55.0",
-    "webrtc-adapter": "^7.7.0"
+    "simpl-schema": "^1.10.1"
   },
   "meteor": {
     "mainModule": {

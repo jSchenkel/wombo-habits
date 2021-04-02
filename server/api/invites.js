@@ -1,10 +1,20 @@
 import { Meteor } from 'meteor/meteor';
+import { Mongo } from 'meteor/mongo';
 import moment from 'moment';
 import { DDPRateLimiter } from 'meteor/ddp-rate-limiter';
 import SimpleSchema from 'simpl-schema';
 
-import { Invites } from '../../imports/api/invites.js';
 import {sendJulesEmailNotification} from './emails.js';
+
+export const Invites = new Mongo.Collection('invites');
+
+// Deny changes to db on client
+Invites.deny({
+  insert() { return true; },
+  update() { return true; },
+  remove() { return true; },
+});
+
 
 Meteor.methods({
   invitesRequestInvite(name, email, instagram, twitter, youtube, audienceSize, source) {

@@ -20,21 +20,6 @@ const Navbar = () => {
           </div>
           {/* RIGHT */}
           <div className="level-right is-hidden-mobile">
-            {/* <Link to="/use-cases" className="level-item">
-              <p className="button is-text">Use Cases</p>
-            </Link> */}
-            {/* <Link to="/#how-it-works" className="level-item">
-              <p className="button is-text">How it Works</p>
-            </Link>
-            <Link to="/#why-yoga" className="level-item">
-              <p className="button is-text">Why Yoga?</p>
-            </Link>
-            <Link to="/#why-wombo" className="level-item">
-              <p className="button is-text">Why Wombo?</p>
-            </Link> */}
-            {/* <Link to="/blog/all" className="level-item">
-              <p className="button is-text">Blog</p>
-            </Link> */}
             <Link to="/accounts/login" className="level-item">
               <p className="button is-text">Log In</p>
             </Link>
@@ -60,28 +45,9 @@ const Navbar = () => {
                 </div>
                 <div className="dropdown-menu" id="dropdown-menu" role="menu">
                   <div className="dropdown-content">
-                    {/* <Link to="/use-cases" className="dropdown-item">
-                      <p className="button is-text">Use Cases</p>
-                    </Link> */}
-                    {/* <Link to="/#how-it-works" className="dropdown-item">
-                      <p className="button is-text">How it Works</p>
-                    </Link>
-                    <Link to="/#why-yoga" className="dropdown-item">
-                      <p className="button is-text">Why Yoga?</p>
-                    </Link>
-                    <Link to="/#why-wombo" className="dropdown-item">
-                      <p className="button is-text">Why Wombo?</p>
-                    </Link> */}
-                    {/* <Link to="/join" className="dropdown-item">
-                      <p className="button is-text">Join a Session</p>
-                    </Link> */}
                     <Link to="/accounts/login" className="dropdown-item">
                       <p className="button is-text">Log In</p>
                     </Link>
-                    {/* <hr className="dropdown-divider" />
-                    <Link to="/accounts/signup" className="dropdown-item">
-                      <p className="button is-success is-fullwidth">Sign Up, It's Free</p>
-                    </Link> */}
                   </div>
                 </div>
               </div>

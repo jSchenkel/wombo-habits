@@ -20,7 +20,7 @@ BrowserPolicy.content.allowOriginForAll('https://bulma.io:*');
 BrowserPolicy.content.allowOriginForAll('https://s3.amazonaws.com:*');
 
 // Stripe
-BrowserPolicy.content.allowOriginForAll('https://js.stripe.com/');
+// BrowserPolicy.content.allowOriginForAll('https://js.stripe.com/');
 
 // app will never render inside a frame or iframe
 BrowserPolicy.framing.disallow();
