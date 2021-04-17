@@ -25,7 +25,11 @@ const LandingPage = () => {
                 <div className="is-hidden-mobile has-text-centered">
                   <p className="title is-1 has-text-black-ter" style={{fontWeight: '800', fontSize: '3.6rem'}}>{TITLE}</p>
                   <p className="subtitle is-4 has-text-black-ter mb-6">{SUBTITLE}</p>
-                  <Link to={CTA_LINK} className="button is-link">
+                  <Link to={CTA_LINK} className="button is-link" onClick={() => {
+                    analytics.track('CTA Button Clicked', {
+                      layout: 'desktop'
+                    });
+                  }}>
                     <span>{BUTTON_TEXT}</span>
                     <span className="icon">
                       <i className="fas fa-chevron-right"></i>
@@ -35,7 +39,11 @@ const LandingPage = () => {
                 <div className="is-hidden-tablet has-text-centered">
                   <p className="title is-3 has-text-black-ter" style={{fontWeight: '800', fontSize: '3.2rem'}}>{TITLE}</p>
                   <p className="subtitle is-4 has-text-black-ter mb-6">{SUBTITLE}</p>
-                  <Link to={CTA_LINK} className="button is-link">
+                  <Link to={CTA_LINK} className="button is-link" onClick={() => {
+                    analytics.track('CTA Button Clicked', {
+                      layout: 'mobile'
+                    });
+                  }}>
                     <span>{BUTTON_TEXT}</span>
                     <span className="icon">
                       <i className="fas fa-chevron-right"></i>

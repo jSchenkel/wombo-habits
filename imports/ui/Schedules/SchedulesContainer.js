@@ -2,7 +2,7 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 
 import { Link } from 'react-router-dom';
-import moment from 'moment';
+import momentTimezone from 'moment-timezone';
 import shortid from 'shortid';
 
 import SimpleNavbar from '../Navbar/SimpleNavbar.js';
@@ -49,6 +49,7 @@ export default class SchedulesContainer extends React.Component {
       },
       // results step
       resultsError: '',
+      isResultsLoading: false,
       email: '',
     };
 
@@ -69,23 +70,37 @@ export default class SchedulesContainer extends React.Component {
   handleResultsSubmit(event) {
     event.preventDefault();
 
+    this.setState({
+      isResultsLoading: true
+    });
+
     const email = this.state.email.trim();
 
     if (email.length === 0) {
       return this.setState({resultsError: 'Please enter your email.'});
     }
 
-    Meteor.call('schedulesSendCalenderEmail', email, this.state.schedule, this.state.identities, (err, res) => {
+    const timezone = momentTimezone.tz.guess();
+
+    Meteor.call('schedulesSendCalenderEmail', email, this.state.schedule, this.state.identities, timezone, (err, res) => {
       if (err) {
         this.setState({
-          resultsError: err.reason
+          resultsError: err.reason,
+          isResultsLoading: false
         });
       } else {
         // progress to last step "confirmation"
         // show a success message - "Check your email. Check your spam."
         // Display the aristotle quote,
         // "You are what you repeatedly do. Excellence then is not an act, but a habit."
-        this.setState({step: 'done'});
+        this.setState({step: 'done', isResultsLoading: false});
+
+        // record event analytics
+        analytics.track('Schedule Sent', {
+          email,
+          identities: this.state.identities,
+          timezone
+        });
       }
     });
   }
@@ -183,6 +198,7 @@ export default class SchedulesContainer extends React.Component {
   finishIdentity() {
     const { identities } = this.state;
 
+    // TODO: use day string constants for keys
     const schedule = {
       sunday: [],
       monday: [],
@@ -210,6 +226,11 @@ export default class SchedulesContainer extends React.Component {
 
     // update the step
     this.setState({step: 'process', schedule});
+
+    // record event analytics
+    analytics.track('Identities Selected', {
+      identities
+    });
   }
 
   selectIdentity(category) {
@@ -346,7 +367,7 @@ export default class SchedulesContainer extends React.Component {
                 </div>
                 <div className="field">
                   <p className="control">
-                    <input className="button is-medium is-fullwidth is-link" type="submit" value="Send Me My System" />
+                    <input className={this.state.isResultsLoading ? 'button is-medium is-fullwidth is-link is-loading' : 'button is-medium is-fullwidth is-link'} type="submit" value="Send Me My System" />
                   </p>
                 </div>
               </form>

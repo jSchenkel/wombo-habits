@@ -6,10 +6,11 @@ import ical from 'ical-generator';
 import moment from 'moment';
 
 import { convertHourMinuteStringToUtcDate } from './../../imports/helpers/date.js';
+import { DAY_STRING_TO_DAY_OF_WEEK_CODE_INT } from './../../imports/constants/schedules.js';
 import { Recipients } from './recipients.js';
 
 Meteor.methods({
-  schedulesSendCalenderEmail(email, schedule, identities) {
+  schedulesSendCalenderEmail(email, schedule, identities, timezone) {
     new SimpleSchema({
       email: {
         type: String,
@@ -19,11 +20,15 @@ Meteor.methods({
         type: Object,
         blackbox: true
       },
-      identities: [String]
+      identities: [String],
+      timezone: {
+        type: String
+      }
     }).validate({
       email,
       schedule,
-      identities
+      identities,
+      timezone
     });
 
     try {
@@ -53,12 +58,31 @@ Meteor.methods({
 
     // convert the calendar to string
     for (const day in schedule) {
+      const dayCode = DAY_STRING_TO_DAY_OF_WEEK_CODE_INT[day];
       for (const event of schedule[day]) {
+        const dayOfWeek = moment().day(dayCode);
+        if (dayOfWeek.dayOfYear() < moment().dayOfYear()) {
+          dayOfWeek.add(7, 'days');
+        }
+
+        const start = moment(dayOfWeek).hour(event.startTime.split(':')[0]).minute(event.startTime.split(':')[1]).seconds(0).milliseconds(0);
+        const end = moment(dayOfWeek).hour(event.endTime.split(':')[0]).minute(event.endTime.split(':')[1]).seconds(0).milliseconds(0);
+
         systemCalender.createEvent({
-          start: convertHourMinuteStringToUtcDate(event.startTime),
-          end: convertHourMinuteStringToUtcDate(event.endTime),
+          start,
+          end,
           summary: event.title,
           description: event.description,
+          organizer: 'Jules <jules@wombo.io>',
+          repeating: {
+            freq: 'WEEKLY'
+          },
+          // "floating" time. same time regardless of the timezone (i.e. 1pm everywhere)
+          floating: true,
+          alarms: [
+            {type: 'display', trigger: 600},
+            {type: 'audio', trigger: 300}
+          ]
           // url: customerJoinUrl,
           // location: customerJoinUrl,
         });
@@ -78,7 +102,8 @@ Meteor.methods({
       timestamp,
       meta: {
         schedule,
-        identities
+        identities,
+        timezone
       },
     });
   }
