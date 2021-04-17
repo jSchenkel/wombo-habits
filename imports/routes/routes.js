@@ -5,8 +5,8 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 // route components
 // Public routes
 import LandingPage from '../ui/LandingPage.js';
+import SchedulesContainer from '../ui/Schedules/SchedulesContainer.js';
 import Login from '../ui/Login.js';
-import RequestInvite from '../ui/RequestInvite.js';
 import Signup from '../ui/Signup.js';
 import ForgotPassword from './../ui/ForgotPassword.js';
 import ResetPassword from './../ui/ResetPassword.js';
@@ -28,8 +28,8 @@ export const routes = (
       <PubliceRoute exact path="/">
         <LandingPage />
       </PubliceRoute>
-      <PubliceRoute exact path="/accounts/request-invite">
-        <RequestInvite />
+      <PubliceRoute exact path="/start">
+        <SchedulesContainer />
       </PubliceRoute>
       {/* <PubliceRoute exact path="/accounts/login">
         <Login />

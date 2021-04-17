@@ -11,8 +11,7 @@ import './../imports/startup/browser-policy-config.js';
 import './api/feedback.js';
 import './api/users.js';
 import './api/emails.js';
-import './api/invites.js';
-
+import './api/schedules.js';
 
 Meteor.startup(() => {
   // code to run on server at startup

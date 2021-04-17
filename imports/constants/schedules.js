@@ -1,11 +1,11 @@
 
-const SUNDAY = 'sunday';
-const MONDAY = 'monday';
-const TUESDAY = 'tuesday';
-const WEDNESDAY = 'wednesday';
-const THURSDAY = 'thursday';
-const FRIDAY = 'friday';
-const SATURDAY = 'saturday';
+export const SUNDAY = 'sunday';
+export const MONDAY = 'monday';
+export const TUESDAY = 'tuesday';
+export const WEDNESDAY = 'wednesday';
+export const THURSDAY = 'thursday';
+export const FRIDAY = 'friday';
+export const SATURDAY = 'saturday';
 
 const SUNDAY_CODE_INT = 0;
 const MONDAY_CODE_INT = 1;
@@ -43,4 +43,14 @@ export const DAY_STRING_TO_DAY_OF_WEEK_CODE_INT = {
   [THURSDAY]: THURSDAY_CODE_INT,
   [FRIDAY]: FRIDAY_CODE_INT,
   [SATURDAY]: SATURDAY_CODE_INT,
+}
+
+export const DAY_STRING_TO_DAY_SHORT_STRING = {
+  [SUNDAY]: 'sun',
+  [MONDAY]: 'mon',
+  [TUESDAY]: 'tue',
+  [WEDNESDAY]: 'wed',
+  [THURSDAY]: 'thu',
+  [FRIDAY]: 'fri',
+  [SATURDAY]: 'sat',
 }

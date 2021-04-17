@@ -27,3 +27,11 @@ export const utcDateStringToMinutes = (utcDateString) => {
     return result;
   }
 }
+
+export const displayHourMinuteString = (hourMinuteString, format) => {
+  return momentTimezone().hour(hourMinuteString.split(':')[0]).minute(hourMinuteString.split(':')[1]).seconds(0).milliseconds(0).format(format);
+}
+
+export const convertHourMinuteStringToUtcDate = (hourMinuteString) => {
+  return momentTimezone().hour(hourMinuteString.split(':')[0]).minute(hourMinuteString.split(':')[1]).seconds(0).milliseconds(0).utc();
+}
