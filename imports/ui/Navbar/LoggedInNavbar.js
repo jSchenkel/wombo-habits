@@ -4,7 +4,7 @@ import { Link, useHistory } from 'react-router-dom';
 
 import NavbarBrandImage from './NavbarBrandImage.js';
 
-const LoggedInNavbar = (props) => {
+const LoggedInNavbar = () => {
   const history = useHistory();
   const onLogout = () => {
     Meteor.logout(() => {
@@ -28,20 +28,25 @@ const LoggedInNavbar = (props) => {
           {/* RIGHT */}
           <div className="level-right">
             {/* {upgrade} */}
-            <Link to="/accounts/home" className="level-item" title="Home">
+            {/* <Link to="/accounts/home" className="level-item" title="Home">
               <p className="button is-white">
                 <span className="icon is-medium has-text-dark">
                   <i className="fas fa-home fa-lg" aria-hidden="true"></i>
                 </span>
               </p>
-            </Link>
-            {/* <Link to="/sessions" className="level-item" title="Sessions">
+            </Link> */}
+            {/* <Link to="/system" className="level-item" title="My System">
               <p className="button is-white">
                 <span className="icon is-medium has-text-dark">
-                  <i className="fas fa-calendar fa-lg" aria-hidden="true"></i>
+                  <i className="fas fa-th fa-lg" aria-hidden="true"></i>
                 </span>
               </p>
             </Link> */}
+            <Link to="/system" className="level-item" title="My System">
+              <span className="button is-light is-small">
+                My System
+              </span>
+            </Link>
             <div className="level-item">
               <div className="dropdown is-hoverable is-right">
                 <div className="dropdown-trigger">
@@ -53,11 +58,9 @@ const LoggedInNavbar = (props) => {
                 </div>
                 <div className="dropdown-menu" id="dropdown-menu" role="menu">
                   <div className="dropdown-content">
-                    {props.currentUser && props.currentUser.username ? (
-                      <Link to={`/${props.currentUser.username}`} className="dropdown-item">
-                        <p className="">Profile</p>
-                      </Link>
-                    ): null}
+                    <Link to="/home" className="dropdown-item">
+                      <p className="">Home</p>
+                    </Link>
                     <Link to="/accounts/edit" className="dropdown-item">
                       <p className="">Settings</p>
                     </Link>

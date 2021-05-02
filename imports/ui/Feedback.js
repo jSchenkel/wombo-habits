@@ -92,7 +92,7 @@ export default class Feedback extends React.Component {
     return (
       <div>
         <section className="hero has-background-white is-fullheight">
-          {this.state.currentUser ? <LoggedInNavbar currentUser={this.state.currentUser} /> : <SimpleNavbar />}
+          {this.state.currentUser ? <LoggedInNavbar /> : <SimpleNavbar />}
           <div className="hero-body">
             <div className="container">
               <h2 className="title is-4">Feedback</h2>

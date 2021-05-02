@@ -5,13 +5,11 @@ import './../imports/startup/simple-schema-configuration.js';
 // browser policy
 import './../imports/startup/browser-policy-config.js';
 
-// collections and methods
-
-// server
+// collections and server methods
 import './api/feedback.js';
 import './api/users.js';
 import './api/emails.js';
-import './api/schedules.js';
+import './api/habits.js';
 
 Meteor.startup(() => {
   // code to run on server at startup

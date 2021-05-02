@@ -13,27 +13,51 @@ Meteor.users.deny({
   remove() { return true; },
 });
 
+Meteor.methods({
+  getCurrentUserProfile() {
+    if (!this.userId) {
+      throw new Meteor.Error('not-authorized');
+    }
+
+    if (Meteor.isServer) {
+      // Can also use Meteor.user() instead, which is more performant?
+      const user = Meteor.users.findOne({ _id: this.userId }, { fields: { _id: 1, emails: 1, isPaid: 1, name: 1 }});
+      let email = '';
+      if (user && user.emails && user.emails.length) {
+        email = user.emails[0].address
+      }
+
+      let name = '';
+      if (user && user.name) {
+        name = user.name;
+      }
+
+      const response = {
+        name,
+        email,
+        isPaid: user.isPaid
+      };
+
+      return response;
+    }
+  },
+});
+
 // lifecycle method that runs after onCreateUser is called
 // use it to validate data on user document before its saved
 Accounts.validateNewUser((user) => {
   const name = user.name;
-  const username = user.username;
   const email = user.emails[0].address;
 
   new SimpleSchema({
     name: {
       type: String
     },
-    username: {
-      type: String,
-      min: 3,
-      max: 16
-    },
     email: {
       type: String,
       regEx: SimpleSchema.RegEx.Email
     }
-  }).validate({ name, username, email });
+  }).validate({ name, email });
 
   // send welcome email after we've validated the email and all data
   Meteor.call('sendSignupEmail', email);
@@ -62,6 +86,9 @@ Accounts.onCreateUser((options, user) => {
   // NOTE: Make sure to think about new and existing users with changes to collection (adding data fields)
   user.name = name;
   user.isBlocked = false;
+  user.isDeleted = false;
+  user.isPaid = false;
+  user.plan = null;
 
   return user;
 });

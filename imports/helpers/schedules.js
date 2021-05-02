@@ -17,3 +17,27 @@ export const availabilityHoursMinutesStringToMinutes = (hoursMinutesString) => {
 
   return result;
 };
+
+// sort the habits by start time. earlier -> later
+export const habitCompare = (a, b) => {
+  // calculate the total minute equivalent for start time A
+  let hourA = parseInt(a.startTimeHour);
+  if (a.startTimePeriod === 'PM') {
+    hourA += 12;
+  }
+  const minuteA = parseInt(a.startTimeMinute);
+  const totatMinutesA = hourA*60+minuteA;
+
+  // calculate the total minute equivalent for start time B
+  let hourB = parseInt(b.startTimeHour);
+  if (b.startTimePeriod === 'PM') {
+    hourB += 12;
+  }
+  const minuteB = parseInt(b.startTimeMinute);
+  const totatMinutesB = hourB*60+minuteB;
+  // compare A and B
+  if (totatMinutesA < totatMinutesB) {
+    return -1;
+  }
+  return 0;
+}

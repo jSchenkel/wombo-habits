@@ -36,7 +36,7 @@ class Login extends React.Component {
     const password = this.state.password.trim();
 
     if (selector.length === 0) {
-      return this.setState({error: 'Please enter your email or username.'});
+      return this.setState({error: 'Please enter your email.'});
     }
 
     if (password.length === 0) {
@@ -66,16 +66,16 @@ class Login extends React.Component {
                     <p className="is-size-3 has-text-centered has-text-dark">Log In</p>
                     <br />
                     <div className="field">
-                      <label className="label">Email or Username</label>
+                      <label className="label">Email</label>
                       <p className="control">
                         {this.state.error ? <label className="help is-danger has-text-centered">{this.state.error}</label> : undefined}
-                        <input className="input is-medium" type="text" name="selector" value={this.state.selector} placeholder="Email or Username" onChange={this.handleChange} />
+                        <input className="input is-medium" type="text" name="selector" value={this.state.selector} placeholder="" onChange={this.handleChange} />
                       </p>
                     </div>
                     <div className="field">
                       <label className="label">Password</label>
                       <p className="control">
-                        <input className="input is-medium" type="password" name="password" value={this.state.password} placeholder="Password" onChange={this.handleChange} />
+                        <input className="input is-medium" type="password" name="password" value={this.state.password} placeholder="" onChange={this.handleChange} />
                       </p>
                     </div>
                     <div className="field">

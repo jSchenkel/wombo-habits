@@ -40,11 +40,11 @@ export default class AccountEdit extends React.Component {
     return (
       <div>
         <section className="hero has-background-white is-fullheight">
-          <LoggedInNavbar currentUser={this.state.currentUser} />
+          <LoggedInNavbar />
           <div className="hero-body">
             <div className="container">
               <div className="columns">
-                <div className="column is-one-quarter">
+                {/* <div className="column is-one-quarter">
                   <aside className="menu">
                     <p className="menu-label">
                       General
@@ -53,8 +53,8 @@ export default class AccountEdit extends React.Component {
                       <li><a className={this.state.selectedTab === 'profile' ? 'is-active' : ''} onClick={() => this.setState({selectedTab: 'profile'})}>Edit Profile</a></li>
                     </ul>
                   </aside>
-                </div>
-                <div className="column is-three-quarters">
+                </div> */}
+                <div className="column">
                   {this.renderForms()}
                 </div>
               </div>

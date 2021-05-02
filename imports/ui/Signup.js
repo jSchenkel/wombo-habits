@@ -13,9 +13,7 @@ class Signup extends React.Component {
       error: '',
       email: '',
       name: '',
-      username: '',
       password: '',
-      code: ''
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -37,12 +35,8 @@ class Signup extends React.Component {
     event.preventDefault();
 
     const name = this.state.name.trim();
-    const username = this.state.username.trim().toLowerCase() ? this.state.username : '';
     const email = this.state.email.trim();
     const password = this.state.password.trim();
-
-    // TODO: REMOVE at some point
-    const code = this.state.code.trim();
 
     if (email.length === 0) {
       return this.setState({error: "You missed a spot! Don't forget to add your email."});
@@ -56,18 +50,6 @@ class Signup extends React.Component {
       return this.setState({error: 'Please enter a shorter name (24 characters max).'});
     }
 
-    if (username.length === 0) {
-      return this.setState({error: "You missed a spot! Don't forget to add your username."});
-    }
-
-    if (username.length > 16) {
-      return this.setState({error: 'Please enter a shorter username (16 characters max).'});
-    }
-
-    if (username.length < 3) {
-      return this.setState({error: 'Username must be at least 3 characters.'});
-    }
-
     if (password.length === 0) {
       return this.setState({error: "You missed a spot! Don't forget to add your password."});
     }
@@ -76,16 +58,11 @@ class Signup extends React.Component {
       return this.setState({error: 'Your password is too short! You need 8+ characters.'});
     }
 
-    // TODO: REMOVE
-    if (code !== 'wombo-ready-21') {
-      return this.setState({error: "The invite code you entered is not correct."});
-    }
-
     const profile = {
       name
     };
 
-    Accounts.createUser({username, email, password, profile}, (err) => {
+    Accounts.createUser({email, password, profile}, (err) => {
       if (err) {
         this.setState({error: err.reason});
       } else {
@@ -119,27 +96,15 @@ class Signup extends React.Component {
                         </p>
                       </div>
                       <div className="field">
-                        <label className="label">Full Name</label>
+                        <label className="label">Name</label>
                         <p className="control">
                           <input className="input is-medium" type="text" name="name" value={this.state.name} placeholder="" onChange={this.handleChange} />
-                        </p>
-                      </div>
-                      <div className="field">
-                        <label className="label">Username</label>
-                        <p className="control">
-                          <input className="input is-medium" type="text" name="username" value={this.state.username} placeholder="" onChange={this.handleChange} />
                         </p>
                       </div>
                       <div className="field">
                         <label className="label">Password</label>
                         <p className="control">
                           <input className="input is-medium" type="password" name="password" value={this.state.password} placeholder="" onChange={this.handleChange} />
-                        </p>
-                      </div>
-                      <div className="field">
-                        <label className="label">Invite Code</label>
-                        <p className="control">
-                          <input className="input is-medium" type="text" name="code" value={this.state.code} placeholder="" onChange={this.handleChange} />
                         </p>
                       </div>
                       <div className="field">

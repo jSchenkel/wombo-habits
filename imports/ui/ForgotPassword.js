@@ -42,7 +42,7 @@ export default class ForgotPassword extends React.Component {
       if (err) {
         // console.log('forgotPassword err: ', err);
         if (err.message === 'User not found [403]') {
-          this.setState({error: 'This email was not found.'});
+          this.setState({passwordResetEmailSent: true});
         } else {
           this.setState({error: 'We are sorry but something went wrong.'});
         }
@@ -69,7 +69,7 @@ export default class ForgotPassword extends React.Component {
                     <div className="field">
                       <p className="control">
                         {this.state.error ? <label className="help is-danger has-text-centered">{this.state.error}</label> : undefined}
-                        {this.state.passwordResetEmailSent ? <label className="help is-success has-text-centered">Email sent. Please check your inbox.</label> : undefined}
+                        {this.state.passwordResetEmailSent ? <label className="help has-text-centered">Reset link has been sent to this email address for all accounts that are associated with this email address.</label> : undefined}
                         <input className="input is-medium" type="email" name="email" value={this.state.email} placeholder="Email" onChange={this.handleChange} />
                       </p>
                     </div>

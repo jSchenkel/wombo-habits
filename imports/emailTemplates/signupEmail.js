@@ -268,7 +268,7 @@ export const signupEmail = () => {
                     <tr>
                       <td>
                         <h2>Welcome to Wombo!</h2>
-                        <p>Click "Get Started" below and set up your profile.</p>
+                        <p>Click "Get Started" below and design a system of habits to become successful.</p>
                         <table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
                           <tbody>
                             <tr>

@@ -2,7 +2,7 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
-import SimpleNavbar from './Navbar/SimpleNavbar.js';
+import Navbar from './Navbar/Navbar.js';
 import Footer from './Footer.js';
 
 const LandingPage = () => {
@@ -11,12 +11,12 @@ const LandingPage = () => {
   const SUBTITLE = `Success is the product of daily habits not once in a lifetime transformations. Design a system of habits to become successful.`;
   // const SUBTITLE = `Success is the product of daily habits not once in a lifetime transformations. Design a system of habits to become successful and import it into your calendar.`;
   const BUTTON_TEXT = 'Get Started';
-  const CTA_LINK = '/start'
+  const CTA_LINK = '/accounts/signup'
 
   return (
     <div>
       <section className="hero has-background-white is-fullheight">
-        <SimpleNavbar />
+        <Navbar />
         <div className="hero-body">
           <div className="container">
             {/* HERO */}

@@ -11,7 +11,8 @@ import Signup from '../ui/Signup.js';
 import ForgotPassword from './../ui/ForgotPassword.js';
 import ResetPassword from './../ui/ResetPassword.js';
 // Private routes
-// ...
+import HomeContainer from './../ui/Home/HomeContainer.js';
+import AccountContainer from './../ui/Account/AccountContainer.js';
 // Open routes
 import Feedback from '../ui/Feedback.js';
 // Legal
@@ -28,10 +29,7 @@ export const routes = (
       <PubliceRoute exact path="/">
         <LandingPage />
       </PubliceRoute>
-      <PubliceRoute exact path="/start">
-        <SchedulesContainer />
-      </PubliceRoute>
-      {/* <PubliceRoute exact path="/accounts/login">
+      <PubliceRoute exact path="/accounts/login">
         <Login />
       </PubliceRoute>
       <PubliceRoute exact path="/accounts/signup">
@@ -40,8 +38,17 @@ export const routes = (
       <PubliceRoute exact path="/accounts/forgot-password">
         <ForgotPassword />
       </PubliceRoute>
-      <PubliceRoute exact path="/accounts/reset-password/:token" component={ResetPassword} /> */}
+      <PubliceRoute exact path="/accounts/reset-password/:token" component={ResetPassword} />
       {/* Private Routes */}
+      <PrivateRoute exact path="/home">
+        <HomeContainer />
+      </PrivateRoute>
+      <PrivateRoute exact path="/accounts/edit">
+        <AccountContainer />
+      </PrivateRoute>
+      <PrivateRoute exact path="/system">
+        <SchedulesContainer />
+      </PrivateRoute>
       {/* Open Routes */}
       <Route exact path="/contact/feedback" component={Feedback} />
       <Route exact path="/legal/terms" component={Terms} />
@@ -83,7 +90,7 @@ function PubliceRoute({ children, ...rest }) {
           children
         ) : (
           <Redirect
-            to='/accounts/home'
+            to='/home'
           />
         )
       }

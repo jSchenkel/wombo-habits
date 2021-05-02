@@ -23,14 +23,14 @@ const Navbar = () => {
             <Link to="/accounts/login" className="level-item">
               <p className="button is-text">Log In</p>
             </Link>
-            <Link to="/accounts/request-invite" className="level-item">
+            {/* <Link to="/accounts/request-invite" className="level-item">
               <p className="button is-link">
                 <span>Request Invite</span>
                 <span className="icon">
                   <i className="fas fa-chevron-right"></i>
                 </span>
               </p>
-            </Link>
+            </Link> */}
           </div>
           <div className="level-right is-hidden-tablet">
             <div className="level-item">
