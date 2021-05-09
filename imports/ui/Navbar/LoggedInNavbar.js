@@ -61,11 +61,11 @@ const LoggedInNavbar = () => {
                     <Link to="/home" className="dropdown-item">
                       <p className="">Home</p>
                     </Link>
+                    <Link to="/contact" className="dropdown-item">
+                      <p className="">Contact Us</p>
+                    </Link>
                     <Link to="/accounts/edit" className="dropdown-item">
                       <p className="">Settings</p>
-                    </Link>
-                    <Link to="/contact/feedback" className="dropdown-item">
-                      <p className="">Contact Us</p>
                     </Link>
                     <hr className="dropdown-divider" />
                     <a className="dropdown-item" onClick={onLogout}>

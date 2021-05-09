@@ -11,7 +11,8 @@ const LandingPage = () => {
   const SUBTITLE = `Success is the product of daily habits not once in a lifetime transformations. Design a system of habits to become successful.`;
   // const SUBTITLE = `Success is the product of daily habits not once in a lifetime transformations. Design a system of habits to become successful and import it into your calendar.`;
   const BUTTON_TEXT = 'Get Started';
-  const CTA_LINK = '/accounts/signup'
+  const CTA_LINK = '/start'
+  // const CTA_LINK = '/accounts/signup'
 
   return (
     <div>
@@ -23,10 +24,11 @@ const LandingPage = () => {
             <div className="columns is-vcentered is-centered mb-6">
               <div className="column is-two-thirds">
                 <div className="is-hidden-mobile has-text-centered">
-                  <p className="title is-1 has-text-black-ter" style={{fontWeight: '800', fontSize: '3.6rem'}}>{TITLE}</p>
-                  <p className="subtitle is-4 has-text-black-ter mb-6">{SUBTITLE}</p>
+                  <p className="title is-1" style={{fontWeight: '800', fontSize: '3.6rem'}}>{TITLE}</p>
+                  <p className="subtitle is-4 mb-6">{SUBTITLE}</p>
                   <Link to={CTA_LINK} className="button is-link" onClick={() => {
                     analytics.track('CTA Button Clicked', {
+                      type: 'landing-page',
                       layout: 'desktop'
                     });
                   }}>
@@ -37,10 +39,11 @@ const LandingPage = () => {
                   </Link>
                 </div>
                 <div className="is-hidden-tablet has-text-centered">
-                  <p className="title is-3 has-text-black-ter" style={{fontWeight: '800', fontSize: '3.2rem'}}>{TITLE}</p>
-                  <p className="subtitle is-4 has-text-black-ter mb-6">{SUBTITLE}</p>
+                  <p className="title is-3" style={{fontWeight: '800', fontSize: '3.2rem'}}>{TITLE}</p>
+                  <p className="subtitle is-4 mb-6">{SUBTITLE}</p>
                   <Link to={CTA_LINK} className="button is-link" onClick={() => {
                     analytics.track('CTA Button Clicked', {
+                      type: 'landing-page',
                       layout: 'mobile'
                     });
                   }}>

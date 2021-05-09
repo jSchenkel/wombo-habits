@@ -63,7 +63,11 @@ Meteor.methods({
       startTimeHour: String,
       startTimeMinute: String,
       startTimePeriod: String,
-      duration: String
+      duration: String,
+      targetDuration: {
+        type: String,
+        optional: true
+      }
     }).validate(events);
 
     const timestamp = moment().utc().toDate();

@@ -105,7 +105,7 @@ const HabitCurrent = (props) => {
   });
   return (
     <div className="box">
-      <form onSubmit={props.saveHabit}>
+      <form onSubmit={props.handleHabitSave}>
         <div className="field">
           <div className="level is-mobile mb-1">
             <div className="level-left">

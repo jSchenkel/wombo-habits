@@ -22,7 +22,8 @@ export const availabilityHoursMinutesStringToMinutes = (hoursMinutesString) => {
 export const habitCompare = (a, b) => {
   // calculate the total minute equivalent for start time A
   let hourA = parseInt(a.startTimeHour);
-  if (a.startTimePeriod === 'PM') {
+  // add hours if period is pm. handle special case with 12pm, which is like 12 + 0pm
+  if (a.startTimePeriod === 'PM' && hourA !== 12) {
     hourA += 12;
   }
   const minuteA = parseInt(a.startTimeMinute);
@@ -30,7 +31,8 @@ export const habitCompare = (a, b) => {
 
   // calculate the total minute equivalent for start time B
   let hourB = parseInt(b.startTimeHour);
-  if (b.startTimePeriod === 'PM') {
+  // add hours if period is pm. handle special case with 12pm, which is like 12 + 0pm
+  if (b.startTimePeriod === 'PM' && hourB !== 12) {
     hourB += 12;
   }
   const minuteB = parseInt(b.startTimeMinute);

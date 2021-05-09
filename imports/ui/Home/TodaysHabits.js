@@ -17,7 +17,9 @@ export default class TodaysHabits extends React.Component {
       // habits
       habits: [],
       isHabitsLoading: false,
-      habitsError: ''
+      habitsError: '',
+      // modal
+      isModalOpen: true,
     };
 
     this.fetchHabits = this.fetchHabits.bind(this);
@@ -48,7 +50,8 @@ export default class TodaysHabits extends React.Component {
           this.setState({
             habits: res,
             habitsError: '',
-            isHabitsLoading: false
+            isHabitsLoading: false,
+            isModalOpen: res && res.length === 0
           });
         }
       }
@@ -56,13 +59,19 @@ export default class TodaysHabits extends React.Component {
   }
 
   render() {
-    if (this.state.isHabitsLoading) {
+    const {
+      isHabitsLoading,
+      habits,
+      isModalOpen
+    } = this.state;
+
+    if (isHabitsLoading) {
       return <LoadingIcon />;
     }
 
     const events = [];
 
-    for (const habit of this.state.habits) {
+    for (const habit of habits) {
       for (const event of habit.events) {
         if (event.day === this.state.day) {
           events.push({
@@ -79,11 +88,36 @@ export default class TodaysHabits extends React.Component {
           return (
             <div key={event._id} className="notification">
               <p className="is-size-7 has-text-weight-semibold">{event.title}</p>
+              {/* <p className="is-size-7">{event.description.trim()}</p> */}
               <p className="is-size-7">{event.startTimeHour}:{event.startTimeMinute}{event.startTimePeriod}</p>
               <p className="is-size-7">{event.duration}min</p>
             </div>
           );
         }) : <p className="has-text-centered is-size-7">No events today</p>}
+        <div className={isModalOpen ? 'modal is-active' : 'modal'}>
+          <div className="modal-background"></div>
+          <div className="modal-content">
+            <div className="box">
+              <p className="title is-3">Welcome to Wombo</p>
+              <p className="subtitle is-5">
+                Habits are the compound interest of self-improvement.
+                The goal is to get 1% better every day. Eventually you will be unstoppable.
+                Continue to the System Builder.
+              </p>
+              <Link to="/system" className="button is-link" onClick={() => {
+                analytics.track('CTA Button Clicked', {
+                  type: 'home-welcome',
+                  layout: 'na'
+                });
+              }}>
+                <span>Continue</span>
+                <span className="icon">
+                  <i className="fas fa-chevron-right"></i>
+                </span>
+              </Link>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

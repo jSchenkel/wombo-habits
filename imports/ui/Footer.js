@@ -11,7 +11,7 @@ const Footer = () => {
       <nav className="tabs">
         <div className="container">
           <ul>
-            <li><Link to="/contact/feedback" className="is-size-7">Contact Us</Link></li>
+            <li><Link to="/contact" className="is-size-7">Contact Us</Link></li>
             <li><Link to="/legal/privacy" className="is-size-7">Privacy Policy</Link></li>
             <li><Link to="/legal/terms" className="is-size-7">Terms of Use</Link></li>
             <li>
