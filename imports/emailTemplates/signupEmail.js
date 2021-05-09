@@ -10,7 +10,7 @@ export const signupEmail = () => {
   <head>
     <meta name="viewport" content="width=device-width" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Welcome to Wombo!</title>
+    <title>Welcome to Wombo</title>
     <style>
       /* -------------------------------------
           GLOBAL RESETS
@@ -259,7 +259,7 @@ export const signupEmail = () => {
           <div class="content">
 
             <!-- START CENTERED WHITE CONTAINER -->
-            <span class="preheader">Welcome to Wombo!</span>
+            <span class="preheader">Welcome to Wombo</span>
             <table class="main">
               <!-- START MAIN CONTENT AREA -->
               <tr>
@@ -267,7 +267,7 @@ export const signupEmail = () => {
                   <table border="0" cellpadding="0" cellspacing="0">
                     <tr>
                       <td>
-                        <h2>Welcome to Wombo!</h2>
+                        <h2>Welcome to Wombo</h2>
                         <p>Click "Get Started" below and design a system of habits to become successful.</p>
                         <table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
                           <tbody>

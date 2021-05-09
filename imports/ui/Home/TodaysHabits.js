@@ -87,10 +87,10 @@ export default class TodaysHabits extends React.Component {
         {events && events.length > 0 ? events.sort(habitCompare).map((event) => {
           return (
             <div key={event._id} className="notification">
-              <p className="is-size-7 has-text-weight-semibold">{event.title}</p>
-              {/* <p className="is-size-7">{event.description.trim()}</p> */}
-              <p className="is-size-7">{event.startTimeHour}:{event.startTimeMinute}{event.startTimePeriod}</p>
-              <p className="is-size-7">{event.duration}min</p>
+              <p className="is-size-5 has-text-weight-semibold">{event.title}</p>
+              <p className="is-size-7 mb-2">{event.description.trim()}</p>
+              <p className="is-size-7 has-text-weight-semibold">{event.startTimeHour}:{event.startTimeMinute}{event.startTimePeriod}</p>
+              <p className="is-size-7 has-text-weight-semibold">{event.duration}min</p>
             </div>
           );
         }) : <p className="has-text-centered is-size-7">No events today</p>}
@@ -100,9 +100,9 @@ export default class TodaysHabits extends React.Component {
             <div className="box">
               <p className="title is-3">Welcome to Wombo</p>
               <p className="subtitle is-5">
-                Habits are the compound interest of self-improvement.
-                The goal is to get 1% better every day. Eventually you will be unstoppable.
-                Continue to the System Builder.
+                There are two parts to Wombo.
+                First, you design your system of habits.
+                Second, every day you view and complete your habits for the day.
               </p>
               <Link to="/system" className="button is-link" onClick={() => {
                 analytics.track('CTA Button Clicked', {
@@ -110,7 +110,7 @@ export default class TodaysHabits extends React.Component {
                   layout: 'na'
                 });
               }}>
-                <span>Continue</span>
+                <span>System Builder</span>
                 <span className="icon">
                   <i className="fas fa-chevron-right"></i>
                 </span>

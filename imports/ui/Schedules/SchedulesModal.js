@@ -11,10 +11,15 @@ const SchedulesModal = (props) => {
       <div className="box">
         <p className="title is-3">Welcome to the System Builder</p>
         <p className="subtitle is-5">
-          Here you can design your system of habits to become successful.
-          Once your system is ready, you can view your list of habits for the day in the Home page.
+          This is where you design your system of habits.
+          Once your system is ready, you can view and complete your list of habits for the day in the Home page.
         </p>
-        <button className="button is-link" onClick={() => props.handleModalOpen('basics')}>Take Me to the Basics</button>
+        <button className="button is-link" onClick={() => props.handleModalOpen('basics')}>
+          <span>Start with the Basics</span>
+          <span className="icon">
+            <i className="fas fa-chevron-right"></i>
+          </span>
+        </button>
       </div>
     );
   } else if (props.isModalOpen && props.activeModal === 'basics') {

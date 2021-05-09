@@ -28,7 +28,7 @@ export default class StartContainer extends React.Component {
     if (step === 1) {
       return (
         <div className="has-text-centered">
-          <h2 className="is-size-4 mb-5">Everyone is playing a game and you want to <b>win</b> the game.</h2>
+          <h2 className="is-size-4 mb-5">Habits are the <b>compount interest</b> of <br />self-improvement.</h2>
           <a className="button is-link" onClick={() => {
             analytics.track('CTA Button Clicked', {
               type: 'start-1',
@@ -46,8 +46,8 @@ export default class StartContainer extends React.Component {
     } else if (step === 2) {
       return (
         <div className="has-text-centered">
-          <h4 className="is-size-4 mb-3">To win the game you need to treat yourself like an <b>athlete</b> competing in the Olympics.</h4>
-          <h4 className="is-size-4 mb-5">To win the game you need to play at <b>peak performance</b>.</h4>
+          <h4 className="is-size-4 mb-3">It's hard to become successful overnight.</h4>
+          <h4 className="is-size-4 mb-5">The goal is to get 1% better <b>every</b> day. This we can do.</h4>
           <a className="button is-link" onClick={() => {
             analytics.track('CTA Button Clicked', {
               type: 'start-2',
@@ -65,15 +65,33 @@ export default class StartContainer extends React.Component {
     } else if (step === 3) {
       return (
         <div className="has-text-centered">
-          <h4 className="is-size-4 mb-3">Novice athletes make <b>repeated</b> mistakes.</h4>
-          <h4 className="is-size-4 mb-5">Wombo gives you a system of habits to avoid mistakes, play at peak performance, and become <b>successful</b>.</h4>
-          <Link to="/accounts/signup" className="button is-link" onClick={() => {
+          <h4 className="is-size-4 mb-3">With <b>consistent</b> improvement. Your health, wealth, and knowledge will compound to great heights.</h4>
+          <h4 className="is-size-4 mb-5">You will become <b>successful</b>.</h4>
+          <a className="button is-link" onClick={() => {
             analytics.track('CTA Button Clicked', {
               type: 'start-3',
               layout: 'na'
             });
+            this.changeStep(1);
           }}>
-            <span>I'm Ready</span>
+            <span>Continue</span>
+            <span className="icon">
+              <i className="fas fa-chevron-right"></i>
+            </span>
+          </a>
+        </div>
+      );
+    } else if (step === 4) {
+      return (
+        <div className="has-text-centered">
+          <h4 className="is-size-4 mb-5">Wombo gives you <b>two</b> things. A system of habits to become successful (what to do) and a methodology for sticking to it (doing it consistently).</h4>
+          <Link to="/accounts/signup" className="button is-link" onClick={() => {
+            analytics.track('CTA Button Clicked', {
+              type: 'start-4',
+              layout: 'na'
+            });
+          }}>
+            <span>I Want This</span>
             <span className="icon">
               <i className="fas fa-chevron-right"></i>
             </span>
