@@ -14,7 +14,13 @@ const SchedulesModal = (props) => {
           This is where you design your system of habits.
           Once your system is ready, you can view and complete your list of habits for the day in the Home page.
         </p>
-        <button className="button is-link" onClick={() => props.handleModalOpen('basics')}>
+        <button className="button is-link" onClick={() => {
+          props.handleModalOpen('basics');
+          analytics.track('CTA Button Clicked', {
+            type: 'system-welcome',
+            layout: 'na'
+          });
+        }}>
           <span>Start with the Basics</span>
           <span className="icon">
             <i className="fas fa-chevron-right"></i>

@@ -1,4 +1,4 @@
-import { SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY } from './../../schedules.js';
+import { SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, ALL_DAY_DURATION } from './../../schedules.js';
 
 // Food habits
 export const EAT_HEALTHY_HABIT = {
@@ -16,7 +16,7 @@ export const EAT_HEALTHY_HABIT = {
       startTimeHour: '8',
       startTimeMinute: '00',
       startTimePeriod: 'AM',
-      duration: '720',
+      duration: ALL_DAY_DURATION,
       targetDuration: null,
       day: SUNDAY
     },
@@ -24,7 +24,7 @@ export const EAT_HEALTHY_HABIT = {
       startTimeHour: '8',
       startTimeMinute: '00',
       startTimePeriod: 'AM',
-      duration: '720',
+      duration: ALL_DAY_DURATION,
       targetDuration: null,
       day: MONDAY
     },
@@ -32,7 +32,7 @@ export const EAT_HEALTHY_HABIT = {
       startTimeHour: '8',
       startTimeMinute: '00',
       startTimePeriod: 'AM',
-      duration: '720',
+      duration: ALL_DAY_DURATION,
       targetDuration: null,
       day: TUESDAY
     },
@@ -40,7 +40,7 @@ export const EAT_HEALTHY_HABIT = {
       startTimeHour: '8',
       startTimeMinute: '00',
       startTimePeriod: 'AM',
-      duration: '720',
+      duration: ALL_DAY_DURATION,
       targetDuration: null,
       day: WEDNESDAY
     },
@@ -48,7 +48,7 @@ export const EAT_HEALTHY_HABIT = {
       startTimeHour: '8',
       startTimeMinute: '00',
       startTimePeriod: 'AM',
-      duration: '720',
+      duration: ALL_DAY_DURATION,
       targetDuration: null,
       day: THURSDAY
     },
@@ -56,7 +56,7 @@ export const EAT_HEALTHY_HABIT = {
       startTimeHour: '8',
       startTimeMinute: '00',
       startTimePeriod: 'AM',
-      duration: '720',
+      duration: ALL_DAY_DURATION,
       targetDuration: null,
       day: FRIDAY
     },
@@ -64,7 +64,7 @@ export const EAT_HEALTHY_HABIT = {
       startTimeHour: '8',
       startTimeMinute: '00',
       startTimePeriod: 'AM',
-      duration: '720',
+      duration: ALL_DAY_DURATION,
       targetDuration: null,
       day: SATURDAY
     }
@@ -131,7 +131,7 @@ export const INTERMITTENT_FASTING_HABIT = {
       startTimeHour: '8',
       startTimeMinute: '00',
       startTimePeriod: 'AM',
-      duration: '720',
+      duration: '240',
       targetDuration: null,
       day: SATURDAY
     }
@@ -150,7 +150,7 @@ export const DRINK_WATER_HABIT = {
       startTimeHour: '8',
       startTimeMinute: '00',
       startTimePeriod: 'AM',
-      duration: '720',
+      duration: ALL_DAY_DURATION,
       targetDuration: null,
       day: SUNDAY
     },
@@ -158,7 +158,7 @@ export const DRINK_WATER_HABIT = {
       startTimeHour: '8',
       startTimeMinute: '00',
       startTimePeriod: 'AM',
-      duration: '720',
+      duration: ALL_DAY_DURATION,
       targetDuration: null,
       day: MONDAY
     },
@@ -166,7 +166,7 @@ export const DRINK_WATER_HABIT = {
       startTimeHour: '8',
       startTimeMinute: '00',
       startTimePeriod: 'AM',
-      duration: '720',
+      duration: ALL_DAY_DURATION,
       targetDuration: null,
       day: TUESDAY
     },
@@ -174,7 +174,7 @@ export const DRINK_WATER_HABIT = {
       startTimeHour: '8',
       startTimeMinute: '00',
       startTimePeriod: 'AM',
-      duration: '720',
+      duration: ALL_DAY_DURATION,
       targetDuration: null,
       day: WEDNESDAY
     },
@@ -182,7 +182,7 @@ export const DRINK_WATER_HABIT = {
       startTimeHour: '8',
       startTimeMinute: '00',
       startTimePeriod: 'AM',
-      duration: '720',
+      duration: ALL_DAY_DURATION,
       targetDuration: null,
       day: THURSDAY
     },
@@ -190,7 +190,7 @@ export const DRINK_WATER_HABIT = {
       startTimeHour: '8',
       startTimeMinute: '00',
       startTimePeriod: 'AM',
-      duration: '720',
+      duration: ALL_DAY_DURATION,
       targetDuration: null,
       day: FRIDAY
     },
@@ -198,7 +198,7 @@ export const DRINK_WATER_HABIT = {
       startTimeHour: '8',
       startTimeMinute: '00',
       startTimePeriod: 'AM',
-      duration: '720',
+      duration: ALL_DAY_DURATION,
       targetDuration: null,
       day: SATURDAY
     }

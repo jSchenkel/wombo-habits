@@ -1,4 +1,6 @@
 
+export const ALL_DAY_DURATION = 'ALL_DAY';
+
 export const SUNDAY = 'sunday';
 export const MONDAY = 'monday';
 export const TUESDAY = 'tuesday';

@@ -7,7 +7,7 @@ import moment from 'moment';
 import LoadingIcon from '../LoadingIcon.js';
 
 import { DAY_OF_WEEK_CODE_INT_TO_DAY_STRING } from '../../constants/schedules.js';
-import { habitCompare } from '../../helpers/schedules.js';
+import { habitCompare, displayDuration } from '../../helpers/schedules.js';
 
 export default class TodaysHabits extends React.Component {
   constructor(props) {
@@ -90,7 +90,7 @@ export default class TodaysHabits extends React.Component {
               <p className="is-size-5 has-text-weight-semibold">{event.title}</p>
               <p className="is-size-7 mb-2">{event.description.trim()}</p>
               <p className="is-size-7 has-text-weight-semibold">{event.startTimeHour}:{event.startTimeMinute}{event.startTimePeriod}</p>
-              <p className="is-size-7 has-text-weight-semibold">{event.duration}min</p>
+              <p className="is-size-7 has-text-weight-semibold">{displayDuration(event.duration)}</p>
             </div>
           );
         }) : <p className="has-text-centered is-size-7">No events today</p>}

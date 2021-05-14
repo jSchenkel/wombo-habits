@@ -1,4 +1,4 @@
-import { SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY } from './../../schedules.js';
+import { SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, ALL_DAY_DURATION } from './../../schedules.js';
 
 // mind food
 export const LONG_FORM_READING_HABIT = {
@@ -53,7 +53,7 @@ export const REST_HABIT = {
       startTimeHour: '8',
       startTimeMinute: '00',
       startTimePeriod: 'AM',
-      duration: '720',
+      duration: ALL_DAY_DURATION,
       targetDuration: null,
       day: SUNDAY
     },
@@ -74,7 +74,7 @@ export const LIMIT_SOCIAL_MEDIA_HABIT = {
       startTimeHour: '8',
       startTimeMinute: '00',
       startTimePeriod: 'AM',
-      duration: '720',
+      duration: ALL_DAY_DURATION,
       targetDuration: null,
       day: SUNDAY
     },
@@ -82,7 +82,7 @@ export const LIMIT_SOCIAL_MEDIA_HABIT = {
       startTimeHour: '8',
       startTimeMinute: '00',
       startTimePeriod: 'AM',
-      duration: '720',
+      duration: ALL_DAY_DURATION,
       targetDuration: null,
       day: MONDAY
     },
@@ -90,7 +90,7 @@ export const LIMIT_SOCIAL_MEDIA_HABIT = {
       startTimeHour: '8',
       startTimeMinute: '00',
       startTimePeriod: 'AM',
-      duration: '720',
+      duration: ALL_DAY_DURATION,
       targetDuration: null,
       day: TUESDAY
     },
@@ -98,7 +98,7 @@ export const LIMIT_SOCIAL_MEDIA_HABIT = {
       startTimeHour: '8',
       startTimeMinute: '00',
       startTimePeriod: 'AM',
-      duration: '720',
+      duration: ALL_DAY_DURATION,
       targetDuration: null,
       day: WEDNESDAY
     },
@@ -106,7 +106,7 @@ export const LIMIT_SOCIAL_MEDIA_HABIT = {
       startTimeHour: '8',
       startTimeMinute: '00',
       startTimePeriod: 'AM',
-      duration: '720',
+      duration: ALL_DAY_DURATION,
       targetDuration: null,
       day: THURSDAY
     },
@@ -114,7 +114,7 @@ export const LIMIT_SOCIAL_MEDIA_HABIT = {
       startTimeHour: '8',
       startTimeMinute: '00',
       startTimePeriod: 'AM',
-      duration: '720',
+      duration: ALL_DAY_DURATION,
       targetDuration: null,
       day: FRIDAY
     },
@@ -122,7 +122,7 @@ export const LIMIT_SOCIAL_MEDIA_HABIT = {
       startTimeHour: '8',
       startTimeMinute: '00',
       startTimePeriod: 'AM',
-      duration: '720',
+      duration: ALL_DAY_DURATION,
       targetDuration: null,
       day: SATURDAY
     }

@@ -1,22 +1,4 @@
-
-// helper to convert "12:00" hours and minutes string to minutes integer (ex. "12:00" => 720; "12:30" => 750)
-export const availabilityHoursMinutesStringToMinutes = (hoursMinutesString) => {
-  let result = -1;
-
-  const hoursMinutesStringParts = hoursMinutesString.split(':');
-
-  if (hoursMinutesStringParts && hoursMinutesStringParts.length === 2) {
-    const hourString = hoursMinutesStringParts[0];
-    const minuteString = hoursMinutesStringParts[1];
-
-    const hour = parseInt(hourString);
-    const minute = parseInt(minuteString);
-
-    result = (hour * 60) + minute;
-  }
-
-  return result;
-};
+import { ALL_DAY_DURATION } from '../constants/schedules.js';
 
 // sort the habits by start time. earlier -> later
 export const habitCompare = (a, b) => {
@@ -42,4 +24,27 @@ export const habitCompare = (a, b) => {
     return -1;
   }
   return 0;
+}
+
+// turn event display string to displayable string
+export const displayDuration = (duration) => {
+  if (duration === ALL_DAY_DURATION) {
+    return 'Rest of the day';
+  }
+
+  const intDuration = parseInt(duration);
+
+  const hours = Math.floor(intDuration / 60);
+  const minutes = intDuration % 60;
+
+  let displayable = '';
+  if (hours) {
+    displayable += `${hours}h`
+  }
+
+  if (minutes) {
+    displayable += ` ${minutes}min`
+  }
+
+  return displayable;
 }

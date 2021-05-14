@@ -9,7 +9,7 @@ import HabitCurrent from './HabitCurrent.js';
 import SchedulesModal from './SchedulesModal.js';
 import Footer from '../Footer.js';
 
-import { habitCompare } from '../../helpers/schedules.js';
+import { habitCompare, displayDuration } from '../../helpers/schedules.js';
 import { DAY_STRING_TO_DAY_SHORT_STRING } from './../../constants/schedules.js';
 
 const INITIAL_EVENT_STATE = {
@@ -140,6 +140,11 @@ export default class SchedulesContainer extends React.Component {
           });
           this.reset();
           this.fetchHabits();
+          analytics.track('Habit Updated', {
+            habitId: currentHabitId,
+            title,
+            eventsCount: events.length
+          });
         }
       });
     } else {
@@ -157,6 +162,11 @@ export default class SchedulesContainer extends React.Component {
           });
           this.reset();
           this.fetchHabits();
+          analytics.track('Habit Created', {
+            habitId: null,
+            title,
+            eventsCount: events.length
+          });
         }
       });
     }
@@ -217,6 +227,9 @@ export default class SchedulesContainer extends React.Component {
         });
         this.reset();
         this.fetchHabits();
+        analytics.track('Habit Deleted', {
+          habitId: currentHabitId
+        });
       }
     });
   }
@@ -347,7 +360,7 @@ export default class SchedulesContainer extends React.Component {
               <div key={habit._id} className="notification has-pointer" onClick={() => this.habitSelected(habit)}>
                 <p className="is-size-7 has-text-weight-semibold">{habit.title}</p>
                 <p className="is-size-7">{habit.startTimeHour}:{habit.startTimeMinute}{habit.startTimePeriod}</p>
-                <p className="is-size-7">{habit.duration}min</p>
+                <p className="is-size-7">{displayDuration(habit.duration)}</p>
               </div>
             );
           })}

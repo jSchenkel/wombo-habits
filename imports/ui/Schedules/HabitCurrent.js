@@ -2,6 +2,9 @@ import React from 'react';
 
 import InfoTooltip from '../blocks/InfoTooltip.js';
 
+import { ALL_DAY_DURATION } from '../../constants/schedules.js';
+
+
 const HabitCurrent = (props) => {
   const saveButton = props.isHabitLoading ? (
      <div className="field">
@@ -49,15 +52,15 @@ const HabitCurrent = (props) => {
         <span className="is-size-7">at</span>
         <div className="select is-small ml-2">
           <select onChange={(event) => props.handleEventInputChange(event, index)} name="startTimeHour" value={event.startTimeHour}>
-            <option value="01">1</option>
-            <option value="02">2</option>
-            <option value="03">3</option>
-            <option value="04">4</option>
-            <option value="05">5</option>
-            <option value="06">6</option>
-            <option value="07">7</option>
-            <option value="08">8</option>
-            <option value="09">9</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
             <option value="10">10</option>
             <option value="11">11</option>
           </select>
@@ -87,6 +90,7 @@ const HabitCurrent = (props) => {
         <span className="is-size-7">for</span>
         <div className="select is-small ml-2 mr-2">
           <select onChange={(event) => props.handleEventInputChange(event, index)} name="duration" value={event.duration}>
+            <option value={ALL_DAY_DURATION}>the rest of the day</option>
             <option value="10">10 min</option>
             <option value="15">15 min</option>
             <option value="30">30 min</option>
@@ -94,7 +98,13 @@ const HabitCurrent = (props) => {
             <option value="60">1 hour</option>
             <option value="90">1 hour 30 min</option>
             <option value="120">2 hour</option>
+            <option value="150">2 hour 30 min</option>
             <option value="180">3 hour</option>
+            <option value="240">4 hour</option>
+            <option value="300">5 hour</option>
+            <option value="360">6 hour</option>
+            <option value="420">7 hour</option>
+            <option value="480">8 hour</option>
           </select>
         </div>
         <span className="icon has-pointer" onClick={() => props.handleEventRemoved(index)}>
