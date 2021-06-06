@@ -44,11 +44,18 @@ export default class SchedulesContainer extends React.Component {
       habits: [],
       isHabitsLoading: false,
       habitsError: '',
+      // true when habits is empty
+      isHabitsEmpty: false,
       // modal
       activeModal: '',
       isModalOpen: false,
       // templates habits
-      addedHabits: {}
+      addedHabits: {},
+      // user profile
+      isUserProfileLoading: false,
+      userProfileError: '',
+      identity: 'entrepreneur',
+      outcomes: []
     };
 
     // modal
@@ -72,6 +79,21 @@ export default class SchedulesContainer extends React.Component {
 
   componentDidMount() {
     this.fetchHabits();
+    Meteor.call('getCurrentUserProfile', (err, res) => {
+      if (err) {
+        this.setState({
+          isUserProfileLoading: false,
+          userProfileError: err.reason
+        });
+      } else {
+        this.setState({
+          isUserProfileLoading: false,
+          userProfileError: '',
+          identity: res.identity || 'entrepreneur',
+          outcomes: res.outcomes
+        });
+      }
+    })
   }
 
   fetchHabits() {
@@ -86,13 +108,15 @@ export default class SchedulesContainer extends React.Component {
         });
       } else {
         if (res) {
+          const isHabitsEmpty = res && res.length === 0;
           this.setState({
             habits: res,
             habitsError: '',
             isHabitsLoading: false,
+            isHabitsEmpty,
             // modal
-            activeModal: res && res.length === 0 ? 'welcome' : this.state.activeModal,
-            isModalOpen: res && res.length === 0 ? true : this.state.isModalOpen,
+            activeModal: isHabitsEmpty ? 'welcome' : this.state.activeModal,
+            isModalOpen: isHabitsEmpty ? true : this.state.isModalOpen,
             // build map of current habit titles
             addedHabits: res && res.length > 0 ? res.reduce((output, habit) => ({...output, [habit.title]: 1}), {}) : {}
           });
@@ -181,10 +205,11 @@ export default class SchedulesContainer extends React.Component {
 
     const {
       currentHabitId,
-      title,
-      description,
       events
     } = this.state;
+
+    const title = this.state.title.trim();
+    const description = this.state.description.trim();
 
     if (!title) {
       return this.setState({habitError: 'Please enter a title.', isHabitLoading: false});
@@ -371,20 +396,23 @@ export default class SchedulesContainer extends React.Component {
     return (
       <div className="container">
         {this.state.habitsError ? <p className="help is-danger">{this.state.habitsError}</p> : null}
+        {this.state.isHabitsEmpty ? (
+          <div className="notification">
+            <span className="icon">
+              <i className="fas fa-info-circle"></i>
+            </span>
+            <span>When your system of habits is done, view your daily habit schedule <Link to="/home">here</Link></span>
+          </div>
+        ) : null}
         <div className="columns">
-          <div className="column">
+          <div className="column is-half">
             <div className="notification is-white has-text-centered has-text-white has-pointer" onClick={() => this.handleModalOpen('basics')} style={{background: `url('/images/park3.png')`, backgroundSize: 'cover', height: '5rem'}}>
               <p className="title is-5">Basics</p>
             </div>
           </div>
           <div className="column">
-            <div className="notification is-white has-text-centered has-text-white has-pointer" onClick={() => this.handleModalOpen('wealth')} style={{background: `url('/images/park3.png')`, backgroundSize: 'cover', height: '5rem'}}>
-              <p className="title is-5">Wealth</p>
-            </div>
-          </div>
-          <div className="column">
-            <div className="notification is-white has-text-centered has-text-white has-pointer" onClick={() => this.handleModalOpen('happiness')} style={{background: `url('/images/park3.png')`, backgroundSize: 'cover', height: '5rem'}}>
-              <p className="title is-5">Happiness</p>
+            <div className="notification is-white has-text-centered has-text-white has-pointer" onClick={() => this.handleModalOpen('productivity')} style={{background: `url('/images/park3.png')`, backgroundSize: 'cover', height: '5rem'}}>
+              <p className="title is-5">Productivity</p>
             </div>
           </div>
         </div>
@@ -434,6 +462,10 @@ export default class SchedulesContainer extends React.Component {
                 activeModal={this.state.activeModal}
                 isModalOpen={this.state.isModalOpen}
                 addedHabits={this.state.addedHabits}
+                isUserProfileLoading={this.state.isUserProfileLoading}
+                userProfileError={this.state.userProfileError}
+                identity={this.state.identity}
+                outcomes={this.state.outcomes}
               />
             </div>
             <button className="modal-close is-large" aria-label="close" onClick={this.handleModalClose}></button>

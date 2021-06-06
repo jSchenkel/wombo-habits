@@ -67,4 +67,130 @@ export const SLEEP_HABIT = {
       day: SATURDAY
     }
   ]
-}
+};
+
+export const SLEEP_WIND_DOWN_HABIT = {
+  title: 'Wind Down',
+  description: `Reduce stimulus and calm the mind. Don't use electronic devices like your phone. Get ready for bed. Journal and plan the next day. “Never go to sleep without a request to your subconscious.” - Thomas Edison`,
+  events: [
+    {
+      startTimeHour: '9',
+      startTimeMinute: '00',
+      startTimePeriod: 'PM',
+      duration: '60',
+      targetDuration: null,
+      day: SUNDAY
+    },
+    {
+      startTimeHour: '9',
+      startTimeMinute: '00',
+      startTimePeriod: 'PM',
+      duration: '60',
+      targetDuration: null,
+      day: MONDAY
+    },
+    {
+      startTimeHour: '9',
+      startTimeMinute: '00',
+      startTimePeriod: 'PM',
+      duration: '60',
+      targetDuration: null,
+      day: TUESDAY
+    },
+    {
+      startTimeHour: '9',
+      startTimeMinute: '00',
+      startTimePeriod: 'PM',
+      duration: '60',
+      targetDuration: null,
+      day: WEDNESDAY
+    },
+    {
+      startTimeHour: '9',
+      startTimeMinute: '00',
+      startTimePeriod: 'PM',
+      duration: '60',
+      targetDuration: null,
+      day: THURSDAY
+    },
+    {
+      startTimeHour: '9',
+      startTimeMinute: '00',
+      startTimePeriod: 'PM',
+      duration: '60',
+      targetDuration: null,
+      day: FRIDAY
+    },
+    {
+      startTimeHour: '9',
+      startTimeMinute: '00',
+      startTimePeriod: 'PM',
+      duration: '60',
+      targetDuration: null,
+      day: SATURDAY
+    }
+  ]
+};
+
+export const SLEEP_WAKE_UP_HABIT = {
+  title: 'Wake Up',
+  description: `It is a new day. Forget the failures and successes of yesterday. Review your identity and desired outcomes. Get motivated and excited about making progress and getting better today. Become a peak performer.`,
+  events: [
+    {
+      startTimeHour: '6',
+      startTimeMinute: '00',
+      startTimePeriod: 'AM',
+      duration: '10',
+      targetDuration: null,
+      day: SUNDAY
+    },
+    {
+      startTimeHour: '6',
+      startTimeMinute: '00',
+      startTimePeriod: 'AM',
+      duration: '10',
+      targetDuration: null,
+      day: MONDAY
+    },
+    {
+      startTimeHour: '6',
+      startTimeMinute: '00',
+      startTimePeriod: 'AM',
+      duration: '10',
+      targetDuration: null,
+      day: TUESDAY
+    },
+    {
+      startTimeHour: '6',
+      startTimeMinute: '00',
+      startTimePeriod: 'AM',
+      duration: '10',
+      targetDuration: null,
+      day: WEDNESDAY
+    },
+    {
+      startTimeHour: '6',
+      startTimeMinute: '00',
+      startTimePeriod: 'AM',
+      duration: '10',
+      targetDuration: null,
+      day: THURSDAY
+    },
+    {
+      startTimeHour: '6',
+      startTimeMinute: '00',
+      startTimePeriod: 'AM',
+      duration: '10',
+      targetDuration: null,
+      day: FRIDAY
+    },
+    {
+      startTimeHour: '6',
+      startTimeMinute: '00',
+      startTimePeriod: 'AM',
+      duration: '10',
+      targetDuration: null,
+      day: SATURDAY
+    }
+  ]
+};

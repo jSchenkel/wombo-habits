@@ -4,38 +4,69 @@ import { SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, ALL_DAY
 export const LONG_FORM_READING_HABIT = {
   title: 'Read Long Form',
   description: `
-    Learn to love to read.
-    Don't worry about finishing books. Focus on reading any book.
-    Read 10 pages. Skim through until something catches your attention. Switch to a different book. It's all good.
-    The goal is to feed your mind and collect mental models. Compound interest of knowledge.
-    Build a quality foundation of knowledge. Understand nature.
-    Read the greats in math, science, and philosophy. Learn the basics.
+    Feed your mind and collect mental models. Compound interest of knowledge.
+    Build a quality foundation of knowledge. Learn the basics and understand nature.
+    Read the greats in math, science, and philosophy.
+    Don't fall into the trap of thinking you need to finish a book if you start it.
+    If you're not interested in a book, read something else.
   `,
   events: [
     {
-      startTimeHour: '2',
+      startTimeHour: '8',
       startTimeMinute: '00',
       startTimePeriod: 'PM',
-      duration: '45',
-      targetDuration: '60',
+      duration: '60',
+      targetDuration: null,
       day: SUNDAY
     },
     {
-      startTimeHour: '6',
+      startTimeHour: '8',
       startTimeMinute: '00',
       startTimePeriod: 'PM',
-      duration: '45',
-      targetDuration: '60',
+      duration: '60',
+      targetDuration: null,
+      day: MONDAY
+    },
+    {
+      startTimeHour: '8',
+      startTimeMinute: '00',
+      startTimePeriod: 'PM',
+      duration: '60',
+      targetDuration: null,
       day: TUESDAY
     },
     {
-      startTimeHour: '6',
+      startTimeHour: '8',
       startTimeMinute: '00',
       startTimePeriod: 'PM',
-      duration: '45',
-      targetDuration: '60',
+      duration: '60',
+      targetDuration: null,
+      day: WEDNESDAY
+    },
+    {
+      startTimeHour: '8',
+      startTimeMinute: '00',
+      startTimePeriod: 'PM',
+      duration: '60',
+      targetDuration: null,
       day: THURSDAY
     },
+    {
+      startTimeHour: '8',
+      startTimeMinute: '00',
+      startTimePeriod: 'PM',
+      duration: '60',
+      targetDuration: null,
+      day: FRIDAY
+    },
+    {
+      startTimeHour: '8',
+      startTimeMinute: '00',
+      startTimePeriod: 'PM',
+      duration: '60',
+      targetDuration: null,
+      day: SATURDAY
+    }
   ]
 }
 
@@ -61,68 +92,74 @@ export const REST_HABIT = {
 }
 
 export const LIMIT_SOCIAL_MEDIA_HABIT = {
-  title: 'Limit Social Media',
+  title: 'Brain Candy Time',
+  // Stop feeding your brain garbage.
+  // You know when you get a song stuck in your head? All thoughts work that way. Be careful what you consume.
+  // Introduce friction and make it harder to use.
+  // Turn off notifications and put your phone in another room while you do focused work.
+  // You're not learning anything. You're just taking dopamine snacks all day.
   description: `
-    Stop feeding your brain garbage.
-    You know when you get a song stuck in your head? All thoughts work that way. Be careful what you consume.
-    Introduce friction and make it harder to use.
-    Turn off notifications and put your phone in another room while you do focused work.
-    You're not learning anything. You're just taking dopamine snacks all day.
+    A dedicated time block for social media.
+    Only browse twitter, instagram, youtube, etc. during this time.
+    Social media can be entertaining and fun.
+    The problem is that it's just too good and ultimately distracts you from becoming great.
+    But we can use it to hack our productivity.
+    Reward yourself with Brain Candy Time at the end of your day once you've done everything else that you wanted to do that day.
   `,
   events: [
     {
-      startTimeHour: '8',
-      startTimeMinute: '00',
-      startTimePeriod: 'AM',
-      duration: ALL_DAY_DURATION,
+      startTimeHour: '7',
+      startTimeMinute: '30',
+      startTimePeriod: 'PM',
+      duration: '30',
       targetDuration: null,
       day: SUNDAY
     },
     {
-      startTimeHour: '8',
-      startTimeMinute: '00',
-      startTimePeriod: 'AM',
-      duration: ALL_DAY_DURATION,
+      startTimeHour: '7',
+      startTimeMinute: '30',
+      startTimePeriod: 'PM',
+      duration: '30',
       targetDuration: null,
       day: MONDAY
     },
     {
-      startTimeHour: '8',
-      startTimeMinute: '00',
-      startTimePeriod: 'AM',
-      duration: ALL_DAY_DURATION,
+      startTimeHour: '7',
+      startTimeMinute: '30',
+      startTimePeriod: 'PM',
+      duration: '30',
       targetDuration: null,
       day: TUESDAY
     },
     {
-      startTimeHour: '8',
-      startTimeMinute: '00',
-      startTimePeriod: 'AM',
-      duration: ALL_DAY_DURATION,
+      startTimeHour: '7',
+      startTimeMinute: '30',
+      startTimePeriod: 'PM',
+      duration: '30',
       targetDuration: null,
       day: WEDNESDAY
     },
     {
-      startTimeHour: '8',
-      startTimeMinute: '00',
-      startTimePeriod: 'AM',
-      duration: ALL_DAY_DURATION,
+      startTimeHour: '7',
+      startTimeMinute: '30',
+      startTimePeriod: 'PM',
+      duration: '30',
       targetDuration: null,
       day: THURSDAY
     },
     {
-      startTimeHour: '8',
-      startTimeMinute: '00',
-      startTimePeriod: 'AM',
-      duration: ALL_DAY_DURATION,
+      startTimeHour: '7',
+      startTimeMinute: '30',
+      startTimePeriod: 'PM',
+      duration: '30',
       targetDuration: null,
       day: FRIDAY
     },
     {
-      startTimeHour: '8',
-      startTimeMinute: '00',
-      startTimePeriod: 'AM',
-      duration: ALL_DAY_DURATION,
+      startTimeHour: '7',
+      startTimeMinute: '30',
+      startTimePeriod: 'PM',
+      duration: '30',
       targetDuration: null,
       day: SATURDAY
     }
@@ -131,9 +168,9 @@ export const LIMIT_SOCIAL_MEDIA_HABIT = {
 
 // mind software
 export const MEDITATION_HABIT = {
-  title: 'Meditation',
+  title: 'Mindfulness Training',
   description: `
-    Train mindfulness. Close your eyes and focus on your breath. Inhale. Pause. Exhale.
+    Train mindfulness. Meditation or yoga.
     You want to move from playing first person to playing third person. Experience yourself in 3rd person.
     Less "I'm angry." More "I'm feeling anger."
     Start thinking about playing in third person and practice mindfulness throughout the day.
@@ -142,59 +179,59 @@ export const MEDITATION_HABIT = {
   `,
   events: [
     {
-      startTimeHour: '9',
-      startTimeMinute: '00',
+      startTimeHour: '6',
+      startTimeMinute: '10',
       startTimePeriod: 'AM',
-      duration: '15',
-      targetDuration: '30',
+      duration: '20',
+      targetDuration: null,
       day: SUNDAY
     },
     {
-      startTimeHour: '8',
-      startTimeMinute: '00',
+      startTimeHour: '6',
+      startTimeMinute: '10',
       startTimePeriod: 'AM',
-      duration: '15',
-      targetDuration: '30',
+      duration: '20',
+      targetDuration: null,
       day: MONDAY
     },
     {
-      startTimeHour: '8',
-      startTimeMinute: '00',
+      startTimeHour: '6',
+      startTimeMinute: '10',
       startTimePeriod: 'AM',
-      duration: '15',
-      targetDuration: '30',
+      duration: '20',
+      targetDuration: null,
       day: TUESDAY
     },
     {
-      startTimeHour: '8',
-      startTimeMinute: '00',
+      startTimeHour: '6',
+      startTimeMinute: '10',
       startTimePeriod: 'AM',
-      duration: '15',
-      targetDuration: '30',
+      duration: '20',
+      targetDuration: null,
       day: WEDNESDAY
     },
     {
-      startTimeHour: '8',
-      startTimeMinute: '00',
+      startTimeHour: '6',
+      startTimeMinute: '10',
       startTimePeriod: 'AM',
-      duration: '15',
-      targetDuration: '30',
+      duration: '20',
+      targetDuration: null,
       day: THURSDAY
     },
     {
-      startTimeHour: '8',
-      startTimeMinute: '00',
+      startTimeHour: '6',
+      startTimeMinute: '10',
       startTimePeriod: 'AM',
-      duration: '15',
-      targetDuration: '30',
+      duration: '20',
+      targetDuration: null,
       day: FRIDAY
     },
     {
-      startTimeHour: '9',
-      startTimeMinute: '00',
+      startTimeHour: '6',
+      startTimeMinute: '10',
       startTimePeriod: 'AM',
-      duration: '15',
-      targetDuration: '30',
+      duration: '20',
+      targetDuration: null,
       day: SATURDAY
     }
   ]
@@ -215,8 +252,8 @@ export const WEEKLY_REFLECTION_HABIT = {
       startTimeHour: '4',
       startTimeMinute: '00',
       startTimePeriod: 'PM',
-      duration: '15',
-      targetDuration: '30',
+      duration: '30',
+      targetDuration: null,
       day: SUNDAY
     },
   ]

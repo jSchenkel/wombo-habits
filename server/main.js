@@ -10,6 +10,7 @@ import './api/feedback.js';
 import './api/users.js';
 import './api/emails.js';
 import './api/habits.js';
+import './api/days.js';
 
 Meteor.startup(() => {
   // code to run on server at startup

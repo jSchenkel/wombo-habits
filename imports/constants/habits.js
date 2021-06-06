@@ -1,6 +1,8 @@
 import { HEALTHY, WEALTHY, WISE } from './identities.js';
 import { SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY } from './schedules.js';
 
+// NOTE: Legacy
+
 // Habits
 // HEALTHY
 const HABIT_EXERCISE = {
@@ -101,7 +103,7 @@ const HABIT_SECONDARY_LEARNING = {
     },
   ]
 }
-
+// legacy
 export const IDENTITY_TO_HABIT_MAP = {
   [HEALTHY]: [
     HABIT_EXERCISE,

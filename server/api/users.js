@@ -19,28 +19,59 @@ Meteor.methods({
       throw new Meteor.Error('not-authorized');
     }
 
-    if (Meteor.isServer) {
-      // Can also use Meteor.user() instead, which is more performant?
-      const user = Meteor.users.findOne({ _id: this.userId }, { fields: { _id: 1, emails: 1, isPaid: 1, name: 1 }});
-      let email = '';
-      if (user && user.emails && user.emails.length) {
-        email = user.emails[0].address
-      }
-
-      let name = '';
-      if (user && user.name) {
-        name = user.name;
-      }
-
-      const response = {
-        name,
-        email,
-        isPaid: user.isPaid
-      };
-
-      return response;
+    // Can also use Meteor.user() instead, which is more performant?
+    const user = Meteor.users.findOne({ _id: this.userId }, { fields: { _id: 1, emails: 1, isPaid: 1, name: 1, identity: 1, outcomes: 1 }});
+    if (!user) {
+      throw new Meteor.Error('not-authorized');
     }
+
+    let email = '';
+    if (user.emails && user.emails.length) {
+      email = user.emails[0].address
+    }
+
+    const name = user.name || '';
+    const identity = user.identity || '';
+    const outcomes = user.outcomes || [];
+
+    const response = {
+      name,
+      email,
+      isPaid: user.isPaid,
+      identity,
+      outcomes
+    };
+
+    return response;
   },
+  updateCurrentUserProfile(args) {
+    if (!this.userId) {
+      throw new Meteor.Error('not-authorized');
+    }
+
+    new SimpleSchema({
+      args: {
+        type: Object
+      },
+      'args.identity': {
+        type: String,
+      },
+      'args.outcomes': {
+        type: Array,
+      },
+      'args.outcomes.$': {
+        type: String,
+      },
+    }).validate({ args });
+
+    Meteor.users.update({
+      _id: this.userId,
+    }, {
+      '$set': args
+    });
+
+    return true;
+  }
 });
 
 // lifecycle method that runs after onCreateUser is called
@@ -85,6 +116,11 @@ Accounts.onCreateUser((options, user) => {
   // Add custom data to user account
   // NOTE: Make sure to think about new and existing users with changes to collection (adding data fields)
   user.name = name;
+  // target identity (i.e. entrepreneur)
+  user.identity = '';
+  // outcomes from achieving target identity (i.e. health, wealth, sex)
+  user.outcomes = [];
+
   user.isBlocked = false;
   user.isDeleted = false;
   user.isPaid = false;

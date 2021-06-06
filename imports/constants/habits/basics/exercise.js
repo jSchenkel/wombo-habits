@@ -40,39 +40,41 @@ export const RESISTANCE_TRAINING_HABIT = {
 }
 
 // omitted for now
-export const RUNNING_HABIT = {
-  title: 'Running',
-  description: `
-    De-stress and get better.
-    The hard part is sticking to it.
-    Don’t overdo it and do too much too fast.
-    Celebrate success and trick your brain into liking exercise.
-    3x per week is all you need. Rest is important.
-  `,
+export const OUTDOOR_WALK_HABIT = {
+  title: 'Outdoor Walk',
+  description: `Take a walk outside and in nature. Move your body and clear your mind.`,
   events: [
     {
-      startTimeHour: '6',
-      startTimeMinute: '00',
+      startTimeHour: '5',
+      startTimeMinute: '30',
       startTimePeriod: 'PM',
       duration: '60',
       targetDuration: null,
-      day: MONDAY
+      day: SUNDAY
     },
     {
-      startTimeHour: '6',
-      startTimeMinute: '00',
+      startTimeHour: '5',
+      startTimeMinute: '30',
       startTimePeriod: 'PM',
       duration: '60',
       targetDuration: null,
-      day: WEDNESDAY
+      day: TUESDAY
     },
     {
-      startTimeHour: '6',
-      startTimeMinute: '00',
+      startTimeHour: '5',
+      startTimeMinute: '30',
       startTimePeriod: 'PM',
       duration: '60',
       targetDuration: null,
-      day: FRIDAY
+      day: THURSDAY
+    },
+    {
+      startTimeHour: '5',
+      startTimeMinute: '30',
+      startTimePeriod: 'PM',
+      duration: '60',
+      targetDuration: null,
+      day: SATURDAY
     },
   ]
 }
