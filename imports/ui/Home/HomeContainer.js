@@ -159,7 +159,7 @@ class HomeContainer extends React.Component {
       isDaysLoading: true
     });
 
-    Meteor.call('getPastDays', 8, (err, res) => {
+    Meteor.call('getPastDays', 5, (err, res) => {
       if (err) {
         this.setState({
           daysError: err.reason,
@@ -261,7 +261,7 @@ class HomeContainer extends React.Component {
                 <div className="column is-half">
                   {this.state.identity && this.state.outcomes && this.state.outcomes.length > 0 ? (
                     <article className="message is-link is-small">
-                      <div class="message-header">
+                      <div className="message-header">
                         <p>Get Better Every Day</p>
                       </div>
                       <div className="message-body">
