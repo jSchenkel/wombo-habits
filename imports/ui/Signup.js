@@ -86,8 +86,8 @@ class Signup extends React.Component {
                 <div className="column is-one-third">
                   <div>
                     <form className="" onSubmit={this.handleSubmit} noValidate>
-                      <p className="is-size-3 has-text-centered has-text-dark">Sign Up</p>
-                      <br />
+                      <p className="title is-3 has-text-centered has-text-dark">Sign Up</p>
+                      <p className="subtitle is-5 has-text-centered has-text-dark">Design a system of habits to become successful.</p>
                       <div className="field">
                         {this.state.error ? <label className="help is-danger has-text-centered">{this.state.error}</label> : undefined}
                         <label className="label">Email</label>
@@ -109,7 +109,7 @@ class Signup extends React.Component {
                       </div>
                       <div className="field">
                         <p className="control">
-                          <input className="button is-medium is-fullwidth is-link" type="submit" value="Sign Up" />
+                          <input className="button is-medium is-fullwidth is-link" type="submit" value="Design My System" />
                           <label className="help has-text-centered">Already have an account? <Link to="/accounts/login" className="has-text-weight-semibold">Log In</Link></label>
                         </p>
                       </div>

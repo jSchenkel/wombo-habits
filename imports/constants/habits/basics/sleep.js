@@ -134,7 +134,7 @@ export const SLEEP_WIND_DOWN_HABIT = {
 
 export const SLEEP_WAKE_UP_HABIT = {
   title: 'Wake Up',
-  description: `It is a new day. Forget the failures and successes of yesterday. Review your identity and desired outcomes. Get motivated and excited about making progress and getting better today. Become a peak performer.`,
+  description: `It is a new day. Review your identity and desired outcomes. Get motivated and excited about making progress and getting better today. Become a peak performer.`,
   events: [
     {
       startTimeHour: '6',

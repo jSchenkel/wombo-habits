@@ -135,6 +135,7 @@ Meteor.methods({
     const lowerBoundDate = moment().subtract(numPastDays, 'days').toDate();
 
     const days = Days.find({
+      userId: this.userId,
       dateObject: {
         '$gte': lowerBoundDate
       }

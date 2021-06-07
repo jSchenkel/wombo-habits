@@ -17,12 +17,12 @@ const PastDays = (props) => {
   }
 
   return (
-    <div className="columns">
-      {props.days && props.days.map((day) => {
+    <div className="columns is-mobile">
+      {props.days && props.days.map((day, index) => {
         return (
           <div key={day.dateString} className="column has-text-centered">
             <p className="is-size-7">{DAY_STRING_TO_DAY_SHORT_STRING[DAY_OF_WEEK_CODE_INT_TO_DAY_STRING[day.dayOfWeekCode]].toUpperCase()}</p>
-            <div className="dropdown is-hoverable">
+            <div className={index > (props.days.length / 2) ? "dropdown is-hoverable is-right" : "dropdown is-hoverable"}>
               <div className="dropdown-trigger">
                 <span className={day.numCompletedEvents ? 'icon is-medium has-text-link' : 'icon is-medium has-text-light'} aria-haspopup="true" aria-controls="dropdown-menu4">
                   <i className="fas fa-square fa-2x" aria-hidden="true"></i>

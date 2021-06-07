@@ -10,6 +10,7 @@ import PastDays from './PastDays.js';
 import HomeModal from './HomeModal.js';
 import Footer from './../Footer.js';
 
+import { arrayToCommaSeparatedString } from '../../helpers/utils.js';
 import { DAY_OF_WEEK_CODE_INT_TO_DAY_STRING } from '../../constants/schedules.js';
 
 class HomeContainer extends React.Component {
@@ -258,6 +259,16 @@ class HomeContainer extends React.Component {
             <div className="container">
               <div className="columns is-centered">
                 <div className="column is-half">
+                  {this.state.identity && this.state.outcomes && this.state.outcomes.length > 0 ? (
+                    <article className="message is-link is-small">
+                      <div class="message-header">
+                        <p>Get Better Every Day</p>
+                      </div>
+                      <div className="message-body">
+                        Become a peak performing {this.state.identity} and achieve {arrayToCommaSeparatedString(this.state.outcomes)}.
+                      </div>
+                    </article>
+                  ) : null}
                   <PastDays
                     days={this.state.days}
                     isDaysLoading={this.state.isDaysLoading}
@@ -267,6 +278,7 @@ class HomeContainer extends React.Component {
                     <p className="title is-3">{timeFormatted}</p>
                     <p className="subtitle is-5">{dateFormatted}</p>
                   </div>
+                  {this.state.day ? <progress className="progress is-link" value={this.state.day.numCompletedEvents} max={this.state.day.numTotalEvents} title={`${Math.round(this.state.day.numCompletedEvents/this.state.day.numTotalEvents*100)}%`}></progress> : null}
                   <TodaysHabits
                     // data
                     events={this.state.events}

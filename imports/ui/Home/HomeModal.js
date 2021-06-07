@@ -9,8 +9,12 @@ const HomeModal = (props) => {
     return (
       <div className="box">
         <p className="title is-3">Welcome to Wombo</p>
-        <p className="subtitle is-5">
-          Design a system of habits and stick to it.
+        <p className="subtitle is-6">
+          1) Define who you wish to become and the outcomes you desire.
+          <br /><br />
+          2) Design a system of habits.
+          <br /><br />
+          3) Review and complete your todo's every day. Get better every day and become successful.
         </p>
         <nav className="level">
           <div className="level-left">
@@ -34,14 +38,15 @@ const HomeModal = (props) => {
         </nav>
       </div>
     );
+    // The ultimate form of instrinsic motivation is when a habit becomes part of your identity.
   } else if (props.isModalOpen && props.activeModal === 'welcome-1') {
     return (
       <div className="box">
         <p className="title is-3">Identity</p>
         <p className="subtitle is-6">
-          System design starts by defining who you wish to become.
-          The ultimate form of instrinsic motivation is when a habit becomes part of your identity.
-          Let's start by defining who you wish to become.
+          The most effective way to change your habits is to focus on who you wish to become.
+          By focusing on who you wish to become you will be motivated to stick to your system of habits.
+          Eventually, your habits will become part of your identity and this is the ultimate form of intrinsic motivation.
         </p>
         <div className="field">
           <label className="label">I wish to become a peak performing...</label>
@@ -49,9 +54,9 @@ const HomeModal = (props) => {
             <div className="select">
               <select name="identity" value={props.identity} onChange={props.handleInputChange}>
                 <option value="entrepreneur">entrepreneur</option>
-                {/* <option value="investor">investor</option>
                 <option value="creator">creator</option>
-                <option value="other">other</option> */}
+                <option value="investor">investor</option>
+                <option value="other">other</option>
               </select>
             </div>
           </div>
@@ -99,6 +104,7 @@ const HomeModal = (props) => {
           Outcomes are the results you want to achieve.
           By becoming a <b>peak performing {props.identity}</b> you will achieve the outcomes you desire.
           You will become the type of person who gets the results you want.
+          Outcomes are your secondary source of motivation.
         </p>
         <div className="field">
           <label className="label">My top 3 desired outcomes are...</label>
@@ -134,48 +140,6 @@ const HomeModal = (props) => {
                   type: 'home-welcome-2',
                   layout: 'na'
                 });
-                props.handleModalOpen('welcome-3');
-              }}>
-                <span>Continue</span>
-                <span className="icon">
-                  <i className="fas fa-chevron-right"></i>
-                </span>
-              </button>
-            </div>
-          </div>
-        </nav>
-      </div>
-    );
-  } else if (props.isModalOpen && props.activeModal === 'welcome-3') {
-    return (
-      <div className="box">
-        <p className="title is-3">Identity Habit Feedback Loop</p>
-        <p className="subtitle is-6">
-          Identity influences and motivates your habits.
-        </p>
-        <p className="subtitle is-6">
-          Your habits reinforce your identity.
-        </p>
-        <p className="subtitle is-6">
-          "We are what we repeatedly do. Excellence, then, is not an act, but a habit." - Aristotle
-        </p>
-        {props.modalError ? <label className="help is-danger">{props.modalError}</label> : null}
-        <nav className="level">
-          <div className="level-left">
-            <button className="button is-link" onClick={() => props.handleModalOpen('welcome-2')}>
-              <span className="icon">
-                <i className="fas fa-chevron-left"></i>
-              </span>
-              <span>Back</span>
-            </button>
-          </div>
-          <div className="level-right">
-            <div className="level-item">
-              <button className="button is-link" disabled={(props.identity === 'other' && !props.otherIdentity) || (!props.identity)} onClick={() => {
-                analytics.track('CTA Button Clicked', {
-                  type: 'home-welcome-3',
-                  layout: 'na'
-                });
                 props.handleWelcomeSubmit();
               }}>
                 <span>Design System</span>
@@ -189,11 +153,6 @@ const HomeModal = (props) => {
       </div>
     );
   }
-
-
-  {/* <span className="icon is-large">
-    <i className="fas fa-sync-alt fa-2x"></i>
-  </span> */}
 
   return null;
 };
