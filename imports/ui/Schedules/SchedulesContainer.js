@@ -269,6 +269,10 @@ export default class SchedulesContainer extends React.Component {
       events: habit.events,
       habitError: ''
     });
+
+    // close modal
+    this.handleModalClose();
+
     // scroll to top of page
     window.scrollTo(0, 0);
   }
@@ -457,6 +461,7 @@ export default class SchedulesContainer extends React.Component {
             <div className="modal-content">
               <SchedulesModal
                 saveHabit={this.saveHabit}
+                habitSelected={this.habitSelected}
                 handleModalClose={this.handleModalClose}
                 handleModalOpen={this.handleModalOpen}
                 activeModal={this.state.activeModal}

@@ -18,7 +18,7 @@ export const SYSTEM_BASICS = [
   {
     key: 'food',
     title: 'Food',
-    description: 'Healthy food and intermittent fasting. Garbage food impairs your judgement. Good food helps you think clearly and feel energized throughout the day. Feel good about your choices. Setup your environment for success and remove junk food from the home and office. Eat natural foods and mostly vegetables.',
+    description: 'Healthy food and intermittent fasting. Junk food impairs your judgement. Good food helps you think clearly and feel energized throughout the day. Feel good about your choices. Set up your environment for success and remove junk food from the home and office. Eat natural foods and mostly vegetables.',
     habits: [
       EAT_HEALTHY_BREAKFAST_HABIT,
       EAT_HEALTHY_LUNCH_HABIT,

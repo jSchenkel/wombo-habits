@@ -58,10 +58,13 @@ const SchedulesModal = (props) => {
                     <p className="is-size-7 mb-3">{habit.events[0].startTimeHour}:{habit.events[0].startTimeMinute}{habit.events[0].startTimePeriod}</p>
                     <p className="is-size-7 mb-3">{habit.events.length}x per week</p>
                     {props.addedHabits.hasOwnProperty(habit.title) ? (
-                      <button className="button is-small is-link" disabled>Added</button>
+                      <button className="button is-small is-link" disabled>Habit Added</button>
                     ) : (
-                      <button className="button is-small is-link" onClick={() => props.saveHabit({...habit, currentHabitId: null})}>Add to System</button>
+                      <button className="button is-small is-link" onClick={() => props.saveHabit({...habit, currentHabitId: null})}>Add Habit</button>
                     )}
+                    {!props.addedHabits.hasOwnProperty(habit.title) ? (
+                      <button className="button is-small is-light ml-2" onClick={() => props.habitSelected({...habit, _id: null})}>Customize Habit</button>
+                    ) : null}
                   </div>
                 )
               })}
@@ -93,10 +96,13 @@ const SchedulesModal = (props) => {
                     <p className="is-size-7 mb-3">{habit.events[0].startTimeHour}:{habit.events[0].startTimeMinute}{habit.events[0].startTimePeriod}</p>
                     <p className="is-size-7 mb-3">{habit.events.length}x per week</p>
                     {props.addedHabits.hasOwnProperty(habit.title) ? (
-                      <button className="button is-small is-link" disabled>Added</button>
+                      <button className="button is-small is-link" disabled>Habit Added</button>
                     ) : (
-                      <button className="button is-small is-link" onClick={() => props.saveHabit({...habit, currentHabitId: null})}>Add to System</button>
+                      <button className="button is-small is-link" onClick={() => props.saveHabit({...habit, currentHabitId: null})}>Add Habit</button>
                     )}
+                    {!props.addedHabits.hasOwnProperty(habit.title) ? (
+                      <button className="button is-small is-light ml-2" onClick={() => props.habitSelected({...habit, _id: null})}>Customize Habit</button>
+                    ) : null}
                   </div>
                 )
               })}

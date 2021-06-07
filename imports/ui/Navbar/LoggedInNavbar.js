@@ -42,9 +42,14 @@ const LoggedInNavbar = () => {
                 </span>
               </p>
             </Link> */}
-            <Link to="/system" className="level-item" title="My System">
+            <Link to="/home" className="level-item" title="Home">
               <span className="button is-light is-small">
-                My System
+                Home
+              </span>
+            </Link>
+            <Link to="/system" className="level-item" title="System">
+              <span className="button is-light is-small">
+                System
               </span>
             </Link>
             <div className="level-item">
@@ -58,11 +63,8 @@ const LoggedInNavbar = () => {
                 </div>
                 <div className="dropdown-menu" id="dropdown-menu" role="menu">
                   <div className="dropdown-content">
-                    <Link to="/home" className="dropdown-item">
-                      <p className="">Home</p>
-                    </Link>
                     <Link to="/contact" className="dropdown-item">
-                      <p className="">Contact Us</p>
+                      <p className="">Feedback</p>
                     </Link>
                     <Link to="/accounts/edit" className="dropdown-item">
                       <p className="">Settings</p>

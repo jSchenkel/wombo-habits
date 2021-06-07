@@ -22,6 +22,8 @@ export const habitCompare = (a, b) => {
   // compare A and B
   if (totatMinutesA < totatMinutesB) {
     return -1;
+  } else if (totatMinutesA > totatMinutesB) {
+    return 1;
   }
   return 0;
 }
