@@ -46,8 +46,8 @@ export default class StartContainer extends React.Component {
     } else if (step === 2) {
       return (
         <div className="has-text-centered">
-          <h4 className="is-size-4 mb-3">It's hard to become successful overnight.</h4>
-          <h4 className="is-size-4 mb-5">The goal is to get 1% better <b>every</b> day. This we can do.</h4>
+          <h4 className="is-size-4 mb-3">It's nearly impossible to become successful overnight.</h4>
+          <h4 className="is-size-4 mb-5">The goal is to get 1% better <b>every</b> day. This you can do.</h4>
           <a className="button is-link" onClick={() => {
             analytics.track('CTA Button Clicked', {
               type: 'start-2',
