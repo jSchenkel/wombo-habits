@@ -4,7 +4,7 @@ import SimpleSchema from 'simpl-schema';
 import moment from 'moment';
 
 import { signupEmail } from './../../imports/emailTemplates/signupEmail.js';
-import { systemCalendarEmail } from './../../imports/emailTemplates/systemCalendarEmail.js';
+import { trialStartedEmail } from './../../imports/emailTemplates/trialStartedEmail.js';
 
 Meteor.methods({
   sendSignupEmail(to) {
@@ -24,25 +24,16 @@ Meteor.methods({
     //to, from, subject, text/html
     Email.send({ to, from: emailFrom, subject: emailSubject, html: emailHTML });
   },
-  sendSystemCalendar(to, calString) {
-
-    new SimpleSchema({
-      to: {
-        type: String,
-        regEx: SimpleSchema.RegEx.Email
-      },
-      calString: {
-        type: String
-      }
-    }).validate({to, calString});
+  sendTrialStartedEmail(name, email, planId, plan) {
     const emailFrom = 'Wombo <jules@wombo.io>';
-    const emailSubject = 'Your Wombo Habit System';
-    const emailHTML = systemCalendarEmail();
+    const to = email;
+    const emailSubject = 'Success | Trial Started';
+    const emailHTML = trialStartedEmail(name, email, planId, plan);
     // Let other method calls from the same client start running, without
     // waiting for the email sending to complete.
     this.unblock();
     //to, from, subject, text/html
-    Email.send({ to, from: emailFrom, subject: emailSubject, html: emailHTML, icalEvent: calString });
+    Email.send({ to, from: emailFrom, subject: emailSubject, html: emailHTML });
   }
 });
 

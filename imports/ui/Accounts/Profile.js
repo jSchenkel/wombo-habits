@@ -67,8 +67,6 @@ export default class Profile extends React.Component {
       return (
         <div className="columns is-centered">
           <div className="column is-half">
-            <p className="title is-4">Settings</p>
-            <hr />
             <form noValidate>
               {/* <div className="field">
                 <div className="flex-row flex-row__space-between">
@@ -112,8 +110,6 @@ export default class Profile extends React.Component {
               {/* {saveButton} */}
             </form>
             <br />
-            <p className="title is-4">Contact</p>
-            <hr />
             <div>
               <div className="field">
                 <div className="flex-row flex-row__space-between">

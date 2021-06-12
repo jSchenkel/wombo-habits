@@ -6,14 +6,16 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 // Public routes
 import LandingPage from '../ui/LandingPage.js';
 import StartContainer from '../ui/Start/StartContainer.js';
-import SchedulesContainer from '../ui/Schedules/SchedulesContainer.js';
-import Login from '../ui/Login.js';
-import Signup from '../ui/Signup.js';
-import ForgotPassword from './../ui/ForgotPassword.js';
-import ResetPassword from './../ui/ResetPassword.js';
+import PlansContainer from '../ui/Plans/PlansContainer.js';
+import CheckoutContainer from '../ui/CheckoutContainer.js';
+import Login from '../ui/Accounts/Login.js';
+import Signup from '../ui/Accounts/Signup.js';
+import ForgotPassword from './../ui/Accounts/ForgotPassword.js';
+import ResetPassword from './../ui/Accounts/ResetPassword.js';
 // Private routes
 import HomeContainer from './../ui/Home/HomeContainer.js';
-import AccountContainer from './../ui/Account/AccountContainer.js';
+import SchedulesContainer from '../ui/Schedules/SchedulesContainer.js';
+import AccountContainer from './../ui/Accounts/AccountContainer.js';
 // Open routes
 import Feedback from '../ui/Feedback.js';
 // Legal
@@ -32,6 +34,12 @@ export const routes = (
       </PubliceRoute>
       <PubliceRoute exact path="/start">
         <StartContainer />
+      </PubliceRoute>
+      <PubliceRoute exact path="/plans">
+        <PlansContainer />
+      </PubliceRoute>
+      <PubliceRoute exact path="/trial/:plan">
+        <CheckoutContainer />
       </PubliceRoute>
       <PubliceRoute exact path="/accounts/login">
         <Login />

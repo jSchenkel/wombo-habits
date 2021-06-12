@@ -1,7 +1,5 @@
 import React from 'react';
 
-import InfoTooltip from '../blocks/InfoTooltip.js';
-
 import { ALL_DAY_DURATION } from '../../constants/schedules.js';
 
 

@@ -85,7 +85,7 @@ export default class StartContainer extends React.Component {
       return (
         <div className="has-text-centered">
           <h4 className="is-size-4 mb-5">Wombo gives you <b>two</b> things. A system of habits to become successful (what to do) and a methodology for sticking to it (doing it consistently).</h4>
-          <Link to="/accounts/signup" className="button is-link" onClick={() => {
+          <Link to="/plans" className="button is-link" onClick={() => {
             analytics.track('CTA Button Clicked', {
               type: 'start-4',
               layout: 'na'

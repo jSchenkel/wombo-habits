@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 import LoggedInNavbar from '../Navbar/LoggedInNavbar.js';
 import Profile from './Profile.js';
+import Subscription from './Subscription.js';
 import Footer from '../Footer.js';
 import LoadingIcon from '../LoadingIcon.js';
 
@@ -13,26 +14,14 @@ export default class AccountEdit extends React.Component {
     super(props);
     this.state = {
       selectedTab: 'profile',
-      currentUser: null
     }
-  }
-
-  componentDidMount() {
-    Meteor.call('getCurrentUserAccount', (err, res) => {
-      if (err) {
-        // console.log('getCurrentUserAccount err: ', err);
-      } else {
-        // console.log('getCurrentUserAccount res: ', res);
-        this.setState({
-          currentUser: res
-        });
-      }
-    });
   }
 
   renderForms() {
     if (this.state.selectedTab === 'profile') {
       return <Profile />;
+    } else if (this.state.selectedTab === 'subscription') {
+      return <Subscription />;
     }
   }
 
@@ -43,17 +32,24 @@ export default class AccountEdit extends React.Component {
           <LoggedInNavbar />
           <div className="hero-body">
             <div className="container">
-              <div className="columns">
-                {/* <div className="column is-one-quarter">
+              <div className="columns mb-4">
+                <div className="column is-one-quarter">
                   <aside className="menu">
                     <p className="menu-label">
-                      General
+                      Account
                     </p>
                     <ul className="menu-list">
                       <li><a className={this.state.selectedTab === 'profile' ? 'is-active' : ''} onClick={() => this.setState({selectedTab: 'profile'})}>Edit Profile</a></li>
                     </ul>
+                    <p className="menu-label">
+                      Billing
+                    </p>
+                    <ul className="menu-list">
+                      <li><a className={this.state.selectedTab === 'subscription' ? 'is-active' : ''} disabled>Manage Subscription (coming soon)</a></li>
+                      {/* <li><a className={this.state.selectedTab === 'subscription' ? 'is-active' : ''} onClick={() => this.setState({selectedTab: 'subscription'})}>Manage Subscription</a></li> */}
+                    </ul>
                   </aside>
-                </div> */}
+                </div>
                 <div className="column">
                   {this.renderForms()}
                 </div>

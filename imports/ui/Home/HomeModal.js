@@ -12,7 +12,7 @@ const HomeModal = (props) => {
         <p className="subtitle is-6">
           1) Define who you wish to become and the outcomes you desire.
           <br /><br />
-          2) Design a system of habits.
+          2) Design a system of habits using our template habits and your own custom habits.
           <br /><br />
           3) Review and complete your todo's every day. Get better every day and become successful.
         </p>

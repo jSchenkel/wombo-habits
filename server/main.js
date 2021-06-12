@@ -11,6 +11,8 @@ import './api/users.js';
 import './api/emails.js';
 import './api/habits.js';
 import './api/days.js';
+import './api/plans.js';
+// import './api/stripe.js';
 
 Meteor.startup(() => {
   // code to run on server at startup

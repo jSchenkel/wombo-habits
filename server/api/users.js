@@ -4,6 +4,7 @@ import { Accounts } from 'meteor/accounts-base';
 import moment from 'moment';
 import shortid from 'shortid';
 
+import { Plans } from './plans.js';
 import { resetPasswordEmail } from '../../imports/emailTemplates/resetPasswordEmail.js';
 
 // Don't allow client side writing to profile field
@@ -20,7 +21,15 @@ Meteor.methods({
     }
 
     // Can also use Meteor.user() instead, which is more performant?
-    const user = Meteor.users.findOne({ _id: this.userId }, { fields: { _id: 1, emails: 1, isPaid: 1, name: 1, identity: 1, outcomes: 1 }});
+    const user = Meteor.users.findOne({ _id: this.userId }, { fields: {
+      _id: 1,
+      emails: 1,
+      isPaid: 1,
+      name: 1,
+      identity: 1,
+      outcomes: 1,
+      planId: 1
+    }});
     if (!user) {
       throw new Meteor.Error('not-authorized');
     }
@@ -33,13 +42,15 @@ Meteor.methods({
     const name = user.name || '';
     const identity = user.identity || '';
     const outcomes = user.outcomes || [];
+    const planId = user.planId || '';
 
     const response = {
       name,
       email,
       isPaid: user.isPaid,
       identity,
-      outcomes
+      outcomes,
+      planId
     };
 
     return response;
@@ -79,16 +90,25 @@ Meteor.methods({
 Accounts.validateNewUser((user) => {
   const name = user.name;
   const email = user.emails[0].address;
+  const planId = user.planId;
 
   new SimpleSchema({
     name: {
+      type: String
+    },
+    planId: {
       type: String
     },
     email: {
       type: String,
       regEx: SimpleSchema.RegEx.Email
     }
-  }).validate({ name, email });
+  }).validate({ name, email, planId });
+
+  const plan = Plans.findOne({_id: planId}, {fields: {_id: 1}});
+  if (!plan) {
+    throw new Meteor.Error('invalid-trial', 'Invalid trial ID.');
+  }
 
   // send welcome email after we've validated the email and all data
   Meteor.call('sendSignupEmail', email);
@@ -107,11 +127,19 @@ Accounts.onCreateUser((options, user) => {
     name = options.profile.name;
   }
 
+  let planId = '';
+  if (options.profile && options.profile.planId) {
+    planId = options.profile.planId;
+  }
+
   new SimpleSchema({
     name: {
       type: String
     },
-  }).validate({ name });
+    planId: {
+      type: String
+    }
+  }).validate({ name, planId });
 
   // Add custom data to user account
   // NOTE: Make sure to think about new and existing users with changes to collection (adding data fields)
@@ -120,6 +148,8 @@ Accounts.onCreateUser((options, user) => {
   user.identity = '';
   // outcomes from achieving target identity (i.e. health, wealth, sex)
   user.outcomes = [];
+  // reference to plan
+  user.planId = planId;
 
   user.isBlocked = false;
   user.isDeleted = false;

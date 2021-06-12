@@ -1,8 +1,14 @@
 import { Meteor } from 'meteor/meteor';
 
-export const signupEmail = () => {
-  // in the future could take name as a parameter and include in welcome email
-  const url = `${Meteor.settings.public.BASE_URL}/accounts/login`;
+export const trialStartedEmail = (name, email, planId, plan) => {
+  const url = `${Meteor.settings.public.BASE_URL}/accounts/signup?name=${name}&email=${email}&trialId=${planId}`;
+
+  let trialText = '';
+  if (plan === 'monthly') {
+    trialText = 'Billed at $10 for a one-month subscription when 14-day free trial ends. Cancel anytime.';
+  } else if (plan === 'yearly') {
+    trialText = 'Billed at $59 for a one-year subscription when 14-day free trial ends. Cancel anytime.';
+  }
 
   const emailHTML =
   `<!doctype html>
@@ -10,7 +16,7 @@ export const signupEmail = () => {
   <head>
     <meta name="viewport" content="width=device-width" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Welcome to Wombo</title>
+    <title>Success | Trial Started</title>
     <style>
       /* -------------------------------------
           GLOBAL RESETS
@@ -257,7 +263,6 @@ export const signupEmail = () => {
         <td>&nbsp;</td>
         <td class="container">
           <div class="content">
-
             <!-- START CENTERED WHITE CONTAINER -->
             <table class="main">
               <!-- START MAIN CONTENT AREA -->
@@ -266,8 +271,9 @@ export const signupEmail = () => {
                   <table border="0" cellpadding="0" cellspacing="0">
                     <tr>
                       <td>
-                        <h2>Welcome to Wombo</h2>
-                        <p>Click "Get Started" below and design a system of habits to become successful.</p>
+                        <h2>Success | Trial Started</h2>
+                        <p>${trialText}</p>
+                        <p>Click "Sign Up" below and get started.</p>
                         <table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
                           <tbody>
                             <tr>
@@ -275,7 +281,7 @@ export const signupEmail = () => {
                                 <table border="0" cellpadding="0" cellspacing="0">
                                   <tbody>
                                     <tr>
-                                      <td> <a href="${url}" target="_blank">Get Started</a> </td>
+                                      <td> <a href="${url}" target="_blank">Sign Up</a> </td>
                                     </tr>
                                   </tbody>
                                 </table>

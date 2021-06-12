@@ -3,14 +3,17 @@ import { Meteor } from 'meteor/meteor';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
 
-import Navbar from './Navbar/Navbar.js';
-import Footer from './Footer.js';
+import { getSearchParams } from '../../helpers/utils.js';
+
+import Navbar from '../Navbar/Navbar.js';
+import Footer from '../Footer.js';
 
 class Signup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       error: '',
+      trialId: '',
       email: '',
       name: '',
       password: '',
@@ -18,6 +21,19 @@ class Signup extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    const searchParams = new URLSearchParams(this.props.location.search);
+    const name = searchParams.get('name');
+    const email = searchParams.get('email');
+    const trialId = searchParams.get('trialId');
+
+    this.setState({
+      name,
+      email,
+      trialId
+    });
   }
 
   handleChange(event) {
@@ -34,9 +50,14 @@ class Signup extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
 
+    const trialId = this.state.trialId.trim();
     const name = this.state.name.trim();
     const email = this.state.email.trim();
     const password = this.state.password.trim();
+
+    if (trialId.length === 0) {
+      return this.setState({error: "You missed a spot! Don't forget to add your trial id. This can be found in your payment confirmation email."});
+    }
 
     if (email.length === 0) {
       return this.setState({error: "You missed a spot! Don't forget to add your email."});
@@ -59,7 +80,8 @@ class Signup extends React.Component {
     }
 
     const profile = {
-      name
+      name,
+      planId: trialId
     };
 
     Accounts.createUser({email, password, profile}, (err) => {
@@ -67,7 +89,9 @@ class Signup extends React.Component {
         this.setState({error: err.reason});
       } else {
         analytics.track('Sign Up', {
-          email
+          name,
+          email,
+          planId: trialId,
         });
         this.setState({error: ''});
         this.props.history.replace(`/accounts/home`);
@@ -90,6 +114,12 @@ class Signup extends React.Component {
                       <p className="subtitle is-5 has-text-centered has-text-dark">Design a system of habits to become successful.</p>
                       <div className="field">
                         {this.state.error ? <label className="help is-danger has-text-centered">{this.state.error}</label> : undefined}
+                        <label className="label">Trial ID</label>
+                        <p className="control">
+                          <input className="input is-medium" type="text" name="trialId" value={this.state.trialId} placeholder="" onChange={this.handleChange} />
+                        </p>
+                      </div>
+                      <div className="field">
                         <label className="label">Email</label>
                         <p className="control">
                           <input className="input is-medium" type="email" name="email" value={this.state.email} placeholder="" onChange={this.handleChange} />
