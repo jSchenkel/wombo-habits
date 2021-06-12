@@ -56,7 +56,7 @@ class Signup extends React.Component {
     const password = this.state.password.trim();
 
     if (trialId.length === 0) {
-      return this.setState({error: "You missed a spot! Don't forget to add your trial id. This can be found in your payment confirmation email."});
+      return this.setState({error: "You missed a spot! Don't forget to add your trial id. This can be found in your trial started email."});
     }
 
     if (email.length === 0) {
