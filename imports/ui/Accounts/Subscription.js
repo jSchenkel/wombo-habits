@@ -9,7 +9,7 @@ export default class Subscription extends React.Component {
     this.state = {
       subscription: null,
       subscriptionError: '',
-      isSubscriptionLoading: true,
+      isSubscriptionLoading: false,
     }
 
     this.fetchSubscription = this.fetchSubscription.bind(this);
@@ -20,19 +20,19 @@ export default class Subscription extends React.Component {
 
   componentDidMount() {
     // fetch user with stripe info
-    Meteor.call('getCurrentUserProfile', (err, res) => {
-      if (err) {
-        // console.log('getCurrentUserAccount err: ', err);
-        this.setState({
-          subscriptionError: err.reason,
-          isSubscriptionLoading: false
-        });
-      } else {
-        // fetch subscription
-        const planId = res.planId;
-        this.fetchSubscription(planId);
-      }
-    });
+    // Meteor.call('getCurrentUserProfile', (err, res) => {
+    //   if (err) {
+    //     // console.log('getCurrentUserAccount err: ', err);
+    //     this.setState({
+    //       subscriptionError: err.reason,
+    //       isSubscriptionLoading: false
+    //     });
+    //   } else {
+    //     // fetch subscription
+    //     const planId = res.planId;
+    //     this.fetchSubscription(planId);
+    //   }
+    // });
   }
 
   fetchSubscription(planId) {
@@ -59,8 +59,8 @@ export default class Subscription extends React.Component {
   }
 
   render() {
-    console.log('subscription: ', this.state.subscription);
-    console.log('isSubscriptionValid: ', this.state.isSubscriptionValid);
+    // console.log('subscription: ', this.state.subscription);
+    // console.log('isSubscriptionValid: ', this.state.isSubscriptionValid);
 
     if (this.state.isSubscriptionLoading) {
       return (
@@ -71,7 +71,7 @@ export default class Subscription extends React.Component {
     return (
       <div className="columns is-centered">
         <div className="column is-half">
-          <p>subscription</p>
+          <p className="has-text-centered">Coming soon. Email us at support@wombo.io if you have any questions or need assistance.</p>
         </div>
       </div>
     );
