@@ -55,6 +55,7 @@ Meteor.methods({
       console.log('stripe.setupIntents.create error: ', error);
       throw new Meteor.Error('stripe-error', 'Stripe payment error.');
     }
+    const setupIntentId = setupIntent.id;
 
     // Create subscription (default to inactive)
     let subscription;
@@ -88,8 +89,8 @@ Meteor.methods({
       customerId,
       priceId,
       subscriptionId,
-      // we will set the payment intent data and isPaymentComplete bool in success webhook (or on Success)
-      setupIntentId: null,
+      // we will set the isPaymentComplete bool in success webhook (or on Success)
+      setupIntentId: setupIntentId,
       isPaymentComplete: false,
       isPaymentProcessing: true,
       isDeleted: false,
@@ -103,19 +104,20 @@ Meteor.methods({
       clientSecret: setupIntent.client_secret
     };
   },
-  async handleSuccessfulSessionPayment(planId, subscriptionId, setupIntentId) {
+  async handleSuccessfulSessionPayment(planId) {
     new SimpleSchema({
       planId: { type: String },
-      subscriptionId: { type: String },
-      setupIntentId: { type: String }
     }).validate({
-      planId, subscriptionId, setupIntentId
+      planId
     });
 
     const plan = Plans.findOne({_id: planId});
     if (!plan) {
       throw new Meteor.Error('invalid-plan', 'Invalid plan.');
     }
+
+    const subscriptionId = plan.subscriptionId;
+    const setupIntentId = plan.setupIntentId;
 
     // Retrieve the setup intent used to pay the subscription and set the customer pament method on the subscription
     try {
@@ -133,7 +135,6 @@ Meteor.methods({
 
     const timestamp = moment().utc().toDate();
     Plans.update({ _id: planId }, {$set: {
-      setupIntentId,
       isPaymentComplete: true,
       isPaymentProcessing: false,
       updated: timestamp
@@ -154,6 +155,21 @@ Meteor.methods({
       planId
     });
 
+    const plan = Plans.findOne({_id: planId});
+    if (!plan) {
+      throw new Meteor.Error('invalid-plan', 'Invalid plan.');
+    }
+
+    const subscriptionId = plan.subscriptionId;
+
+    // cancel the created subscription
+    try {
+      stripe.subscriptions.del(subscriptionId);
+    } catch(error) {
+      console.log('stripe.subscriptions.del error: ', error);
+    }
+
+    // update the plan: complete: false, processing: false
     const timestamp = moment().utc().toDate();
     Plans.update({_id: planId}, {$set: {
       isPaymentComplete: false,

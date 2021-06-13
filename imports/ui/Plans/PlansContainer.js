@@ -29,6 +29,7 @@ class Plans extends React.Component {
           <Navbar />
           <div className="hero-body">
             <div className="container">
+              <p className="title is-6 has-text-centered">Get better every day and become successful.</p>
               <div className="columns is-centered">
                 <div className="column is-one-third">
                   <p className="has-text-centered mb-4">

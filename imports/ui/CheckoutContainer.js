@@ -123,7 +123,7 @@ class _CheckoutContainer extends React.Component {
               // post-payment actions.
 
               // TODO: handle successful payments using webhooks. more reliable (can have redundancy where the webhook only calls handle success method if the booking has isPaymentProcessing=True)
-              Meteor.call('handleSuccessfulSessionPayment', planId, subscriptionId, result.setupIntent.id, (err, res) => {
+              Meteor.call('handleSuccessfulSessionPayment', planId, (err, res) => {
                 if (err) {
                   // console.log('handleSuccessfulSessionPayment err: ', err);
                   this.setState({paymentError: `There was a problem while setting up your trial. Please contact support: support@wombo.io. Trial ID: ${planId}`, isPaymentSuccess: false, isPaymentProcessing: false});
