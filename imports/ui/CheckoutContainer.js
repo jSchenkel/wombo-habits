@@ -154,7 +154,7 @@ class _CheckoutContainer extends React.Component {
                   // console.log('handleFailedSessionPayment success');
                 }
               });
-              this.setState({paymentError: 'There was issue while processing your payment. Please try another payment method.', isPaymentSuccess: false, isPaymentProcessing: false});
+              this.setState({paymentError: 'There was a problem while setting up your trial. Please try another payment method.', isPaymentSuccess: false, isPaymentProcessing: false});
             }
           }
         }).catch((result) => {
@@ -166,7 +166,7 @@ class _CheckoutContainer extends React.Component {
               // console.log('handleFailedSessionPayment success');
             }
           });
-          this.setState({paymentError: 'There was issue while processing your payment. Please try another payment method.', isPaymentSuccess: false, isPaymentProcessing: false});
+          this.setState({paymentError: 'There was a problem while setting up your trial. Please try another payment method.', isPaymentSuccess: false, isPaymentProcessing: false});
         });
       }
     });
@@ -292,7 +292,21 @@ class _CheckoutContainer extends React.Component {
                       <label className="label is-small">Payment</label>
                       <CardElement options={CARD_ELEMENT_OPTIONS} />
                       {this.state.paymentError ? <label className="help is-danger mb-1">{this.state.paymentError}</label> : <br />}
-                      <button className={`button is-link ${this.state.isPaymentProcessing ? 'is-loading' : ''}`} type="submit" disabled={!this.props.stripe || this.state.isPaymentProcessing}>Finish and Start Trial</button>
+                      <button className={`button is-link is-fullwidth ${this.state.isPaymentProcessing ? 'is-loading' : ''}`} type="submit" disabled={!this.props.stripe || this.state.isPaymentProcessing}>Start Free Trial</button>
+                      <div className="level is-mobile mt-4">
+                        {/* LEFT */}
+                        <div className="level-left">
+                          <span className="level-item">
+                            <img src="/images/ssl_encryption.jpeg" className="image-not-draggable" style={{width: 'auto', height: '50px'}} />
+                          </span>
+                        </div>
+                        {/* RIGHT */}
+                        <div className="level-right">
+                          <a href="https://www.stripe.com" target="_blank" className="level-item">
+                            <img src="/images/powered_by_stripe.png" className="image-not-draggable" style={{width: 'auto', height: '30px'}} />
+                          </a>
+                        </div>
+                      </div>
                     </form>
                   </div>
                 </div>
