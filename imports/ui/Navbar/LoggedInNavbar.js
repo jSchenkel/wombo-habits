@@ -63,11 +63,11 @@ const LoggedInNavbar = () => {
                 </div>
                 <div className="dropdown-menu" id="dropdown-menu" role="menu">
                   <div className="dropdown-content">
+                    <Link to="/accounts/edit" className="dropdown-item">
+                      <p className="">Account Settings</p>
+                    </Link>
                     <Link to="/contact" className="dropdown-item">
                       <p className="">Feedback</p>
-                    </Link>
-                    <Link to="/accounts/edit" className="dropdown-item">
-                      <p className="">Settings</p>
                     </Link>
                     <hr className="dropdown-divider" />
                     <a className="dropdown-item" onClick={onLogout}>

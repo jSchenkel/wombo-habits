@@ -19,19 +19,27 @@ const PastDays = (props) => {
   return (
     <div className="columns is-mobile">
       {props.days && props.days.map((day, index) => {
+        // if we have total events then get percentage complete (decimal)
+        const decimalComplete = day.numTotalEvents && day.numCompletedEvents ? day.numCompletedEvents/day.numTotalEvents : 0;
         return (
           <div key={day.dateString} className="column has-text-centered">
             <p className="is-size-7">{DAY_STRING_TO_DAY_SHORT_STRING[DAY_OF_WEEK_CODE_INT_TO_DAY_STRING[day.dayOfWeekCode]].toUpperCase()}</p>
             <div className={index > (props.days.length / 2) ? "dropdown is-hoverable is-right" : "dropdown is-hoverable"}>
               <div className="dropdown-trigger">
-                <span className={day.numCompletedEvents ? 'icon is-medium has-text-link' : 'icon is-medium has-text-light'} aria-haspopup="true" aria-controls="dropdown-menu4">
-                  <i className="fas fa-square fa-2x" aria-hidden="true"></i>
-                </span>
+                {day.numCompletedEvents && day.numTotalEvents ? (
+                  <span className="icon is-medium has-text-link" style={{opacity: decimalComplete}} aria-haspopup="true" aria-controls="dropdown-menu4">
+                    <i className="fas fa-square fa-2x" aria-hidden="true"></i>
+                  </span>
+                ) : (
+                  <span className="icon is-medium has-text-light" aria-haspopup="true" aria-controls="dropdown-menu4">
+                    <i className="fas fa-square fa-2x" aria-hidden="true"></i>
+                  </span>
+                )}
               </div>
               <div className="dropdown-menu" id="dropdown-menu4" role="menu">
                 <div className="dropdown-content">
                   <div className="dropdown-item">
-                    {day.numCompletedEvents ? <span className="is-size-7 has-text-weight-semibold mr-2">{Math.round(day.numCompletedEvents/day.numTotalEvents*100)}%</span> : <span className="is-size-7 has-text-weight-semibold mr-2">0%</span>}
+                    {day.numCompletedEvents ? <span className="is-size-7 has-text-weight-semibold mr-2">{Math.round(decimalComplete*100)}%</span> : <span className="is-size-7 has-text-weight-semibold mr-2">0%</span>}
                     <span className="is-size-7">on {moment(day.dateString, 'MM-DD-YYYY').format('MMM D, YYYY')}</span>
                   </div>
                 </div>

@@ -56,18 +56,10 @@ const HomeModal = (props) => {
                 <option value="entrepreneur">entrepreneur</option>
                 <option value="creator">creator</option>
                 <option value="investor">investor</option>
-                <option value="other">other</option>
               </select>
             </div>
           </div>
         </div>
-        {props.identity === 'other' ? (
-          <div className="field">
-            <div className="control">
-              <input className="input" type="text" name="otherIdentity" onChange={props.handleInputChange} value={props.otherIdentity} />
-            </div>
-          </div>
-        ) : null}
         <nav className="level">
           <div className="level-left">
             <button className="button is-link" onClick={() => props.handleModalOpen('welcome')}>
@@ -79,7 +71,7 @@ const HomeModal = (props) => {
           </div>
           <div className="level-right">
             <div className="level-item">
-              <button className="button is-link" disabled={(props.identity === 'other' && !props.otherIdentity) || (!props.identity)} onClick={() => {
+              <button className="button is-link" disabled={!props.identity} onClick={() => {
                 analytics.track('CTA Button Clicked', {
                   type: 'home-welcome-1',
                   layout: 'na'

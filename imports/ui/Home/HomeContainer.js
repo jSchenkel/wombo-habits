@@ -30,9 +30,9 @@ class HomeContainer extends React.Component {
       isModalOpen: false,
       activeModal: '',
       modalError: '',
-      // form
+      // user data/ form
+      three_month_goal: '',
       identity: 'entrepreneur',
-      otherIdentity: '',
       outcomes: [],
       // day completed
       day: null,
@@ -75,10 +75,9 @@ class HomeContainer extends React.Component {
         });
       } else {
         this.setState({
+          ...res,
           isUserProfileLoading: false,
           userProfileError: '',
-          identity: res.identity || 'entrepreneur',
-          outcomes: res.outcomes
         });
       }
     });
@@ -265,7 +264,21 @@ class HomeContainer extends React.Component {
                         <p>Get Better Every Day</p>
                       </div>
                       <div className="message-body">
-                        Become a peak performing {this.state.identity} and achieve {arrayToCommaSeparatedString(this.state.outcomes)}.
+                        <span>Become a peak performing {this.state.identity} and achieve {arrayToCommaSeparatedString(this.state.outcomes)}.</span>
+                      </div>
+                    </article>
+                  ) : null}
+                  {this.state.identity && this.state.outcomes && this.state.outcomes.length > 0 ? (
+                    <article className="message is-success is-small">
+                      <div className="message-header">
+                        <p>3 Month Goal</p>
+                      </div>
+                      <div className="message-body">
+                        {this.state.three_month_goal ? (
+                          <span>{this.state.three_month_goal}</span>
+                        ) : (
+                          <span>Set a 3 month goal <Link to="/accounts/edit">here</Link></span>
+                        )}
                       </div>
                     </article>
                   ) : null}
@@ -274,9 +287,9 @@ class HomeContainer extends React.Component {
                     isDaysLoading={this.state.isDaysLoading}
                     daysError={this.state.daysError}
                   />
-                  <div className="notification is-white has-text-centered has-text-white" style={{background: `url('/images/park3.png')`, backgroundSize: 'cover', height: '8rem'}}>
-                    <p className="title is-3">{timeFormatted}</p>
-                    <p className="subtitle is-5">{dateFormatted}</p>
+                  <div className="notification is-white has-text-centered has-text-white" style={{background: `url('/images/park3.png')`, backgroundSize: 'cover', height: '6rem'}}>
+                    <p className="title is-4">{timeFormatted}</p>
+                    <p className="subtitle is-6">{dateFormatted}</p>
                   </div>
                   {this.state.day ? <progress className="progress is-link" value={this.state.day.numCompletedEvents} max={this.state.day.numTotalEvents} title={`${Math.round(this.state.day.numCompletedEvents/this.state.day.numTotalEvents*100)}%`}></progress> : null}
                   <TodaysHabits
@@ -309,7 +322,6 @@ class HomeContainer extends React.Component {
                   modalError={this.state.modalError}
                   // form
                   identity={this.state.identity}
-                  otherIdentity={this.state.otherIdentity}
                   outcomes={this.state.outcomes}
                 />
               </div>

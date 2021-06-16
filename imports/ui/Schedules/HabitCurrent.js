@@ -89,8 +89,11 @@ const HabitCurrent = (props) => {
         <div className="select is-small ml-2 mr-2">
           <select onChange={(event) => props.handleEventInputChange(event, index)} name="duration" value={event.duration}>
             <option value={ALL_DAY_DURATION}>the rest of the day</option>
+            <option value="5">5 min</option>
             <option value="10">10 min</option>
             <option value="15">15 min</option>
+            <option value="20">20 min</option>
+            <option value="25">25 min</option>
             <option value="30">30 min</option>
             <option value="45">45 min</option>
             <option value="60">1 hour</option>
