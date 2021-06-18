@@ -5,9 +5,9 @@ export const trialStartedEmail = (name, email, planId, plan) => {
 
   let trialText = '';
   if (plan === 'monthly') {
-    trialText = 'Billed at $10 for a one-month subscription when 14-day free trial ends. Cancel anytime.';
+    trialText = 'Billed at $10 for a one-month subscription when 14-day free trial ends. Cancel any time.';
   } else if (plan === 'yearly') {
-    trialText = 'Billed at $59 for a one-year subscription when 14-day free trial ends. Cancel anytime.';
+    trialText = 'Billed at $59 for a one-year subscription when 14-day free trial ends. Cancel any time.';
   }
 
   const emailHTML =

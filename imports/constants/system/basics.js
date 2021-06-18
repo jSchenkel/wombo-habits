@@ -49,7 +49,7 @@ export const SYSTEM_BASICS = [
   {
     key: 'mind_software',
     title: 'Mind Software',
-    description: 'Train you mind to think more clearly and effectively. Most important thing you want to do is move from playing first person to playing third person. Constantly gather information and retrain your model.',
+    description: 'Train your mind to think more clearly and effectively. The most important change that you want to make is to move from playing first person to playing third person. Constantly gather information and retrain your model.',
     habits: [
       MEDITATION_HABIT,
       WEEKLY_REFLECTION_HABIT

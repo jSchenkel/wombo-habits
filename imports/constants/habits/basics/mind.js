@@ -15,7 +15,7 @@ export const LONG_FORM_READING_HABIT = {
       startTimeHour: '8',
       startTimeMinute: '00',
       startTimePeriod: 'PM',
-      duration: '60',
+      duration: '30',
       targetDuration: null,
       day: SUNDAY
     },
@@ -23,7 +23,7 @@ export const LONG_FORM_READING_HABIT = {
       startTimeHour: '8',
       startTimeMinute: '00',
       startTimePeriod: 'PM',
-      duration: '60',
+      duration: '30',
       targetDuration: null,
       day: MONDAY
     },
@@ -31,7 +31,7 @@ export const LONG_FORM_READING_HABIT = {
       startTimeHour: '8',
       startTimeMinute: '00',
       startTimePeriod: 'PM',
-      duration: '60',
+      duration: '30',
       targetDuration: null,
       day: TUESDAY
     },
@@ -39,7 +39,7 @@ export const LONG_FORM_READING_HABIT = {
       startTimeHour: '8',
       startTimeMinute: '00',
       startTimePeriod: 'PM',
-      duration: '60',
+      duration: '30',
       targetDuration: null,
       day: WEDNESDAY
     },
@@ -47,7 +47,7 @@ export const LONG_FORM_READING_HABIT = {
       startTimeHour: '8',
       startTimeMinute: '00',
       startTimePeriod: 'PM',
-      duration: '60',
+      duration: '30',
       targetDuration: null,
       day: THURSDAY
     },
@@ -55,7 +55,7 @@ export const LONG_FORM_READING_HABIT = {
       startTimeHour: '8',
       startTimeMinute: '00',
       startTimePeriod: 'PM',
-      duration: '60',
+      duration: '30',
       targetDuration: null,
       day: FRIDAY
     },
@@ -63,7 +63,7 @@ export const LONG_FORM_READING_HABIT = {
       startTimeHour: '8',
       startTimeMinute: '00',
       startTimePeriod: 'PM',
-      duration: '60',
+      duration: '30',
       targetDuration: null,
       day: SATURDAY
     }
@@ -182,7 +182,7 @@ export const MEDITATION_HABIT = {
       startTimeHour: '6',
       startTimeMinute: '10',
       startTimePeriod: 'AM',
-      duration: '20',
+      duration: '10',
       targetDuration: null,
       day: SUNDAY
     },
@@ -190,7 +190,7 @@ export const MEDITATION_HABIT = {
       startTimeHour: '6',
       startTimeMinute: '10',
       startTimePeriod: 'AM',
-      duration: '20',
+      duration: '10',
       targetDuration: null,
       day: MONDAY
     },
@@ -198,7 +198,7 @@ export const MEDITATION_HABIT = {
       startTimeHour: '6',
       startTimeMinute: '10',
       startTimePeriod: 'AM',
-      duration: '20',
+      duration: '10',
       targetDuration: null,
       day: TUESDAY
     },
@@ -206,7 +206,7 @@ export const MEDITATION_HABIT = {
       startTimeHour: '6',
       startTimeMinute: '10',
       startTimePeriod: 'AM',
-      duration: '20',
+      duration: '10',
       targetDuration: null,
       day: WEDNESDAY
     },
@@ -214,7 +214,7 @@ export const MEDITATION_HABIT = {
       startTimeHour: '6',
       startTimeMinute: '10',
       startTimePeriod: 'AM',
-      duration: '20',
+      duration: '10',
       targetDuration: null,
       day: THURSDAY
     },
@@ -222,7 +222,7 @@ export const MEDITATION_HABIT = {
       startTimeHour: '6',
       startTimeMinute: '10',
       startTimePeriod: 'AM',
-      duration: '20',
+      duration: '10',
       targetDuration: null,
       day: FRIDAY
     },
@@ -230,7 +230,7 @@ export const MEDITATION_HABIT = {
       startTimeHour: '6',
       startTimeMinute: '10',
       startTimePeriod: 'AM',
-      duration: '20',
+      duration: '10',
       targetDuration: null,
       day: SATURDAY
     }

@@ -268,15 +268,18 @@ class _CheckoutContainer extends React.Component {
           <div className="hero-body">
             <div className="container">
               <div className="columns is-centered">
-                <div className="column is-one-third">
+                <div className="column is-two-fifths">
                   <div className="box">
                     <p className="title is-5">Start Free 14-Day Trial</p>
-                    {plan === 'monthly' ? (
-                      <p className="subtitle is-7">Billed at $10 for a one-month subscription when 14-day free trial ends. Cancel anytime.</p>
-                    ) : (
-                      <p className="subtitle is-7">Billed at $59 for a one-year subscription when 14-day free trial ends. Cancel anytime.</p>
-                    )}
                     <form onSubmit={this.handleSubmit}>
+                      <div className="field">
+                        <label className="label is-small">Plan</label>
+                        {plan === 'monthly' ? (
+                          <p className="is-size-7"><span className="has-text-weight-semibold">Monthly</span>. Billed at $10 for a one-month subscription when 14-day free trial ends. Cancel any time.</p>
+                        ) : (
+                          <p className="is-size-7"><span className="has-text-weight-semibold">Yearly</span>. Billed at $59 for a one-year subscription when 14-day free trial ends. Cancel any time.</p>
+                        )}
+                      </div>
                       <div className="field">
                         <label className="label is-small">Name</label>
                         <div className="control">
@@ -292,7 +295,7 @@ class _CheckoutContainer extends React.Component {
                       <label className="label is-small">Payment</label>
                       <CardElement options={CARD_ELEMENT_OPTIONS} />
                       {this.state.paymentError ? <label className="help is-danger mb-1">{this.state.paymentError}</label> : <br />}
-                      <button className={`button is-link is-fullwidth ${this.state.isPaymentProcessing ? 'is-loading' : ''}`} type="submit" disabled={!this.props.stripe || this.state.isPaymentProcessing}>Start Free Trial</button>
+                      <button className={`button is-link is-fullwidth ${this.state.isPaymentProcessing ? 'is-loading' : ''}`} type="submit" disabled={!this.props.stripe || this.state.isPaymentProcessing}>Start Free 14-Day Trial</button>
                       <div className="level is-mobile mt-4">
                         {/* LEFT */}
                         <div className="level-left">

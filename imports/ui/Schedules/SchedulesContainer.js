@@ -400,14 +400,12 @@ export default class SchedulesContainer extends React.Component {
     return (
       <div className="container">
         {this.state.habitsError ? <p className="help is-danger">{this.state.habitsError}</p> : null}
-        {this.state.isHabitsEmpty ? (
-          <div className="notification">
-            <span className="icon">
-              <i className="fas fa-info-circle"></i>
-            </span>
-            <span>When your system of habits is ready, view your daily todo's on the home page: <Link to="/home">here</Link></span>
-          </div>
-        ) : null}
+        <div className="notification">
+          <span className="icon">
+            <i className="fas fa-info-circle"></i>
+          </span>
+          <span>When your system of habits is ready, view your daily todo's on the home page: <Link to="/home">here</Link></span>
+        </div>
         <div className="columns">
           <div className="column is-half">
             <div className="notification is-white has-text-centered has-text-white has-pointer" onClick={() => this.handleModalOpen('basics')} style={{background: `url('/images/park3.png')`, backgroundSize: 'cover', height: '5rem'}}>
