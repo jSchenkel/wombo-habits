@@ -31,7 +31,6 @@ class HomeContainer extends React.Component {
       activeModal: '',
       modalError: '',
       // user data/ form
-      three_month_goal: '',
       identity: 'entrepreneur',
       outcomes: [],
       // day completed
@@ -265,20 +264,6 @@ class HomeContainer extends React.Component {
                       </div>
                       <div className="message-body">
                         <span>Become a peak performing {this.state.identity} and achieve {arrayToCommaSeparatedString(this.state.outcomes)}.</span>
-                      </div>
-                    </article>
-                  ) : null}
-                  {this.state.identity && this.state.outcomes && this.state.outcomes.length > 0 ? (
-                    <article className="message is-success is-small">
-                      <div className="message-header">
-                        <p>3 Month Goal</p>
-                      </div>
-                      <div className="message-body">
-                        {this.state.three_month_goal ? (
-                          <span>{this.state.three_month_goal}</span>
-                        ) : (
-                          <span>Set a 3 month goal <Link to="/accounts/edit">here</Link></span>
-                        )}
                       </div>
                     </article>
                   ) : null}

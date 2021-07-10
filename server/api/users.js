@@ -27,7 +27,6 @@ Meteor.methods({
       name: 1,
       identity: 1,
       outcomes: 1,
-      three_month_goal: 1,
       planId: 1
     }});
     if (!user) {
@@ -42,7 +41,6 @@ Meteor.methods({
     const name = user.name || '';
     const identity = user.identity || '';
     const outcomes = user.outcomes || [];
-    const three_month_goal = user.three_month_goal || '';
     const planId = user.planId || '';
 
     const response = {
@@ -50,7 +48,6 @@ Meteor.methods({
       email,
       identity,
       outcomes,
-      three_month_goal,
       planId
     };
 
@@ -74,10 +71,6 @@ Meteor.methods({
         optional: true
       },
       'args.outcomes.$': {
-        type: String,
-        optional: true
-      },
-      'args.three_month_goal': {
         type: String,
         optional: true
       },

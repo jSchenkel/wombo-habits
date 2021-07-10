@@ -14,7 +14,6 @@ export default class Profile extends React.Component {
     this.state = {
       identity: 'entrepreneur',
       outcomes: '',
-      three_month_goal: '',
       // contact
       name: '',
       email: '',
@@ -61,7 +60,6 @@ export default class Profile extends React.Component {
     event.preventDefault();
     const identity = this.state.identity.trim();
     const outcomes = this.state.outcomes;
-    const three_month_goal = this.state.three_month_goal;
 
     if (this.state.isAboutSaved || this.state.isSavingAbout) {
       return;
@@ -78,7 +76,7 @@ export default class Profile extends React.Component {
       isSavingAbout: true
     });
 
-    Meteor.call('updateCurrentUserProfile', {identity, outcomes, three_month_goal}, (err, res) => {
+    Meteor.call('updateCurrentUserProfile', {identity, outcomes}, (err, res) => {
       if (err) {
         // console.log('updateCurrentUserProfile err: ', err);
         this.setState({aboutError: err.reason, isSavingAbout: false, isAboutSaved: false});
@@ -185,12 +183,6 @@ export default class Profile extends React.Component {
                     </span>
                   );
                 })}
-              </div>
-              <div className="field">
-                <label className="label">3 Month Goal</label>
-                <p className="control">
-                  <textarea className="textarea" type="text" name="three_month_goal" rows="2" value={this.state.three_month_goal} placeholder="i.e. Get 100 paying customers." onChange={this.handleInputChange} />
-                </p>
               </div>
               {this.state.isAboutSaved ? <label className="help is-success">Saved!</label> : null}
               {this.state.aboutError ? <label className="help is-danger">{this.state.aboutError}</label> : null}
