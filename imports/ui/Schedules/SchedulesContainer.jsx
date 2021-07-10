@@ -71,6 +71,7 @@ export default class SchedulesContainer extends React.Component {
     this.handleEventInputChange = this.handleEventInputChange.bind(this);
     this.handleEventAdded = this.handleEventAdded.bind(this);
     this.handleEventRemoved = this.handleEventRemoved.bind(this);
+    this.handleEventCloned = this.handleEventCloned.bind(this);
     this.handleHabitSave = this.handleHabitSave.bind(this);
     this.saveHabit = this.saveHabit.bind(this);
     this.deleteHabit = this.deleteHabit.bind(this);
@@ -312,6 +313,20 @@ export default class SchedulesContainer extends React.Component {
     });
   }
 
+    handleEventCloned(index) {
+    // deep copy of current events
+    const newEvents = this.state.events.map((event) => {
+      return {...event};
+    });
+    // insert the cloned element at the index (inserts next to the cloned element)
+    newEvents.splice(index, 0, {...newEvents[index]});
+    // update state
+    this.setState({
+      events: newEvents,
+      habitError: ''
+    });
+  }
+
   handleEventRemoved(index) {
     // deep copy of current events
     const newEvents = this.state.events.map((event) => {
@@ -426,6 +441,7 @@ export default class SchedulesContainer extends React.Component {
             handleEventInputChange={this.handleEventInputChange}
             handleEventAdded={this.handleEventAdded}
             handleEventRemoved={this.handleEventRemoved}
+            handleEventCloned={this.handleEventCloned}
             handleHabitSave={this.handleHabitSave}
             deleteHabit={this.deleteHabit}
             reset={this.reset}

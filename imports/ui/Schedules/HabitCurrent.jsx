@@ -108,7 +108,10 @@ const HabitCurrent = (props) => {
             <option value="480">8 hour</option>
           </select>
         </div>
-        <span className="icon has-pointer" onClick={() => props.handleEventRemoved(index)}>
+        <span className="icon has-pointer" title="Clone" onClick={() => props.handleEventCloned(index)}>
+          <i className="fas fa-clone"></i>
+        </span>
+        <span className="icon has-pointer" title="Remove" onClick={() => props.handleEventRemoved(index)}>
           <i className="fas fa-trash"></i>
         </span>
       </div>
