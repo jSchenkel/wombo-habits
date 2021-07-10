@@ -4,23 +4,23 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
 // route components
 // Public routes
-import LandingPage from '../ui/LandingPage.js';
-import StartContainer from '../ui/Start/StartContainer.js';
-import PlansContainer from '../ui/Plans/PlansContainer.js';
-import CheckoutContainer from '../ui/CheckoutContainer.js';
-import Login from '../ui/Accounts/Login.js';
-import Signup from '../ui/Accounts/Signup.js';
-import ForgotPassword from './../ui/Accounts/ForgotPassword.js';
-import ResetPassword from './../ui/Accounts/ResetPassword.js';
+import LandingPage from '../ui/LandingPage';
+import StartContainer from '../ui/Start/StartContainer';
+import PlansContainer from '../ui/Plans/PlansContainer';
+import CheckoutContainer from '../ui/CheckoutContainer';
+import Login from '../ui/Accounts/Login';
+import Signup from '../ui/Accounts/Signup';
+import ForgotPassword from './../ui/Accounts/ForgotPassword';
+import ResetPassword from './../ui/Accounts/ResetPassword';
 // Private routes
-import HomeContainer from './../ui/Home/HomeContainer.js';
-import SchedulesContainer from '../ui/Schedules/SchedulesContainer.js';
-import AccountContainer from './../ui/Accounts/AccountContainer.js';
+import HomeContainer from './../ui/Home/HomeContainer';
+import SchedulesContainer from '../ui/Schedules/SchedulesContainer';
+import AccountContainer from './../ui/Accounts/AccountContainer';
 // Open routes
-import Feedback from '../ui/Feedback.js';
+import Feedback from '../ui/Feedback';
 // Legal
-import Terms from '../ui/legal/Terms.js';
-import Privacy from '../ui/legal/Privacy.js';
+import Terms from '../ui/legal/Terms';
+import Privacy from '../ui/legal/Privacy';
 
 // Helpers
 import { isAuthenticated } from './../helpers/auth.js';

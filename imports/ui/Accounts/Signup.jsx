@@ -5,8 +5,8 @@ import { withRouter } from 'react-router';
 
 import { getSearchParams } from '../../helpers/utils.js';
 
-import Navbar from '../Navbar/Navbar.js';
-import Footer from '../Footer.js';
+import Navbar from '../Navbar/Navbar';
+import Footer from '../Footer';
 
 class Signup extends React.Component {
   constructor(props) {

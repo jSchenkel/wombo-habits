@@ -2,8 +2,9 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
-import Navbar from './Navbar/Navbar.js';
-import Footer from './Footer.js';
+
+import Navbar from './Navbar/Navbar';
+import Footer from './Footer';
 
 const LandingPage = () => {
   // const TITLE = (<span>Get Better Every Day and Become the <span className="has-text-link">Best</span></span>);

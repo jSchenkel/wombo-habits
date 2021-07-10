@@ -2,7 +2,7 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Link, useHistory } from 'react-router-dom';
 
-import NavbarBrandImage from './NavbarBrandImage.js';
+import NavbarBrandImage from './NavbarBrandImage';
 
 const LoggedInNavbar = () => {
   const history = useHistory();

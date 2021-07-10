@@ -3,11 +3,11 @@ import { Meteor } from 'meteor/meteor';
 
 import { Link } from 'react-router-dom';
 
-import LoggedInNavbar from '../Navbar/LoggedInNavbar.js';
-import LoadingIcon from '../LoadingIcon.js';
-import HabitCurrent from './HabitCurrent.js';
-import SchedulesModal from './SchedulesModal.js';
-import Footer from '../Footer.js';
+import LoggedInNavbar from '../Navbar/LoggedInNavbar';
+import LoadingIcon from '../LoadingIcon';
+import HabitCurrent from './HabitCurrent';
+import SchedulesModal from './SchedulesModal';
+import Footer from '../Footer';
 
 import { habitCompare, displayDuration } from '../../helpers/schedules.js';
 import { DAY_STRING_TO_DAY_SHORT_STRING } from './../../constants/schedules.js';

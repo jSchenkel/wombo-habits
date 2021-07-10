@@ -3,8 +3,8 @@ import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
 import { Link } from 'react-router-dom';
 
-import Navbar from '../Navbar/Navbar.js';
-import Footer from '../Footer.js';
+import Navbar from '../Navbar/Navbar';
+import Footer from '../Footer';
 
 export default class ForgotPassword extends React.Component {
   constructor(props) {

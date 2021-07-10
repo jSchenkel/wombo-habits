@@ -3,8 +3,8 @@ import { Meteor } from 'meteor/meteor';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
 
-import Navbar from '../Navbar/Navbar.js';
-import Footer from '../Footer.js';
+import Navbar from '../Navbar/Navbar';
+import Footer from '../Footer';
 
 class Plans extends React.Component {
   constructor(props) {

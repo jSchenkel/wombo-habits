@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 
-import LoadingIcon from '../LoadingIcon.js';
+import LoadingIcon from '../LoadingIcon';
 
 export default class Subscription extends React.Component {
   constructor(props) {

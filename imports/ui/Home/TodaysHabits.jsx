@@ -4,7 +4,7 @@ import { Meteor } from 'meteor/meteor';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 
-import LoadingIcon from '../LoadingIcon.js';
+import LoadingIcon from '../LoadingIcon';
 
 import { habitCompare, displayDuration } from '../../helpers/schedules.js';
 

@@ -3,7 +3,7 @@ import { Meteor } from 'meteor/meteor';
 
 import moment from 'moment';
 
-import LoadingIcon from '../LoadingIcon.js';
+import LoadingIcon from '../LoadingIcon';
 import { DAY_OF_WEEK_CODE_INT_TO_DAY_STRING , DAY_STRING_TO_DAY_SHORT_STRING } from '../../constants/schedules.js';
 
 const PastDays = (props) => {

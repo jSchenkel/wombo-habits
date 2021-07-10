@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import { Elements, CardElement, ElementsConsumer } from '@stripe/react-stripe-js';
 
-import Navbar from './Navbar/Navbar.js';
-import Footer from './Footer.js';
+import Navbar from './Navbar/Navbar';
+import Footer from './Footer';
 
 class _CheckoutContainer extends React.Component {
   constructor(props) {

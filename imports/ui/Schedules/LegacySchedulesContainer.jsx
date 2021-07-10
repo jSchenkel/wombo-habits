@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom';
 import momentTimezone from 'moment-timezone';
 import shortid from 'shortid';
 
-import SimpleNavbar from '../Navbar/SimpleNavbar.js';
-import LoadingIcon from '../LoadingIcon.js';
-import Footer from '../Footer.js';
+import SimpleNavbar from '../Navbar/SimpleNavbar';
+import LoadingIcon from '../LoadingIcon';
+import Footer from '../Footer';
 
 import { convertLocalHourMinuteStringToTimezoneUtcDateString, convertUtcDateStringToLocalHourMinuteString, displayHourMinuteString } from './../../helpers/date.js';
 import { IDENTITY_TO_HABIT_MAP } from './../../constants/habits.js';

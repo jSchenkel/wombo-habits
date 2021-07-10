@@ -3,11 +3,11 @@ import { Meteor } from 'meteor/meteor';
 
 import { Link } from 'react-router-dom';
 
-import LoggedInNavbar from '../Navbar/LoggedInNavbar.js';
-import Profile from './Profile.js';
-import Subscription from './Subscription.js';
-import Footer from '../Footer.js';
-import LoadingIcon from '../LoadingIcon.js';
+import LoggedInNavbar from '../Navbar/LoggedInNavbar';
+import Profile from './Profile';
+import Subscription from './Subscription';
+import Footer from '../Footer';
+import LoadingIcon from '../LoadingIcon';
 
 export default class AccountEdit extends React.Component {
   constructor(props) {

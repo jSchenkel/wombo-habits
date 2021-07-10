@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import LoadingIcon from '../LoadingIcon.js';
+
+import LoadingIcon from '../LoadingIcon';
 
 import { SYSTEM_BASICS } from './../../constants/system/basics.js';
 import { SYSTEM_PRODUCTIVITY } from './../../constants/system/productivity.js';

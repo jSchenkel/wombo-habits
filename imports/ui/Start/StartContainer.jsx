@@ -1,8 +1,8 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 
-import SimpleNavbar from '../Navbar/SimpleNavbar.js';
-import Footer from '../Footer.js';
+import SimpleNavbar from '../Navbar/SimpleNavbar';
+import Footer from '../Footer';
 
 import { Link } from 'react-router-dom';
 

@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import moment from 'moment';
 
-import LoggedInNavbar from './../Navbar/LoggedInNavbar.js';
-import TodaysHabits from './TodaysHabits.js';
-import PastDays from './PastDays.js';
-import HomeModal from './HomeModal.js';
-import Footer from './../Footer.js';
+import LoggedInNavbar from './../Navbar/LoggedInNavbar';
+import TodaysHabits from './TodaysHabits';
+import PastDays from './PastDays';
+import HomeModal from './HomeModal';
+import Footer from './../Footer';
 
 import { arrayToCommaSeparatedString } from '../../helpers/utils.js';
 import { DAY_OF_WEEK_CODE_INT_TO_DAY_STRING } from '../../constants/schedules.js';

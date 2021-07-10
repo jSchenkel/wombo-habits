@@ -2,7 +2,7 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Link } from 'react-router-dom';
 
-import NavbarBrandImage from './NavbarBrandImage.js';
+import NavbarBrandImage from './NavbarBrandImage';
 
 import { isAuthenticated } from './../../helpers/auth.js';
 

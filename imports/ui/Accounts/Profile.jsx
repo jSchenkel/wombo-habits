@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 import { OUTCOMES, OUTCOME_TO_READABLE } from './../../constants/outcomes.js';
 
-import LoadingIcon from '../LoadingIcon.js';
+import LoadingIcon from '../LoadingIcon';
 
 export default class Profile extends React.Component {
   constructor(props) {

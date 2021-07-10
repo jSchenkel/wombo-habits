@@ -2,8 +2,8 @@ import React from 'react';
 
 import { Link } from 'react-router-dom';
 
-import NavbarBrandImage from '../Navbar/NavbarBrandImage.js';
-import Footer from '../Footer.js';
+import NavbarBrandImage from '../Navbar/NavbarBrandImage';
+import Footer from '../Footer';
 
 const Terms = () => {
   return (
