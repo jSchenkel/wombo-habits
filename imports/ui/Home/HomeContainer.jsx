@@ -239,6 +239,12 @@ class HomeContainer extends React.Component {
         this.setState({
           isDayLoading: false,
         });
+        // Capture analytics event
+        analytics.track('Habit Event Completed', {
+            dayId,
+            habitEventId,
+            numTotalEvents
+          });
         this.fetchDay(moment().format('MM-DD-YYYY'))
       }
     })
