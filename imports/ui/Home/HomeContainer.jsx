@@ -269,7 +269,7 @@ class HomeContainer extends React.Component {
                         <p>Get Better Every Day</p>
                       </div>
                       <div className="message-body">
-                        <span>Become a peak performing {this.state.identity} and achieve {arrayToCommaSeparatedString(this.state.outcomes)}.</span>
+                        <span>I will become a peak performing {this.state.identity} and achieve {arrayToCommaSeparatedString(this.state.outcomes)}.</span>
                       </div>
                     </article>
                   ) : null}

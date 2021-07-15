@@ -107,6 +107,7 @@ Accounts.validateNewUser((user) => {
   }).validate({ name, email, planId });
 
   // validate that the plan exists and was completed
+  // TODO: verify that the plan hasn't been consumed by another user already
   const plan = Plans.findOne({_id: planId, isPaymentComplete: true, isPaymentProcessing: {'$ne': true}}, {fields: {_id: 1}});
   if (!plan) {
     throw new Meteor.Error('invalid-trial', 'Invalid trial ID.');
