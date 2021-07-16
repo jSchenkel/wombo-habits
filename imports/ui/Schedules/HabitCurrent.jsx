@@ -88,7 +88,6 @@ const HabitCurrent = (props) => {
         <span className="is-size-7">for</span>
         <div className="select is-small ml-2 mr-2">
           <select onChange={(event) => props.handleEventInputChange(event, index)} name="duration" value={event.duration}>
-            <option value={ALL_DAY_DURATION}>the rest of the day</option>
             <option value="5">5 min</option>
             <option value="10">10 min</option>
             <option value="15">15 min</option>
@@ -106,6 +105,7 @@ const HabitCurrent = (props) => {
             <option value="360">6 hour</option>
             <option value="420">7 hour</option>
             <option value="480">8 hour</option>
+            <option value="540">9 hour</option>
           </select>
         </div>
         <span className="icon has-pointer" title="Clone" onClick={() => props.handleEventCloned(index)}>

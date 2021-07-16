@@ -4,18 +4,18 @@ import { Link } from 'react-router-dom';
 import { OUTCOMES, OUTCOME_TO_READABLE } from './../../constants/outcomes.js';
 
 const HomeModal = (props) => {
-
   if (props.isModalOpen && props.activeModal === 'welcome') {
     return (
       <div className="box">
         <p className="title is-3">Welcome to Wombo</p>
         <p className="subtitle is-6">
-          1) Define who you wish to become and the outcomes you desire.
-          <br /><br />
-          2) Design a system of habits using our template habits and your own custom habits.
-          <br /><br />
-          3) Review and complete your todo's every day. Get better every day and become successful.
+          Unlock the power of consistent improvement. The Wombo Habit System will enable you to stay focused and motivated as you make progress every single day. Your habits determine your success. With consistent improvement you will become successful.  
         </p>
+        <div className="content is-small">
+          <blockquote>
+            "Compound interest is the eighth wonder of the world. He who understands it, earns it... he who doesn't... pays it." - Albert Einstein
+          </blockquote>
+        </div>
         <nav className="level">
           <div className="level-left">
           </div>
@@ -55,7 +55,6 @@ const HomeModal = (props) => {
               <select name="identity" value={props.identity} onChange={props.handleInputChange}>
                 <option value="entrepreneur">entrepreneur</option>
                 <option value="creator">creator</option>
-                <option value="investor">investor</option>
               </select>
             </div>
           </div>

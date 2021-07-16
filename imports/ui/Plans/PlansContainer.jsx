@@ -29,7 +29,7 @@ class Plans extends React.Component {
           <Navbar />
           <div className="hero-body">
             <div className="container">
-              <p className="title is-6 has-text-centered">Get better every day and become successful.</p>
+              <p className="title is-6 has-text-centered">Get Better Every Day and Become Successful</p>
               <div className="columns is-centered">
                 <div className="column is-two-fifths">
                   <p className="has-text-centered mb-4">
@@ -43,12 +43,11 @@ class Plans extends React.Component {
                       <p className="has-text-centered is-size-4 mb-1"><b>$59</b>/<span className="is-size-5">year</span></p>
                     )}
                     <p className="has-text-centered is-size-7 mb-4">14 days for free. Cancel any time.</p>
-                    <p className="has-text-centered is-size-7 has-text-weight-semibold mb-2">Design a system of habits to become successful</p>
-                    <p className="has-text-centered is-size-7 has-text-weight-semibold mb-2">Basics: Template habits to improve your body and mind and perform at your peak</p>
-                    <p className="has-text-centered is-size-7 has-text-weight-semibold mb-2">Productivity: Template habits to stay focused and get things done</p>
-                    <p className="has-text-centered is-size-7 has-text-weight-semibold mb-2">Create custom habits</p>
-                    <p className="has-text-centered is-size-7 has-text-weight-semibold mb-2">Stick to your system of habits with daily todo's, progress trackers, and streaks</p>
-                    <p className="has-text-centered is-size-7 has-text-weight-semibold mb-2">Studied techniques to stay motivated: identity and outcome motivation</p>
+                    <p className="has-text-centered is-size-7 has-text-weight-semibold mb-2">Design a system of habits</p>
+                    <p className="has-text-centered is-size-7 has-text-weight-semibold mb-2">Stick to your system of habits with a proven methodology: Identity - Habit Feedback Loop</p>
+                    <p className="has-text-centered is-size-7 has-text-weight-semibold mb-2">Stay motivated with powerful motivation techniques: Identity and Outcome Motivation</p>
+                    <p className="has-text-centered is-size-7 has-text-weight-semibold mb-2">15 ESSENTIAL habits to prime your body and mind for peak performance</p>
+                    <p className="has-text-centered is-size-7 has-text-weight-semibold mb-2">3 EXPERT habits to be productive and get things done</p>
                     <Link to={`/trial/${this.state.plan}`} className="button is-link" onClick={() => {
                       analytics.track('CTA Button Clicked', {
                         type: 'plan',

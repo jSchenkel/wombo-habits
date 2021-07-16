@@ -423,8 +423,8 @@ export default class SchedulesContainer extends React.Component {
         </div>
         <div className="columns">
           <div className="column is-half">
-            <div className="notification is-white has-text-centered has-text-white has-pointer" onClick={() => this.handleModalOpen('basics')} style={{background: `url('/images/park3.png')`, backgroundSize: 'cover', height: '5rem'}}>
-              <p className="title is-5">Basics</p>
+            <div className="notification is-white has-text-centered has-text-white has-pointer" onClick={() => this.handleModalOpen('essentials')} style={{background: `url('/images/park3.png')`, backgroundSize: 'cover', height: '5rem'}}>
+              <p className="title is-5">Essentials</p>
             </div>
           </div>
           <div className="column">

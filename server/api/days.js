@@ -68,7 +68,7 @@ Meteor.methods({
         dateObject: date.toDate(),
         completedEvents: [],
         numCompletedEvents: 0,
-        numTotalEvents: 0,
+        numTotalEvents: 1,
         created: timestamp,
         updated: timestamp
       };

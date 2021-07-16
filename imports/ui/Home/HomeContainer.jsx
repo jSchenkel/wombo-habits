@@ -75,6 +75,7 @@ class HomeContainer extends React.Component {
       } else {
         this.setState({
           ...res,
+          identity: res.identity || 'entrepreneur',
           isUserProfileLoading: false,
           userProfileError: '',
         });

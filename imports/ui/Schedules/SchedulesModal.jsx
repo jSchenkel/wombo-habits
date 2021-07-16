@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import LoadingIcon from '../LoadingIcon';
 
-import { SYSTEM_BASICS } from './../../constants/system/basics.js';
+import { SYSTEM_ESSENTIALS } from './../../constants/system/essentials.js';
 import { SYSTEM_PRODUCTIVITY } from './../../constants/system/productivity.js';
 
 const SchedulesModal = (props) => {
@@ -16,37 +16,37 @@ const SchedulesModal = (props) => {
   } else if (props.isModalOpen && props.activeModal === 'welcome') {
     return (
       <div className="box">
-        <p className="title is-3">Welcome to the System Builder</p>
+        <p className="title is-3">Welcome to the Habit System Builder</p>
         <p className="subtitle is-5">
           Design a system of habits to become a <b>peak performing {props.identity}</b> and achieve the outcomes you desire.
         </p>
         <button className="button is-link" onClick={() => {
-          props.handleModalOpen('basics');
+          props.handleModalOpen('essentials');
           analytics.track('CTA Button Clicked', {
             type: 'system-welcome',
             layout: 'na'
           });
         }}>
-          <span>Start with the Basics</span>
+          <span>Start with the Essentials</span>
           <span className="icon">
             <i className="fas fa-chevron-right"></i>
           </span>
         </button>
       </div>
     );
-  } else if (props.isModalOpen && props.activeModal === 'basics') {
+  } else if (props.isModalOpen && props.activeModal === 'essentials') {
     return (
       <div className="box">
-        <p className="title is-3">Basics</p>
+        <p className="title is-3">Essentials</p>
         <p className="subtitle is-5">
           Everyone is playing a game and you want to <b>win</b> the game.
           To win the game you need to treat yourself like an <b>athlete</b> competing in the Olympics.
           To win the game you need to play at <b>peak performance</b>.
           Novice athletes make <b>repeated</b> mistakes.
-          The Basics will help you avoid these mistakes and prime your <b>mind and body</b> for peak performance so that you can work <b>smarter</b> and harder.
+          The Essentials will help you avoid these mistakes and prime your <b>mind and body</b> for peak performance so that you can work <b>smarter</b> and harder.
         </p>
         <hr />
-        {SYSTEM_BASICS.map((category) => {
+        {SYSTEM_ESSENTIALS.map((category) => {
           return (
             <div key={category.key}>
               <p className="title is-4">{category.title}</p>
