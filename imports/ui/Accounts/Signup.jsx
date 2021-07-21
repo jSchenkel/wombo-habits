@@ -13,27 +13,13 @@ class Signup extends React.Component {
     super(props);
     this.state = {
       error: '',
-      trialId: '',
-      email: '',
       name: '',
+      email: '',
       password: '',
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  componentDidMount() {
-    const searchParams = new URLSearchParams(this.props.location.search);
-    const name = searchParams.get('name');
-    const email = searchParams.get('email');
-    const trialId = searchParams.get('trialId');
-
-    this.setState({
-      name,
-      email,
-      trialId
-    });
   }
 
   handleChange(event) {
@@ -50,18 +36,9 @@ class Signup extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
 
-    const trialId = this.state.trialId.trim();
     const name = this.state.name.trim();
     const email = this.state.email.trim();
     const password = this.state.password.trim();
-
-    if (trialId.length === 0) {
-      return this.setState({error: "You missed a spot! Don't forget to add your trial id. This can be found in your trial started email."});
-    }
-
-    if (email.length === 0) {
-      return this.setState({error: "You missed a spot! Don't forget to add your email."});
-    }
 
     if (name.length === 0) {
       return this.setState({error: "You missed a spot! Don't forget to add your name."});
@@ -69,6 +46,10 @@ class Signup extends React.Component {
 
     if (name.length > 24) {
       return this.setState({error: 'Please enter a shorter name (24 characters max).'});
+    }
+
+    if (email.length === 0) {
+      return this.setState({error: "You missed a spot! Don't forget to add your email."});
     }
 
     if (password.length === 0) {
@@ -81,7 +62,6 @@ class Signup extends React.Component {
 
     const profile = {
       name,
-      planId: trialId
     };
 
     Accounts.createUser({email, password, profile}, (err) => {
@@ -91,7 +71,6 @@ class Signup extends React.Component {
         analytics.track('Sign Up', {
           name,
           email,
-          planId: trialId,
         });
         this.setState({error: ''});
         this.props.history.replace(`/accounts/home`);
@@ -110,25 +89,19 @@ class Signup extends React.Component {
                 <div className="column is-one-third">
                   <div>
                     <form className="" onSubmit={this.handleSubmit} noValidate>
-                      <p className="title is-3 has-text-centered has-text-dark">Sign Up</p>
-                      <p className="subtitle is-5 has-text-centered has-text-dark">Design a system of habits to become successful.</p>
+                      <p className="title is-4 has-text-centered has-text-dark">Start My Free 14-Day Trial</p>
+                      <p className="subtitle is-6 has-text-centered has-text-dark">Design a system of habits to become successful.</p>
                       <div className="field">
                         {this.state.error ? <label className="help is-danger has-text-centered">{this.state.error}</label> : undefined}
-                        <label className="label">Trial ID</label>
+                        <label className="label">First Name</label>
                         <p className="control">
-                          <input className="input is-medium" type="text" name="trialId" value={this.state.trialId} placeholder="" onChange={this.handleChange} />
+                          <input className="input is-medium" type="text" name="name" value={this.state.name} placeholder="" onChange={this.handleChange} />
                         </p>
                       </div>
                       <div className="field">
                         <label className="label">Email</label>
                         <p className="control">
                           <input className="input is-medium" type="email" name="email" value={this.state.email} placeholder="" onChange={this.handleChange} />
-                        </p>
-                      </div>
-                      <div className="field">
-                        <label className="label">Name</label>
-                        <p className="control">
-                          <input className="input is-medium" type="text" name="name" value={this.state.name} placeholder="" onChange={this.handleChange} />
                         </p>
                       </div>
                       <div className="field">
@@ -139,7 +112,8 @@ class Signup extends React.Component {
                       </div>
                       <div className="field">
                         <p className="control">
-                          <input className="button is-medium is-fullwidth is-link" type="submit" value="Design My System" />
+                          <input className="button is-medium is-fullwidth is-link" type="submit" value="Start My Free 14-Day Trial" />
+                          <label className="help has-text-centered">No Credit Card Required</label>
                           <label className="help has-text-centered">Already have an account? <Link to="/accounts/login" className="has-text-weight-semibold">Log In</Link></label>
                         </p>
                       </div>

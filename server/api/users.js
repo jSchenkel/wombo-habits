@@ -91,31 +91,27 @@ Meteor.methods({
 Accounts.validateNewUser((user) => {
   const name = user.name;
   const email = user.emails[0].address;
-  const planId = user.planId;
 
   new SimpleSchema({
     name: {
-      type: String
-    },
-    planId: {
       type: String
     },
     email: {
       type: String,
       regEx: SimpleSchema.RegEx.Email
     }
-  }).validate({ name, email, planId });
+  }).validate({ name, email });
 
   // validate that the plan exists and was completed
-  const plan = Plans.findOne({_id: planId, isPaymentComplete: true, isPaymentProcessing: {'$ne': true}}, {fields: {_id: 1}});
-  if (!plan) {
-    throw new Meteor.Error('invalid-trial', 'Invalid trial ID.');
-  }
-  // verify that the plan hasn't been consumed by another user already
-  const existingUser = Meteor.users.findOne({planId}, {fields: {_id: 1}});
-  if (existingUser) {
-    throw new Meteor.Error('used-trial', 'This trial ID has already been used.');
-  }
+  // const plan = Plans.findOne({_id: planId, isPaymentComplete: true, isPaymentProcessing: {'$ne': true}}, {fields: {_id: 1}});
+  // if (!plan) {
+  //   throw new Meteor.Error('invalid-trial', 'Invalid trial ID.');
+  // }
+  // // verify that the plan hasn't been consumed by another user already
+  // const existingUser = Meteor.users.findOne({planId}, {fields: {_id: 1}});
+  // if (existingUser) {
+  //   throw new Meteor.Error('used-trial', 'This trial ID has already been used.');
+  // }
 
   // send welcome email after we've validated the email and all data
   Meteor.call('sendSignupEmail', email);
@@ -134,19 +130,11 @@ Accounts.onCreateUser((options, user) => {
     name = options.profile.name;
   }
 
-  let planId = '';
-  if (options.profile && options.profile.planId) {
-    planId = options.profile.planId;
-  }
-
   new SimpleSchema({
     name: {
       type: String
     },
-    planId: {
-      type: String
-    }
-  }).validate({ name, planId });
+  }).validate({ name });
 
   // Add custom data to user account
   // NOTE: Make sure to think about new and existing users with changes to collection (adding data fields)
@@ -155,8 +143,12 @@ Accounts.onCreateUser((options, user) => {
   user.identity = '';
   // outcomes from achieving target identity (i.e. health, wealth, sex)
   user.outcomes = [];
-  // reference to plan
-  user.planId = planId;
+
+  // created
+  user.created = moment().utc().toDate();
+
+  // trial end date
+  user.trial_end_date = moment().add(14, 'days').utc().toDate();
 
   user.isBlocked = false;
   user.isDeleted = false;

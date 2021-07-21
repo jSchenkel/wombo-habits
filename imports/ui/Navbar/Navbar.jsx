@@ -20,9 +20,6 @@ const Navbar = () => {
           </div>
           {/* RIGHT */}
           <div className="level-right is-hidden-mobile">
-            <Link to="/plans" className="level-item">
-              <p className="button is-text">Plans</p>
-            </Link>
             <Link to="/accounts/login" className="level-item">
               <p className="button is-text">Log In</p>
             </Link>
@@ -48,9 +45,6 @@ const Navbar = () => {
                 </div>
                 <div className="dropdown-menu" id="dropdown-menu" role="menu">
                   <div className="dropdown-content">
-                  <Link to="/plans" className="dropdown-item">
-                    <p className="button is-text">Plans</p>
-                  </Link>
                     <Link to="/accounts/login" className="dropdown-item">
                       <p className="button is-text">Log In</p>
                     </Link>

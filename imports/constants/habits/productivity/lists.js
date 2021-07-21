@@ -2,7 +2,7 @@ import { SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY } from '
 
 export const LISTS_DAILY_HABIT = {
   title: 'Daily Goals',
-  description: `Write a list of short term goals for the next day. Focus your mind and be productive. Do this the night before to prime your brain and start solving problems with your subconscious while you sleep. Doing this the night before can also calm your mind and help you sleep.`,
+  description: `Write a list of short term goals for the next day. Focus your mind and be productive. Do this the night before to prime your brain and start solving problems with your subconscious while you sleep. Writing your daily goals the night before can also calm your mind and help you sleep.`,
   events: [
     {
       startTimeHour: '9',

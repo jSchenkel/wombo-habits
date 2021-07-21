@@ -38,8 +38,44 @@ const HomeModal = (props) => {
         </nav>
       </div>
     );
-    // The ultimate form of instrinsic motivation is when a habit becomes part of your identity.
   } else if (props.isModalOpen && props.activeModal === 'welcome-1') {
+    return (
+      <div className="box">
+        <p className="title is-3">How It Works</p>
+        <p className="subtitle is-6">
+          1) Define your identity and outcomes 
+          <br/><br/>2) Design your system of habits
+          <br/><br/>3) Review and complete your daily habits every day
+        </p>
+        <nav className="level">
+          <div className="level-left">
+            <button className="button is-link" onClick={() => props.handleModalOpen('welcome')}>
+              <span className="icon">
+                <i className="fas fa-chevron-left"></i>
+              </span>
+              <span>Back</span>
+            </button>
+          </div>
+          <div className="level-right">
+            <div className="level-item">
+              <button className="button is-link" onClick={() => {
+                analytics.track('CTA Button Clicked', {
+                  type: 'home-welcome-1',
+                  layout: 'na'
+                });
+                props.handleModalOpen('welcome-2');
+              }}>
+                <span>Continue</span>
+                <span className="icon">
+                  <i className="fas fa-chevron-right"></i>
+                </span>
+              </button>
+            </div>
+          </div>
+        </nav>
+      </div>
+    );
+  } else if (props.isModalOpen && props.activeModal === 'welcome-2') {
     return (
       <div className="box">
         <p className="title is-3">Identity</p>
@@ -61,7 +97,7 @@ const HomeModal = (props) => {
         </div>
         <nav className="level">
           <div className="level-left">
-            <button className="button is-link" onClick={() => props.handleModalOpen('welcome')}>
+            <button className="button is-link" onClick={() => props.handleModalOpen('welcome-1')}>
               <span className="icon">
                 <i className="fas fa-chevron-left"></i>
               </span>
@@ -72,10 +108,10 @@ const HomeModal = (props) => {
             <div className="level-item">
               <button className="button is-link" disabled={!props.identity} onClick={() => {
                 analytics.track('CTA Button Clicked', {
-                  type: 'home-welcome-1',
+                  type: 'home-welcome-2',
                   layout: 'na'
                 });
-                props.handleModalOpen('welcome-2');
+                props.handleModalOpen('welcome-3');
               }}>
                 <span>Continue</span>
                 <span className="icon">
@@ -87,7 +123,7 @@ const HomeModal = (props) => {
         </nav>
       </div>
     );
-  } else if (props.isModalOpen && props.activeModal === 'welcome-2') {
+  } else if (props.isModalOpen && props.activeModal === 'welcome-3') {
     return (
       <div className="box">
         <p className="title is-3">Outcomes</p>
@@ -117,7 +153,7 @@ const HomeModal = (props) => {
         </div>
         <nav className="level">
           <div className="level-left">
-            <button className="button is-link" onClick={() => props.handleModalOpen('welcome-1')}>
+            <button className="button is-link" onClick={() => props.handleModalOpen('welcome-2')}>
               <span className="icon">
                 <i className="fas fa-chevron-left"></i>
               </span>
@@ -128,7 +164,7 @@ const HomeModal = (props) => {
             <div className="level-item">
               <button className="button is-link" disabled={props.outcomes.length < 3} onClick={() => {
                 analytics.track('CTA Button Clicked', {
-                  type: 'home-welcome-2',
+                  type: 'home-welcome-3',
                   layout: 'na'
                 });
                 props.handleWelcomeSubmit();

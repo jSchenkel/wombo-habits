@@ -175,7 +175,7 @@ export const MEDITATION_HABIT = {
     Less "I'm angry." More "I'm feeling anger."
     Start thinking about playing in third person and practice mindfulness throughout the day.
     The only way to survive the low points in life is to experience the emotions in 3rd person and not get caught up in it.
-    Then you can make the right chess moves.
+    Then you can make the right decisions.
   `,
   events: [
     {

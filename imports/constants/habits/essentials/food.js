@@ -129,7 +129,7 @@ export const EAT_HEALTHY_LUNCH_HABIT = {
 
 export const EAT_HEALTHY_DINNER_HABIT = {
   title: 'Healthy Dinner',
-  description: `Finish your 8 hour feeding window and start your 16 hour. Protein and vegetables. i.e. Salmon and broccoli.`,
+  description: `Finish your 8 hour feeding window and start your 16 hour fast. Protein and vegetables. i.e. Salmon and broccoli.`,
   events: [
     {
       startTimeHour: '6',
