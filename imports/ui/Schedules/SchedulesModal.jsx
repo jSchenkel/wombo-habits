@@ -18,7 +18,7 @@ const SchedulesModal = (props) => {
       <div className="box">
         <p className="title is-3">Welcome to the Habit System Builder</p>
         <p className="subtitle is-5">
-          Design a system of habits to become a <b>peak performing {props.identity}</b> and achieve the outcomes you desire.
+          Design a system of habits to become a <b>successful {props.identity}</b> and achieve the outcomes you desire.
         </p>
         <button className="button is-link" onClick={() => {
           props.handleModalOpen('essentials');

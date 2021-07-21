@@ -84,7 +84,7 @@ export const REST_HABIT = {
       startTimeHour: '8',
       startTimeMinute: '00',
       startTimePeriod: 'AM',
-      duration: ALL_DAY_DURATION,
+      duration: '480',
       targetDuration: null,
       day: SUNDAY
     },

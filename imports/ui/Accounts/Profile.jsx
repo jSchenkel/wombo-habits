@@ -154,13 +154,12 @@ export default class Profile extends React.Component {
               </div>
               <div className="field">
                 <label className="label">Identity</label>
-                <label className="help">I wish to become a peak performing...</label>
+                <label className="help">I wish to become a successful...</label>
                 <div className="control">
                   <div className="select">
                     <select name="identity" value={this.state.identity} onChange={this.handleInputChange}>
                       <option value="entrepreneur">entrepreneur</option>
                       <option value="creator">creator</option>
-                      <option value="investor">investor</option>
                     </select>
                   </div>
                 </div>

@@ -49,7 +49,7 @@ const HomeModal = (props) => {
           Eventually, your habits will become part of your identity and this is the ultimate form of intrinsic motivation.
         </p>
         <div className="field">
-          <label className="label">I wish to become a peak performing...</label>
+          <label className="label">I wish to become a successful...</label>
           <div className="control">
             <div className="select">
               <select name="identity" value={props.identity} onChange={props.handleInputChange}>
@@ -93,7 +93,7 @@ const HomeModal = (props) => {
         <p className="title is-3">Outcomes</p>
         <p className="subtitle is-6">
           Outcomes are the results you want to achieve.
-          By becoming a <b>peak performing {props.identity}</b> you will achieve the outcomes you desire.
+          By becoming a <b>successful {props.identity}</b> you will achieve the outcomes you desire.
           You will become the type of person who gets the results you want.
           Outcomes are your secondary source of motivation.
         </p>
