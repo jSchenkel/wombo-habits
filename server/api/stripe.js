@@ -48,6 +48,25 @@ Meteor.methods({
 
     return subscription;
   },
+  async getSubscription(subscriptionId) {
+    if (!this.userId) {
+      throw new Meteor.Error('not-authorized');
+    }
+
+    new SimpleSchema({
+      subscriptionId: { type: String },
+    }).validate({ subscriptionId });
+
+    // get stripe subscription object
+    let subscription = null;
+    try {
+      subscription = await stripe.subscriptions.retrieve(subscriptionId);
+    } catch (error) {
+      console.log('stripe.subscriptions.retrieve error: ', subscriptionId, error);
+    }
+
+    return subscription;
+  },
   // TODO: need to use planId or current user
   async isSubscriptionValid(subscriptionId) {
     new SimpleSchema({

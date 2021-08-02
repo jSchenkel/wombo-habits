@@ -27,7 +27,6 @@ Meteor.methods({
       name: 1,
       identity: 1,
       outcomes: 1,
-      planId: 1
     }});
     if (!user) {
       throw new Meteor.Error('not-authorized');
@@ -41,14 +40,12 @@ Meteor.methods({
     const name = user.name || '';
     const identity = user.identity || '';
     const outcomes = user.outcomes || [];
-    const planId = user.planId || '';
 
     const response = {
       name,
       email,
       identity,
       outcomes,
-      planId
     };
 
     return response;
@@ -74,6 +71,14 @@ Meteor.methods({
         type: String,
         optional: true
       },
+      'args.accountStatus': {
+        type: String,
+        optional: true
+      },
+      'args.accountStatusUpdated': {
+        type: Date,
+        optional: true
+      },
     }).validate({ args });
 
     Meteor.users.update({
@@ -83,6 +88,58 @@ Meteor.methods({
     });
 
     return true;
+  },
+  async getCurrentUserAccountStatus() {
+    if (!this.userId) {
+      throw new Meteor.Error('not-authorized');
+    }
+
+    const user = Meteor.users.findOne({_id: this.userId});
+
+    if (!user) {
+      throw new Meteor.Error('invalid-user');
+    }
+
+    // check the trial
+    const TRIAL_LENGTH_DAYS = 7;
+
+    const now = moment().utc();
+    // TO TEST:
+    // const now = moment().add(14, 'years').utc().toDate(); // isTrialExpired = True
+    
+    // NOTE: if user doesnt have a createdAt date then isTrialExpired = False
+    const isTrialExpired = user.createdAt && moment(user.createdAt).add(TRIAL_LENGTH_DAYS, 'days').utc() < now;
+
+    // check the plan
+    let isPlan = false;
+    let isPlanInvalid = true;
+    const plan = Plans.findOne({userId: this.userId, status: 'success'});
+    if (plan && plan.subscriptionId) {
+      isPlan = true;
+      // NOTE: if we cant get a subscription (stripe failure) isPlanInvalid = False
+      const subscription = await Meteor.call('getSubscription', plan.subscriptionId);
+      // console.log('subscription: ', subscription)
+      isPlanInvalid = subscription && subscription.status !== 'active';
+    }
+
+    // determine status:
+    // trial_active -> valid (no modal)
+    // trial_expired -> invalid, create new subscription (yes modal)
+    // plan_active -> valid (no modal)
+    // plan_inactive -> invalid, create new subscription (yes modal)
+    let accountStatus = 'trial_active';
+    if (isTrialExpired && !isPlan) {
+      accountStatus = 'trial_expired';
+    } else if (isPlan && isPlanInvalid) {
+      accountStatus = 'plan_inactive';
+    } else if (isPlan && !isPlanInvalid) {
+      accountStatus = 'plan_active';
+    }
+
+    // write the account status to the user profile for mongo analytics
+    Meteor.call('updateCurrentUserProfile', {accountStatus, accountStatusUpdated: moment().utc().toDate()});
+
+    return accountStatus;
   }
 });
 
@@ -101,17 +158,6 @@ Accounts.validateNewUser((user) => {
       regEx: SimpleSchema.RegEx.Email
     }
   }).validate({ name, email });
-
-  // validate that the plan exists and was completed
-  // const plan = Plans.findOne({_id: planId, isPaymentComplete: true, isPaymentProcessing: {'$ne': true}}, {fields: {_id: 1}});
-  // if (!plan) {
-  //   throw new Meteor.Error('invalid-trial', 'Invalid trial ID.');
-  // }
-  // // verify that the plan hasn't been consumed by another user already
-  // const existingUser = Meteor.users.findOne({planId}, {fields: {_id: 1}});
-  // if (existingUser) {
-  //   throw new Meteor.Error('used-trial', 'This trial ID has already been used.');
-  // }
 
   // send welcome email after we've validated the email and all data
   Meteor.call('sendSignupEmail', email);
@@ -145,10 +191,12 @@ Accounts.onCreateUser((options, user) => {
   user.outcomes = [];
 
   // created
+  // Meteor already creates a createdAt field by default (https://docs.meteor.com/api/accounts.html#Meteor-users)
   user.created = moment().utc().toDate();
 
   // trial end date
-  user.trial_end_date = moment().add(14, 'days').utc().toDate();
+  // 7 day trial
+  user.trial_end_date = moment().add(7, 'days').utc().toDate();
 
   user.isBlocked = false;
   user.isDeleted = false;

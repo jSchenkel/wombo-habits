@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import LoggedInNavbar from '../Navbar/LoggedInNavbar';
 import LoadingIcon from '../LoadingIcon';
 import HabitCurrent from './HabitCurrent';
+import AccountStatusModal from './../Blocks/AccountStatusModal';
 import SchedulesModal from './SchedulesModal';
 import Footer from '../Footer';
 
@@ -90,7 +91,7 @@ export default class SchedulesContainer extends React.Component {
         this.setState({
           isUserProfileLoading: false,
           userProfileError: '',
-          identity: res.identity || 'entrepreneur',
+          identity: res.identity,
           outcomes: res.outcomes
         });
       }
@@ -419,12 +420,12 @@ export default class SchedulesContainer extends React.Component {
           <span className="icon">
             <i className="fas fa-info-circle"></i>
           </span>
-          <span>When your system of habits is ready, view your daily todo's on the home page: <Link to="/home">here</Link></span>
+          <span>When your system of habits is ready, view your daily plan on the home page: <Link to="/home">here</Link></span>
         </div>
         <div className="columns">
           <div className="column is-half">
             <div className="notification is-white has-text-centered has-text-white has-pointer" onClick={() => this.handleModalOpen('essentials')} style={{background: `url('/images/park3.png')`, backgroundSize: 'cover', height: '5rem'}}>
-              <p className="title is-5">Essentials</p>
+              <p className="title is-5">Basics</p>
             </div>
           </div>
           <div className="column">
@@ -489,6 +490,7 @@ export default class SchedulesContainer extends React.Component {
             </div>
             <button className="modal-close is-large" aria-label="close" onClick={this.handleModalClose}></button>
           </div>
+          <AccountStatusModal identity={this.state.identity} outcomes={this.state.outcomes} />
           <Footer />
         </section>
       </div>

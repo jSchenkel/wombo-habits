@@ -4,19 +4,33 @@ import { ALL_DAY_DURATION } from '../constants/schedules.js';
 export const habitCompare = (a, b) => {
   // calculate the total minute equivalent for start time A
   let hourA = parseInt(a.startTimeHour);
+
+  // subtract hours if period is am. handle special case with 12am, which is like 0am
+  if (a.startTimePeriod === 'AM' && hourA === 12) {
+    hourA -= 12;
+  }
+
   // add hours if period is pm. handle special case with 12pm, which is like 12 + 0pm
   if (a.startTimePeriod === 'PM' && hourA !== 12) {
     hourA += 12;
   }
+
   const minuteA = parseInt(a.startTimeMinute);
   const totatMinutesA = hourA*60+minuteA;
 
   // calculate the total minute equivalent for start time B
   let hourB = parseInt(b.startTimeHour);
-  // add hours if period is pm. handle special case with 12pm, which is like 12 + 0pm
+
+  // subtract hours if period is am. handle special case with 12am, which is like 0am
+  if (b.startTimePeriod === 'AM' && hourB === 12) {
+    hourB -= 12;
+  }
+
+  // add hours if period is pm. handle special case with 12pm, which is like 0pm
   if (b.startTimePeriod === 'PM' && hourB !== 12) {
     hourB += 12;
   }
+
   const minuteB = parseInt(b.startTimeMinute);
   const totatMinutesB = hourB*60+minuteB;
   // compare A and B

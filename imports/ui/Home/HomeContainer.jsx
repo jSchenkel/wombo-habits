@@ -5,6 +5,7 @@ import { withRouter } from 'react-router';
 import moment from 'moment';
 
 import LoggedInNavbar from './../Navbar/LoggedInNavbar';
+import AccountStatusModal from './../Blocks/AccountStatusModal';
 import TodaysHabits from './TodaysHabits';
 import PastDays from './PastDays';
 import HomeModal from './HomeModal';
@@ -75,7 +76,7 @@ class HomeContainer extends React.Component {
       } else {
         this.setState({
           ...res,
-          identity: res.identity || 'entrepreneur',
+          identity: res.identity || '',
           isUserProfileLoading: false,
           userProfileError: '',
         });
@@ -270,7 +271,7 @@ class HomeContainer extends React.Component {
                         <p>Get Better Every Day</p>
                       </div>
                       <div className="message-body">
-                        <span>I will become a successful {this.state.identity} and achieve {arrayToCommaSeparatedString(this.state.outcomes)}.</span>
+                        <span>I wish to become a {this.state.identity} and achieve {arrayToCommaSeparatedString(this.state.outcomes)}.</span>
                       </div>
                     </article>
                   ) : null}
@@ -318,6 +319,7 @@ class HomeContainer extends React.Component {
                 />
               </div>
             </div>
+            <AccountStatusModal identity={this.state.identity} outcomes={this.state.outcomes} />
           </div>
           <Footer />
         </section>

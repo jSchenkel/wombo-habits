@@ -17,7 +17,7 @@ const SchedulesModal = (props) => {
     return (
       <div className="box">
         <p className="title is-3">Welcome to the Habit System Builder</p>
-        <p className="subtitle is-5">
+        <p className="subtitle is-6">
           Design a system of habits to become a <b>successful {props.identity}</b> and achieve the outcomes you desire.
         </p>
         <button className="button is-link" onClick={() => {
@@ -27,7 +27,7 @@ const SchedulesModal = (props) => {
             layout: 'na'
           });
         }}>
-          <span>Start with the Essentials</span>
+          <span>Start With The Basics</span>
           <span className="icon">
             <i className="fas fa-chevron-right"></i>
           </span>
@@ -37,13 +37,13 @@ const SchedulesModal = (props) => {
   } else if (props.isModalOpen && props.activeModal === 'essentials') {
     return (
       <div className="box">
-        <p className="title is-3">Essentials</p>
-        <p className="subtitle is-5">
-          Everyone is playing a game and you want to <b>win</b> the game.
-          To win the game you need to treat yourself like an <b>athlete</b> competing in the Olympics.
-          To win the game you need to play at <b>peak performance</b>.
-          Novice athletes make <b>repeated</b> mistakes.
-          The Essentials will help you avoid these mistakes and prime your <b>mind and body</b> for peak performance so that you can work <b>smarter</b> and harder.
+        <p className="title is-3">Basics</p>
+        <p className="subtitle is-6">
+          The Basics are a comprehensive set of habits designed to help you perform at your <b>peak</b>.
+          A common mistake people make is that they are working hard but not <b>smart</b>.
+          Ultimately, input does <b>not</b> equal output. 
+          The Basics focus on getting your mind and body into top shape so that you can work <b>smarter</b>.
+          Add or customize the following habits to make them fit into your system.
         </p>
         <hr />
         {SYSTEM_ESSENTIALS.map((category) => {
@@ -79,7 +79,7 @@ const SchedulesModal = (props) => {
     return (
       <div className="box">
         <p className="title is-3">Productivity</p>
-        <p className="subtitle is-5">
+        <p className="subtitle is-6">
           Your goal is to spend as much of your day in <b>flow</b> as possible.
           Plan deep work sessions at times during the day when you feel you are most productive.
         </p>

@@ -4,14 +4,14 @@ import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import { Elements, CardElement, ElementsConsumer } from '@stripe/react-stripe-js';
 
-import Navbar from './Navbar/Navbar';
+import LoggedInNavbar from './Navbar/LoggedInNavbar';
 import Footer from './Footer';
 
 class _CheckoutContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      plan: null,
+      plan: 'yearly',
       // payment form
       name: '',
       email: '',
@@ -19,20 +19,40 @@ class _CheckoutContainer extends React.Component {
       isPaymentProcessing: false,
       isPaymentSuccess: false,
       paymentError: '',
-      planId: ''
+      planId: '',
+      // user profile state
+      isUserProfileLoading: true,
+      userProfileError: ''
     }
 
+    this.handlePlanChange = this.handlePlanChange.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
-    const plan = this.props.match.params.plan;
-    if (plan && ['monthly', 'yearly'].includes(plan)) {
-      this.setState({
-        plan
-      });
-    }
+    // get current user profile
+    Meteor.call('getCurrentUserProfile', (err, res) => {
+      if (err) {
+        this.setState({
+          isUserProfileLoading: false,
+          userProfileError: err.reason
+        });
+      } else {
+        this.setState({
+          name: res.name,
+          email: res.email,
+          isUserProfileLoading: false,
+          userProfileError: ''
+        });
+      }
+    });
+  }
+
+  handlePlanChange(plan) {
+    this.setState({
+      plan
+    });
   }
 
   handleInputChange(event) {
@@ -94,18 +114,19 @@ class _CheckoutContainer extends React.Component {
         const planId = res.planId;
         const subscriptionId = res.subscriptionId;
 
-        stripe.confirmCardSetup(clientSecret, {
+        stripe.confirmCardPayment(clientSecret, {
           payment_method: {
             card: elements.getElement(CardElement),
             billing_details: {
-              name: `${name}`,
+              name,
+              email
             },
           }
         }).then((result) => {
           if (result.error) {
             // Show error to your customer (e.g., insufficient funds)
             // TODO: add redundancy to handle failed payment via webhook
-            Meteor.call('handleFailedSessionPayment', planId, (err, res) => {
+            Meteor.call('handleFailedSessionPayment', planId, result.error.message, (err, res) => {
               if (err) {
                 // console.log('handleFailedSessionPayment err: ', err);
               } else {
@@ -114,59 +135,48 @@ class _CheckoutContainer extends React.Component {
             });
             this.setState({paymentError: result.error.message, isPaymentSuccess: false, isPaymentProcessing: false});
           } else {
-            // The payment has been processed!
-            if (result.setupIntent.status === 'succeeded') {
-              // Show a success message to your customer
-              // There's a risk of the customer closing the window before callback
-              // execution. Set up a webhook or plugin to listen for the
-              // payment_intent.succeeded event that handles any business critical
-              // post-payment actions.
+            // Successful subscription payment
+            // Show a success message to your customer
+            // There's a risk of the customer closing the window before callback
+            // execution. Set up a webhook or plugin to listen for the
+            // payment_intent.succeeded event that handles any business critical
+            // post-payment actions.
 
-              // TODO: handle successful payments using webhooks. more reliable (can have redundancy where the webhook only calls handle success method if the booking has isPaymentProcessing=True)
-              Meteor.call('handleSuccessfulSessionPayment', planId, (err, res) => {
-                if (err) {
-                  // console.log('handleSuccessfulSessionPayment err: ', err);
-                  this.setState({paymentError: `There was a problem while setting up your trial. Please contact support: support@wombo.io. Trial ID: ${planId}`, isPaymentSuccess: false, isPaymentProcessing: false});
-                } else {
-                  // console.log('handleSuccessfulSessionPayment res: ', res);
-                  this.setState({
-                    isPaymentProcessing: false,
-                    isPaymentSuccess: true,
-                    paymentError: '',
-                    planId,
+            // TODO: handle successful payments using webhooks. more reliable (can have redundancy where the webhook only calls handle success method if the booking has isPaymentProcessing=True)
+            Meteor.call('handleSuccessfulSessionPayment', planId, (err, res) => {
+              if (err) {
+                // console.log('handleSuccessfulSessionPayment err: ', err);
+                this.setState({paymentError: `There was a problem while setting up your subscription. Please contact support: support@wombo.io. Subscription ID: ${planId}`, isPaymentSuccess: false, isPaymentProcessing: false});
+              } else {
+                // console.log('handleSuccessfulSessionPayment res: ', res);
+                this.setState({
+                  isPaymentProcessing: false,
+                  isPaymentSuccess: true,
+                  paymentError: '',
+                  planId,
+                });
 
-                  });
-
-                  analytics.track('Trial Started', {
-                    name,
-                    email,
-                    plan,
-                    planId,
-                  });
-                }
-              });
-            } else {
-              // This should never happen. but adding handling for the edge case anyway
-              Meteor.call('handleFailedSessionPayment', planId, (err, res) => {
-                if (err) {
-                  // console.log('handleFailedSessionPayment err: ', err);
-                } else {
-                  // console.log('handleFailedSessionPayment success');
-                }
-              });
-              this.setState({paymentError: 'There was a problem while setting up your trial. Please try another payment method.', isPaymentSuccess: false, isPaymentProcessing: false});
-            }
+                analytics.track('Subscription Started', {
+                  name,
+                  email,
+                  plan,
+                  planId,
+                });
+              }
+            });
           }
         }).catch((result) => {
+          const errorMessage = 'There was a problem while setting up your subscription. Please try another payment method.';
+          
           // This should never happen. but adding handling for the edge case anyway
-          Meteor.call('handleFailedSessionPayment', planId, (err, res) => {
+          Meteor.call('handleFailedSessionPayment', planId, errorMessage, (err, res) => {
             if (err) {
               // console.log('handleFailedSessionPayment err: ', err);
             } else {
               // console.log('handleFailedSessionPayment success');
             }
           });
-          this.setState({paymentError: 'There was a problem while setting up your trial. Please try another payment method.', isPaymentSuccess: false, isPaymentProcessing: false});
+          this.setState({paymentError: errorMessage, isPaymentSuccess: false, isPaymentProcessing: false});
         });
       }
     });
@@ -203,14 +213,14 @@ class _CheckoutContainer extends React.Component {
       return (
         <div>
           <section className="hero has-background-white is-fullheight">
-            <Navbar />
+            <LoggedInNavbar />
             <div className="hero-body">
               <div className="container">
                 <div className="columns is-centered">
                   <div className="column is-one-third">
                     <div className="box has-text-centered">
                       <p className="is-size-6 mb-3">Invalid plan</p>
-                      <Link to="/" className="button is-link">Go back</Link>
+                      <Link to="/home" className="button is-link">Go back</Link>
                     </div>
                   </div>
                 </div>
@@ -225,11 +235,11 @@ class _CheckoutContainer extends React.Component {
       return (
         <div>
           <section className="hero has-background-white is-fullheight">
-            <Navbar />
+            <LoggedInNavbar />
             <div className="hero-body">
               <div className="container">
                 <div className="columns is-centered">
-                  <div className="column is-one-third">
+                  <div className="column is-half">
                     <div className="box">
                       <div className="media">
                         <div className="media-left">
@@ -238,17 +248,9 @@ class _CheckoutContainer extends React.Component {
                           </span>
                         </div>
                         <div className="media-content">
-                          <p className="title is-4">Success</p>
-                          <p className="subtitle is-6">You will receive a confirmation email shortly. Trial ID: <b>{planId}</b></p>
-                          <Link to={`/accounts/signup?name=${name}&email=${email}&trialId=${planId}`} className="button is-link" onClick={() => {
-                            analytics.track('CTA Button Clicked', {
-                              type: 'trial-success',
-                              name,
-                              email,
-                              planId,
-                              layout: 'na'
-                            });
-                          }}>Sign Up</Link>
+                          <p className="title is-4">Success!</p>
+                          <p className="subtitle is-6">Thank you for subscribing. You will receive a confirmation email shortly. We are here to help you build good habits and get the results that you want. Send us an email at any time: contact@wombo.io</p>
+                          <Link to='/home' className="button is-link">Home</Link>
                         </div>
                       </div>
                     </div>
@@ -264,20 +266,23 @@ class _CheckoutContainer extends React.Component {
     return (
       <div>
         <section className="hero has-background-white is-fullheight">
-          <Navbar />
+          <LoggedInNavbar />
           <div className="hero-body">
             <div className="container">
               <div className="columns is-centered">
                 <div className="column is-two-fifths">
+                  <p className="has-text-centered mb-4">
+                    <span className={this.state.plan === 'monthly' ? 'tag is-link has-pointer is-medium' : 'tag is-light has-pointer is-medium'} onClick={() => this.handlePlanChange('monthly')}>Monthly</span>
+                    <span className={this.state.plan === 'yearly' ? 'tag is-link has-pointer is-medium' : 'tag is-light has-pointer is-medium'} onClick={() => this.handlePlanChange('yearly')}>Yearly</span>
+                  </p>
                   <div className="box">
-                    <p className="title is-5">Start Free 14-Day Trial</p>
                     <form onSubmit={this.handleSubmit}>
                       <div className="field">
                         <label className="label is-small">Plan</label>
                         {plan === 'monthly' ? (
-                          <p className="is-size-7"><span className="has-text-weight-semibold">Monthly</span>. Billed at $10 for a one-month subscription when 14-day free trial ends. Cancel any time.</p>
+                          <p className="is-size-7"><span className="has-text-weight-semibold">Monthly</span>. Billed at $10 for a one-month subscription. Cancel any time.</p>
                         ) : (
-                          <p className="is-size-7"><span className="has-text-weight-semibold">Yearly</span>. Billed at $59 for a one-year subscription when 14-day free trial ends. Cancel any time.</p>
+                          <p className="is-size-7"><span className="has-text-weight-semibold">Yearly</span>. Billed at $59 for a one-year subscription. Cancel any time.</p>
                         )}
                       </div>
                       <div className="field">
@@ -295,7 +300,7 @@ class _CheckoutContainer extends React.Component {
                       <label className="label is-small">Payment</label>
                       <CardElement options={CARD_ELEMENT_OPTIONS} />
                       {this.state.paymentError ? <label className="help is-danger mb-1">{this.state.paymentError}</label> : <br />}
-                      <button className={`button is-link is-fullwidth ${this.state.isPaymentProcessing ? 'is-loading' : ''}`} type="submit" disabled={!this.props.stripe || this.state.isPaymentProcessing}>Start Free 14-Day Trial</button>
+                      <button className={`button is-link is-fullwidth ${this.state.isPaymentProcessing ? 'is-loading' : ''}`} type="submit" disabled={!this.props.stripe || this.state.isPaymentProcessing}>Subscribe</button>
                       <div className="level is-mobile mt-4">
                         {/* LEFT */}
                         <div className="level-left">

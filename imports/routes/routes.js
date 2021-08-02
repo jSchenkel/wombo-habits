@@ -5,6 +5,7 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 // route components
 // Public routes
 import LandingPage from '../ui/LandingPage';
+import PlansContainer from '../ui/Plans/PlansContainer';
 import StartContainer from '../ui/Start/StartContainer';
 import CheckoutContainer from '../ui/CheckoutContainer';
 import Login from '../ui/Accounts/Login';
@@ -34,8 +35,8 @@ export const routes = (
       <PubliceRoute exact path="/start">
         <StartContainer />
       </PubliceRoute>
-      <PubliceRoute exact path="/trial/:plan">
-        <CheckoutContainer />
+      <PubliceRoute exact path="/pricing">
+        <PlansContainer />
       </PubliceRoute>
       <PubliceRoute exact path="/accounts/login">
         <Login />
@@ -53,6 +54,9 @@ export const routes = (
       </PrivateRoute>
       <PrivateRoute exact path="/accounts/edit">
         <AccountContainer />
+      </PrivateRoute>
+      <PrivateRoute exact path="/subscribe">
+        <CheckoutContainer />
       </PrivateRoute>
       <PrivateRoute exact path="/system">
         <SchedulesContainer />

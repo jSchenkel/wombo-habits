@@ -5,7 +5,7 @@ export const SLEEP_HABIT = {
   title: 'Sleep',
   description: `
     Get the sleep you need to feel energized and mentally clear. However much that is for you (7, 8, or 9 hours). Everyone is different.
-    Sleep and wake up at the same times every day. Establish a circadian rhythm.
+    Sleep and wake up at the same time every day. Establish a circadian rhythm.
     Optimize your sleep environment: dark, quiet, comfortable, and remove electronics.
     Avoid using an alarm for at least half the week if you can.
   `,

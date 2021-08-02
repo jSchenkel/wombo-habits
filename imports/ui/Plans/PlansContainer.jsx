@@ -29,7 +29,7 @@ class Plans extends React.Component {
           <Navbar />
           <div className="hero-body">
             <div className="container">
-              <p className="title is-6 has-text-centered">Get Better Every Day and Become Successful</p>
+              <p className="title is-6 has-text-centered">Design a system of habits to become successful.</p>
               <div className="columns is-centered">
                 <div className="column is-two-fifths">
                   <p className="has-text-centered mb-4">
@@ -42,19 +42,20 @@ class Plans extends React.Component {
                     ) : (
                       <p className="has-text-centered is-size-4 mb-1"><b>$59</b>/<span className="is-size-5">year</span></p>
                     )}
-                    <p className="has-text-centered is-size-7 mb-4">14 days for free. Cancel any time.</p>
-                    <p className="has-text-centered is-size-7 has-text-weight-semibold mb-2">Design a system of habits</p>
-                    <p className="has-text-centered is-size-7 has-text-weight-semibold mb-2">Stick to your system of habits with a proven methodology: Identity - Habit Feedback Loop</p>
-                    <p className="has-text-centered is-size-7 has-text-weight-semibold mb-2">Stay motivated with powerful motivation techniques: Identity and Outcome Motivation</p>
-                    <p className="has-text-centered is-size-7 has-text-weight-semibold mb-2">15 ESSENTIAL habits to prime your body and mind for peak performance</p>
-                    <p className="has-text-centered is-size-7 has-text-weight-semibold mb-2">3 EXPERT habits to be productive and get things done</p>
-                    <Link to={`/trial/${this.state.plan}`} className="button is-link" onClick={() => {
+                    <p className="has-text-centered is-size-7 mb-4">7 days for free. Cancel any time.</p>
+                    <p className="has-text-centered is-size-7 mb-2"><b>Design</b> a system of habits to get the results that you want.</p>
+                    <p className="has-text-centered is-size-7 mb-2">Get <b>extreme clarity</b> around your habits with a simple daily plan.</p>
+                    <p className="has-text-centered is-size-7 mb-2"><b>Stick</b> to your system of habits and get the results that you want.</p>
+                    <p className="has-text-centered is-size-7 mb-2">+ <b>15 basic</b> habit templates to prime your body and mind for peak performance.</p>
+                    <p className="has-text-centered is-size-7 mb-2">+ <b>3 expert</b> habit templates to be productive and get things done.</p>
+                    <Link to='/accounts/signup' className="button is-link" onClick={() => {
                       analytics.track('CTA Button Clicked', {
                         type: 'plan',
                         plan: this.state.plan,
                         layout: 'na'
                       });
-                    }}>Start My Free 14-Day Trial</Link>
+                    }}>Start My Free 7-Day Trial</Link>
+                    <label className="help has-text-centered">No Credit Card Required</label>
                   </div>
                 </div>
               </div>

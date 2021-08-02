@@ -3,7 +3,7 @@ import { SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, ALL_DAY
 // Food habits
 export const EAT_HEALTHY_BREAKFAST_HABIT = {
   title: 'Healthy Breakfast',
-  description: `Break your 16 hour fast and start your 8 hour feeding window. High protein and good fats. i.e. Oatmeal with nuts and berries.`,
+  description: `Eat a healthy breakfast. Break your 16 hour fast and start your 8 hour feeding window.`,
   events: [
     {
       startTimeHour: '11',
@@ -66,7 +66,7 @@ export const EAT_HEALTHY_BREAKFAST_HABIT = {
 
 export const EAT_HEALTHY_LUNCH_HABIT = {
   title: 'Healthy Lunch',
-  description: `Something light and mostly vegetables. i.e. Soup and salad.`,
+  description: `Eat a healthy lunch. Something light and mostly vegetables.`,
   events: [
     {
       startTimeHour: '3',
@@ -129,7 +129,7 @@ export const EAT_HEALTHY_LUNCH_HABIT = {
 
 export const EAT_HEALTHY_DINNER_HABIT = {
   title: 'Healthy Dinner',
-  description: `Finish your 8 hour feeding window and start your 16 hour fast. Protein and vegetables. i.e. Salmon and broccoli.`,
+  description: `Eat a healthy dinner. Finish your 8 hour feeding window and start your 16 hour fast.`,
   events: [
     {
       startTimeHour: '6',

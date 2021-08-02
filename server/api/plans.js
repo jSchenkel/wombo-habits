@@ -17,6 +17,10 @@ Plans.deny({
 
 Meteor.methods({
   async setupStripeSubscription(plan, name, email) {
+    if (!this.userId) {
+      throw new Meteor.Error('not-authorized');
+    }
+
     new SimpleSchema({
       plan: { type: String },
       name: { type: String },
@@ -32,6 +36,11 @@ Meteor.methods({
       throw new Meteor.Error('invalid-plan', 'Invalid plan.');
     }
 
+    const existingPlan = Plans.findOne({userId: this.userId, status: 'success'});
+    if (existingPlan) {
+      throw new Meteor.Error('duplicate-plan', 'Cannot create a new plan when an active plan already exists.');
+    }
+
     // Create a new customer object
     let customer;
     try {
@@ -45,18 +54,6 @@ Meteor.methods({
     }
     const customerId = customer.id;
 
-    // get setup intent client id
-    let setupIntent;
-    try {
-      setupIntent =  await stripe.setupIntents.create({
-        customer: customerId,
-      });
-    } catch (error) {
-      console.log('stripe.setupIntents.create error: ', error);
-      throw new Meteor.Error('stripe-error', 'Stripe payment error.');
-    }
-    const setupIntentId = setupIntent.id;
-
     // Create subscription (default to inactive)
     let subscription;
     try {
@@ -69,19 +66,23 @@ Meteor.methods({
           price: priceId,
         }],
         payment_behavior: 'default_incomplete',
-        trial_period_days: 14,
+        expand: ['latest_invoice.payment_intent'],
       });
     } catch (error) {
       console.log('stripe.subscriptions.create error: ', error);
       throw new Meteor.Error('stripe-error', 'Stripe payment error.');
     }
     const subscriptionId = subscription.id;
+    // get payment intent and client secret
+    const paymentIntentId = subscription.latest_invoice.payment_intent.id;
+    const clientSecret = subscription.latest_invoice.payment_intent.client_secret;
 
     const planId = shortid.generate();
     const timestamp = moment().utc().toDate();
 
     Plans.insert({
       _id: planId,
+      userId: this.userId,
       name,
       email,
       plan,
@@ -89,10 +90,9 @@ Meteor.methods({
       customerId,
       priceId,
       subscriptionId,
-      // we will set the isPaymentComplete bool in success webhook (or on Success)
-      setupIntentId: setupIntentId,
-      isPaymentComplete: false,
-      isPaymentProcessing: true,
+      paymentIntentId,
+      // state of the plan: processing, success, failed
+      status: 'processing',
       isDeleted: false,
       created: timestamp,
       updated: timestamp
@@ -101,7 +101,7 @@ Meteor.methods({
     return {
       planId,
       subscriptionId,
-      clientSecret: setupIntent.client_secret
+      clientSecret
     };
   },
   async handleSuccessfulSessionPayment(planId) {
@@ -117,42 +117,45 @@ Meteor.methods({
     }
 
     const subscriptionId = plan.subscriptionId;
-    const setupIntentId = plan.setupIntentId;
+    const paymentIntentId = plan.paymentIntentId;
 
-    // Retrieve the setup intent used to pay the subscription and set the customer pament method on the subscription
+    // Retrieve the payment intent used to pay the subscription and set the customer payment method on the subscription
     try {
-      const setupIntent = await stripe.setupIntents.retrieve(setupIntentId);
+      const paymentIntent = await stripe.paymentIntents.retrieve(paymentIntentId);
       const subscription = await stripe.subscriptions.update(
         subscriptionId,
         {
-          default_payment_method: setupIntent.payment_method,
+          default_payment_method: paymentIntent.payment_method,
         },
       );
     } catch (error) {
-      console.log('stripe.setupIntents.retrieve stripe.subscriptions.update error: ', error);
+      console.log('stripe.paymentIntents.retrieve stripe.subscriptions.update error: ', error);
       throw new Meteor.Error('stripe-error', 'Stripe payment error.');
     }
 
     const timestamp = moment().utc().toDate();
     Plans.update({ _id: planId }, {$set: {
-      isPaymentComplete: true,
-      isPaymentProcessing: false,
+      // state of the plan: processing, success, failed
+      status: 'success',
       updated: timestamp
     }});
 
+    // DONT need this? stripe automatically sends a receipt
     // Send confirmation email with sign up link
-    const name = plan.name;
-    const email = plan.email;
-    const planString = plan.plan;
-    Meteor.call('sendTrialStartedEmail', name, email, planId, planString)
+    // const name = plan.name;
+    // const email = plan.email;
+    // const planString = plan.plan;
+    // Meteor.call('sendTrialStartedEmail', name, email, planId, planString)
 
     return true;
   },
-  handleFailedSessionPayment(planId) {
+  handleFailedSessionPayment(planId, errorMessage) {
     new SimpleSchema({
-      planId: { type: String }
+      planId: { type: String },
+      errorMessage: { type: String },
     }).validate({
-      planId
+      planId,
+      errorMessage
     });
 
     const plan = Plans.findOne({_id: planId});
@@ -172,8 +175,9 @@ Meteor.methods({
     // update the plan: complete: false, processing: false
     const timestamp = moment().utc().toDate();
     Plans.update({_id: planId}, {$set: {
-      isPaymentComplete: false,
-      isPaymentProcessing: false,
+      // state of the plan: processing, success, failed
+      status: 'failed',
+      errorMessage,
       updated: timestamp
     }});
 

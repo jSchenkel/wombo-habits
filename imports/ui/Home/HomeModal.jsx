@@ -9,13 +9,10 @@ const HomeModal = (props) => {
       <div className="box">
         <p className="title is-3">Welcome to Wombo</p>
         <p className="subtitle is-6">
-          Unlock the power of consistent improvement. The Wombo Habit System will enable you to stay focused and motivated as you make progress every single day. Your habits determine your success. With consistent improvement you will become successful.  
+          Good habits are the key to all success.
+          Repeat good habits every day and you will get the results that you want.
+          You will become successful.
         </p>
-        <div className="content is-small">
-          <blockquote>
-            "Compound interest is the eighth wonder of the world. He who understands it, earns it... he who doesn't... pays it." - Albert Einstein
-          </blockquote>
-        </div>
         <nav className="level">
           <div className="level-left">
           </div>
@@ -41,11 +38,11 @@ const HomeModal = (props) => {
   } else if (props.isModalOpen && props.activeModal === 'welcome-1') {
     return (
       <div className="box">
-        <p className="title is-3">How It Works</p>
+        <p className="title is-3">How it Works</p>
         <p className="subtitle is-6">
-          1) Define your identity and outcomes 
-          <br/><br/>2) Design your system of habits
-          <br/><br/>3) Review and complete your daily habits every day
+          1) Define who you wish to become and the outcomes you desire 
+          <br/><br/>2) Design a system of habits to get the results that you want
+          <br/><br/>3) Review and complete your simple habit plan every day
         </p>
         <nav className="level">
           <div className="level-left">
@@ -85,14 +82,10 @@ const HomeModal = (props) => {
           Eventually, your habits will become part of your identity and this is the ultimate form of intrinsic motivation.
         </p>
         <div className="field">
-          <label className="label">I wish to become a successful...</label>
+          <label className="label">I wish to become a...</label>
+          <label className="help">i.e. successful entrepreneur, famous Youtuber, etc.</label>
           <div className="control">
-            <div className="select">
-              <select name="identity" value={props.identity} onChange={props.handleInputChange}>
-                <option value="entrepreneur">entrepreneur</option>
-                <option value="creator">creator</option>
-              </select>
-            </div>
+            <input className="input" type="text" name="identity" value={props.identity} placeholder="" onChange={props.handleInputChange} />
           </div>
         </div>
         <nav className="level">
@@ -128,10 +121,10 @@ const HomeModal = (props) => {
       <div className="box">
         <p className="title is-3">Outcomes</p>
         <p className="subtitle is-6">
-          Outcomes are the results you want to achieve.
+          Outcomes are the results that you want to achieve.
           By becoming a <b>successful {props.identity}</b> you will achieve the outcomes you desire.
-          You will become the type of person who gets the results you want.
-          Outcomes are your secondary source of motivation.
+          You will become the type of person who gets the results that you want.
+          Outcomes are an additional source of motivation.
         </p>
         <div className="field">
           <label className="label">My top 3 desired outcomes are...</label>
@@ -169,7 +162,7 @@ const HomeModal = (props) => {
                 });
                 props.handleWelcomeSubmit();
               }}>
-                <span>Design System</span>
+                <span>Design My System Of Habits</span>
                 <span className="icon">
                   <i className="fas fa-chevron-right"></i>
                 </span>

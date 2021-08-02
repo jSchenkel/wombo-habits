@@ -12,8 +12,8 @@ export default class Profile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      identity: 'entrepreneur',
-      outcomes: '',
+      identity: '',
+      outcomes: [],
       // contact
       name: '',
       email: '',
@@ -156,12 +156,7 @@ export default class Profile extends React.Component {
                 <label className="label">Identity</label>
                 <label className="help">I wish to become a successful...</label>
                 <div className="control">
-                  <div className="select">
-                    <select name="identity" value={this.state.identity} onChange={this.handleInputChange}>
-                      <option value="entrepreneur">entrepreneur</option>
-                      <option value="creator">creator</option>
-                    </select>
-                  </div>
+                  <input className="input" type="text" name="identity" value={this.state.identity} placeholder="" onChange={this.handleInputChange} />
                 </div>
               </div>
               <div className="field">
