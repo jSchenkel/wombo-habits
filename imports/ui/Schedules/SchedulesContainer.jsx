@@ -18,7 +18,7 @@ const INITIAL_EVENT_STATE = {
   day: 'monday',
   // hour:minute string
   // startTime: '',
-  startTimeHour: '08',
+  startTimeHour: '8',
   startTimeMinute: '00',
   startTimePeriod: 'AM',
   // minute string
@@ -400,9 +400,9 @@ export default class SchedulesContainer extends React.Component {
       daysHTML.push(
         <div key={day} className="column has-text-centered">
           <p className="is-size-6 has-text-weight-semibold mt-3 mb-3">{DAY_STRING_TO_DAY_SHORT_STRING[day].toUpperCase()}</p>
-          {schedule[day].sort(habitCompare).map((habit) => {
+          {schedule[day].sort(habitCompare).map((habit, index) => {
             return (
-              <div key={habit._id} className="notification has-pointer" onClick={() => this.habitSelected(habit)}>
+              <div key={`${habit._id}${index}`} className="notification has-pointer" onClick={() => this.habitSelected(habit)}>
                 <p className="is-size-7 has-text-weight-semibold">{habit.title}</p>
                 <p className="is-size-7">{habit.startTimeHour}:{habit.startTimeMinute}{habit.startTimePeriod}</p>
                 <p className="is-size-7">{displayDuration(habit.duration)}</p>
