@@ -6,7 +6,6 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 // Public routes
 import LandingPage from '../ui/LandingPage';
 import PlansContainer from '../ui/Plans/PlansContainer';
-import StartContainer from '../ui/Start/StartContainer';
 import CheckoutContainer from '../ui/CheckoutContainer';
 import Login from '../ui/Accounts/Login';
 import Signup from '../ui/Accounts/Signup';
@@ -31,9 +30,6 @@ export const routes = (
       {/* Public Routes */}
       <PubliceRoute exact path="/">
         <LandingPage />
-      </PubliceRoute>
-      <PubliceRoute exact path="/start">
-        <StartContainer />
       </PubliceRoute>
       <PubliceRoute exact path="/pricing">
         <PlansContainer />
