@@ -65,7 +65,7 @@ const LandingPage = () => {
                   <article className="media">
                     <figure className="media-left">
                       <p className="image is-48x48">
-                        <img className="is-rounded" src="/images/profile.jpg" />
+                        <img className="is-rounded image-not-draggable" src="/images/profile.jpg" />
                       </p>
                     </figure>
                     <div className="media-content">
@@ -100,7 +100,7 @@ const LandingPage = () => {
               </div>
               <div className="column is-half">
                 <div className="mx-6 my-6">
-                  <img className="" src="/images/tiny-gains-graph.jpg" />
+                  <img className="image-not-draggable" src="/images/tiny-gains-graph.jpg" />
                 </div>
               </div>
             </div>
@@ -113,7 +113,7 @@ const LandingPage = () => {
             <div className="columns is-vcentered">
               <div className="column is-half is-hidden-mobile">
                 <div className="mx-6 my-6">
-                  <img className="" src="/images/calendar.png" />
+                  <img className="image-not-draggable" src="/images/calendar.png" />
                 </div>
               </div>
               <div className="column is-half">
@@ -128,7 +128,7 @@ const LandingPage = () => {
               </div>
               <div className="column is-half is-hidden-tablet">
                 <div className="mx-6 my-6">
-                  <img className="" src="/images/calendar.png" />
+                  <img className="image-not-draggable" src="/images/calendar.png" />
                 </div>
               </div>
             </div>
@@ -156,11 +156,11 @@ const LandingPage = () => {
                 <div className="columns is-vcentered is-centered mx-4 my-4">
                   <div className="column is-half">
                     <p className="is-size-6 has-text-weight-semibold mb-1">System of Habits <span className="is-size-7 has-text-grey-light">Example</span></p>
-                    <img className="has-shadow" src="/images/system.png" />
+                    <img className="has-shadow image-not-draggable" src="/images/system.png" />
                   </div>
                   <div className="column is-half">
                     <p className="is-size-6 has-text-weight-semibold mb-1">Simple Daily Plan <span className="is-size-7 has-text-grey-light">Example</span></p>
-                    <img className="has-shadow" src="/images/daily_plan.png" />
+                    <img className="has-shadow image-not-draggable" src="/images/daily_plan.png" />
                   </div>
                 </div>
               </div>

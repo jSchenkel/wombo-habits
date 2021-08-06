@@ -1,5 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
+import { withRouter } from 'react-router';
 
 import SimpleNavbar from './Navbar/SimpleNavbar';
 import LoggedInNavbar from './Navbar/LoggedInNavbar';
@@ -7,7 +8,7 @@ import Footer from './Footer';
 
 import { Link } from 'react-router-dom';
 
-export default class Feedback extends React.Component {
+class Feedback extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -27,13 +28,22 @@ export default class Feedback extends React.Component {
   }
 
   componentDidMount() {
+    // parse a default subject
+    const search = this.props.location && this.props.location.search || '';
+    const query = new URLSearchParams(search);
+    let subject = query.get('subject');
+    if (!subject || !['complaint', 'feature-request', 'bug-report', 'feedback', 'question'].includes(subject)) {
+      subject = 'feedback'
+    }
+
     // if user is logged in then prefill their email
     const user = Meteor.user();
     const email = user && user.emails && user.emails.length > 0 && user.emails[0].address ? user.emails[0].address : '';
 
     this.setState({
       currentUser: user,
-      email
+      email,
+      subject
     });
   }
 
@@ -95,7 +105,7 @@ export default class Feedback extends React.Component {
           {this.state.currentUser ? <LoggedInNavbar /> : <SimpleNavbar />}
           <div className="hero-body">
             <div className="container">
-              <h2 className="title is-4">Feedback</h2>
+              <h2 className="title is-4">Contact</h2>
               <h4 className="subtitle is-6">How can we make Wombo better?</h4>
               <form onSubmit={this.handleSubmit} noValidate>
                 <div className="field">
@@ -158,3 +168,7 @@ export default class Feedback extends React.Component {
     );
   }
 }
+
+export default withRouter(
+  Feedback
+);

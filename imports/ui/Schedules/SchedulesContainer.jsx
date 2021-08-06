@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import LoggedInNavbar from '../Navbar/LoggedInNavbar';
 import LoadingIcon from '../LoadingIcon';
 import HabitCurrent from './HabitCurrent';
+import SimpleChatWidget from './../Blocks/SimpleChatWidget';
 import AccountStatusModal from './../Blocks/AccountStatusModal';
 import SchedulesModal from './SchedulesModal';
 import Footer from '../Footer';
@@ -491,6 +492,7 @@ export default class SchedulesContainer extends React.Component {
             <button className="modal-close is-large" aria-label="close" onClick={this.handleModalClose}></button>
           </div>
           <AccountStatusModal identity={this.state.identity} outcomes={this.state.outcomes} />
+          <SimpleChatWidget buttonText='Help' subject='question' />
           <Footer />
         </section>
       </div>
