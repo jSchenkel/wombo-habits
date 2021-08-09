@@ -16,9 +16,11 @@ const SchedulesModal = (props) => {
   } else if (props.isModalOpen && props.activeModal === 'welcome') {
     return (
       <div className="box">
-        <p className="title is-3">Welcome to the Habit System Builder</p>
+        <p className="title is-3">Welcome to the Habit System Builder!</p>
         <p className="subtitle is-6">
-          Design a system of habits to become a <b>successful {props.identity}</b> and achieve the outcomes you desire.
+          Now it's time to design a system of habits to become a <b>{props.identity}</b>.
+          A system of habits is a process for becoming your dream self.
+          It is the blueprint which, if implemented consistently, will lead you to success.
         </p>
         <button className="button is-link" onClick={() => {
           props.handleModalOpen('essentials');
@@ -27,7 +29,7 @@ const SchedulesModal = (props) => {
             layout: 'na'
           });
         }}>
-          <span>Start With The Basics</span>
+          <span>Start With The Essentials For Peak Performance</span>
           <span className="icon">
             <i className="fas fa-chevron-right"></i>
           </span>
@@ -37,13 +39,13 @@ const SchedulesModal = (props) => {
   } else if (props.isModalOpen && props.activeModal === 'essentials') {
     return (
       <div className="box">
-        <p className="title is-3">Basics</p>
+        <p className="title is-3">Essentials</p>
         <p className="subtitle is-6">
-          The Basics are a comprehensive set of habits designed to help you perform at your <b>peak</b>.
+          The Essentials are a comprehensive set of habits designed to help you perform at your <b>peak</b>.
           A common mistake people make is that they are working hard but not <b>smart</b>.
           Ultimately, input does <b>not</b> equal output. 
-          The Basics focus on getting your mind and body into top shape so that you can work <b>smarter</b>.
-          Add or customize the following habits to make them fit into your system.
+          The Essentials focus on the overall health of your <b>mind</b> and <b>body</b> so that you can feel energized, think clearly, and make good judgments throughout the day.
+          Add or <b>customize</b> the following habits to make them fit into your system.
         </p>
         <hr />
         {SYSTEM_ESSENTIALS.map((category) => {
@@ -80,8 +82,7 @@ const SchedulesModal = (props) => {
       <div className="box">
         <p className="title is-3">Productivity</p>
         <p className="subtitle is-6">
-          Your goal is to spend as much of your day in <b>flow</b> as possible.
-          Plan deep work sessions at times during the day when you feel you are most productive.
+          Your goal is to spend as much of your day in <b>flow</b> as possible. Use Lists or Planned Work to help you stay focused and get things done.
         </p>
         <hr />
         {SYSTEM_PRODUCTIVITY.map((category) => {

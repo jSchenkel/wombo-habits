@@ -32,7 +32,7 @@ class HomeContainer extends React.Component {
       activeModal: '',
       modalError: '',
       // user data/ form
-      identity: 'entrepreneur',
+      identity: 'peak performing entrepreneur',
       outcomes: [],
       // day completed
       day: null,

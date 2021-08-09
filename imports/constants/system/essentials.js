@@ -33,7 +33,6 @@ export const SYSTEM_ESSENTIALS = [
     habits: [
       RESISTANCE_TRAINING_HABIT,
       OUTDOOR_WALK_HABIT,
-      SPORTS_HABIT
     ]
   },
   {

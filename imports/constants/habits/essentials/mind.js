@@ -103,8 +103,7 @@ export const LIMIT_SOCIAL_MEDIA_HABIT = {
     Only browse twitter, instagram, youtube, etc. during this time.
     Social media can be entertaining and fun.
     The problem is that it's just too good and ultimately distracts you from becoming great.
-    But we can use it to hack our productivity.
-    Reward yourself with Brain Candy Time at the end of your day once you've done everything else that you wanted to do that day.
+    Turn off notifications and put your phone in another room while you do focused work.
   `,
   events: [
     {

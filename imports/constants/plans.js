@@ -1,0 +1,1 @@
+export const BASIC_PLAN_TRIAL_LENGTH_DAYS = 14;

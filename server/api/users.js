@@ -5,6 +5,7 @@ import moment from 'moment';
 import shortid from 'shortid';
 
 import { Plans } from './plans.js';
+import { BASIC_PLAN_TRIAL_LENGTH_DAYS } from '../../imports/constants/plans.js';
 import { resetPasswordEmail } from '../../imports/emailTemplates/resetPasswordEmail.js';
 
 // Don't allow client side writing to profile field
@@ -101,14 +102,12 @@ Meteor.methods({
     }
 
     // check the trial
-    const TRIAL_LENGTH_DAYS = 7;
-
     const now = moment().utc();
     // TO TEST:
     // const now = moment().add(14, 'years').utc().toDate(); // isTrialExpired = True
     
     // NOTE: if user doesnt have a createdAt date then isTrialExpired = False
-    const isTrialExpired = user.createdAt && moment(user.createdAt).add(TRIAL_LENGTH_DAYS, 'days').utc() < now;
+    const isTrialExpired = user.createdAt && moment(user.createdAt).add(BASIC_PLAN_TRIAL_LENGTH_DAYS, 'days').utc() < now;
 
     // check the plan
     let isPlan = false;
@@ -186,7 +185,7 @@ Accounts.onCreateUser((options, user) => {
   // NOTE: Make sure to think about new and existing users with changes to collection (adding data fields)
   user.name = name;
   // target identity (i.e. entrepreneur)
-  user.identity = '';
+  user.identity = 'peak performing entrepreneur';
   // outcomes from achieving target identity (i.e. health, wealth, sex)
   user.outcomes = [];
 

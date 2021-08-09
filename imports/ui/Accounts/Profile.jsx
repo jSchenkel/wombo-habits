@@ -58,25 +58,21 @@ export default class Profile extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const identity = this.state.identity.trim();
     const outcomes = this.state.outcomes;
 
     if (this.state.isAboutSaved || this.state.isSavingAbout) {
       return;
     }
 
-    if (!identity) {
-      return this.setState({aboutError: 'Please select an identity.'});
-    }
-    if (outcomes.length < 3) {
-      return this.setState({aboutError: 'Please select 3 desired outcomes.'});
+    if (outcomes.length < 1) {
+      return this.setState({aboutError: 'Please select at least 1 outcome.'});
     }
 
     this.setState({
       isSavingAbout: true
     });
 
-    Meteor.call('updateCurrentUserProfile', {identity, outcomes}, (err, res) => {
+    Meteor.call('updateCurrentUserProfile', {outcomes}, (err, res) => {
       if (err) {
         // console.log('updateCurrentUserProfile err: ', err);
         this.setState({aboutError: err.reason, isSavingAbout: false, isAboutSaved: false});
@@ -154,9 +150,9 @@ export default class Profile extends React.Component {
               </div>
               <div className="field">
                 <label className="label">Identity</label>
-                <label className="help">I wish to become a successful...</label>
+                <label className="help">I wish to become a...</label>
                 <div className="control">
-                  <input className="input" type="text" name="identity" value={this.state.identity} placeholder="" onChange={this.handleInputChange} />
+                  <input className="input" type="text" name="identity" disabled={true} value={this.state.identity} placeholder="" />
                 </div>
               </div>
               <div className="field">

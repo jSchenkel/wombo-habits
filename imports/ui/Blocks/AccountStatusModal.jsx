@@ -6,6 +6,7 @@ import Footer from '../Footer';
 
 import { Link } from 'react-router-dom';
 
+import { BASIC_PLAN_TRIAL_LENGTH_DAYS } from '../../constants/plans.js';
 import { arrayToCommaSeparatedString } from '../../helpers/utils.js';
 
 export default class AccountStatusModal extends React.Component {
@@ -61,7 +62,7 @@ export default class AccountStatusModal extends React.Component {
           <div className="modal-background"></div>
           <div className="modal-content">
             <div className="box" style={{minHeight: '20rem'}}>
-              <p className="title is-3">Your Free Trial Has Ended</p>
+              <p className="title is-3">Your Free {BASIC_PLAN_TRIAL_LENGTH_DAYS}-Day Trial Has Ended</p>
               <p className="subtitle is-6">
                 We hope that you enjoyed the free trial. With Wombo you:
               </p>
@@ -78,7 +79,7 @@ export default class AccountStatusModal extends React.Component {
                 </ol>
               </div>
               <p className="subtitle is-6">
-                The real value of good habits comes when done consistently and repeatedly. If you would like to keep your system of habits and continue using Wombo then click below.
+                The real value of good habits comes when they are done consistently and repeatedly. If you would like to keep your system of habits and continue using Wombo then click below.
               </p>
               <Link to='/subscribe' className="button is-link" onClick={() => {
                 analytics.track('Subscribe Clicked', {

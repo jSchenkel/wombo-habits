@@ -7,8 +7,10 @@ import Navbar from './Navbar/Navbar';
 import Footer from './Footer';
 
 const LandingPage = () => {
-  const TITLE = (<span>Get Better <span className="has-text-link">Every</span> Day And Become Successful</span>);
-  const SUBTITLE = `Success is the product of daily habits not once in a lifetime transformations. Design a system of habits to become successful.`;
+  const TITLE = (<span>Become A <span className="has-text-link">Peak</span> Performing Entrepreneur</span>);
+  {/*const TITLE = (<span>A Habit <span className="has-text-link">System</span> For Entrepreneurs</span>);*/}
+  // const TITLE = (<span>Get Better <span className="has-text-link">Every</span> Day And Become Successful</span>);
+  const SUBTITLE = `Success is the product of daily habits not once in a lifetime transformations. Design a system of habits to get better every day and become a peak performing entrepreneur.`;
   const BUTTON_TEXT = 'Get Started';
   const CTA_LINK = '/accounts/signup'
   
@@ -74,7 +76,7 @@ const LandingPage = () => {
                           <span className="is-size-7"><b>Jules Schenkel, creator of Wombo</b></span>
                           <br />"I built Wombo to help me build good habits and perform at my best. 
                           I use Wombo every single day to stay focused and consistently make progress towards my goals.
-                          And now I'm sharing my secret power with you!"
+                          Now I want to help other entrepreneurs do the same!"
                         </p>
                       </div>
                     </div>
@@ -143,21 +145,20 @@ const LandingPage = () => {
                 <div className="">
                   <p className="title is-3">With Wombo You Will...</p>
                   <p className="subtitle is-6">
-                    <b>Define</b> who you wish to become and the results that you want.
-                    <br/><br/><b>Design</b> a system of habits to get the results that you want.
+                    <br/><br/><b>Design</b> a system of habits to become a peak performing entrepreneur.
                     <br/><br/>Get <b>extreme clarity</b> around your habits with a simple daily plan.
-                    <br/><br/><b>Stick</b> to your system of habits and get the results that you want.
-                    <br/><br/>+ <b>15 basic</b> habit templates to prime your body and mind for peak performance.
+                    <br/><br/><b>Stick</b> to your system of habits and become a peak performing entrepreneur.
+                    <br/><br/>+ <b>13 essential</b> habit templates to prime your body and mind for peak performance.
                     <br/><br/>+ <b>3 expert</b> habit templates to be productive and get things done.
                   </p>
                 </div>
               </div>
               <div className="column is-half">
                 <div className="columns is-vcentered is-centered mx-4 my-4">
-                  <div className="column is-half">
+                  {/*<div className="column is-half">
                     <p className="is-size-6 has-text-weight-semibold mb-1">System of Habits <span className="is-size-7 has-text-grey-light">Example</span></p>
                     <img className="has-shadow image-not-draggable" src="/images/system.png" />
-                  </div>
+                  </div>*/}
                   <div className="column is-half">
                     <p className="is-size-6 has-text-weight-semibold mb-1">Simple Daily Plan <span className="is-size-7 has-text-grey-light">Example</span></p>
                     <img className="has-shadow image-not-draggable" src="/images/daily_plan.png" />
@@ -173,7 +174,7 @@ const LandingPage = () => {
           <div className="container has-text-centered">
             <p className="title is-2">What are you waiting for?</p>
             <p className="subtitle is-4">
-              Design a system of habits to get the results that you want and get extreme clarity with a daily plan.
+              Get better every day and become a peak performing entrepreneur.
             </p>
             <Link to={CTA_LINK} className="button is-link is-medium" onClick={() => {
               analytics.track('CTA Button Clicked', {

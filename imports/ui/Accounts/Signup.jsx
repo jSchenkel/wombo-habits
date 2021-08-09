@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
 
 import { getSearchParams } from '../../helpers/utils.js';
+import { BASIC_PLAN_TRIAL_LENGTH_DAYS } from '../../constants/plans.js';
 
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer';
@@ -89,8 +90,8 @@ class Signup extends React.Component {
                 <div className="column is-one-third">
                   <div>
                     <form className="" onSubmit={this.handleSubmit} noValidate>
-                      <p className="title is-4 has-text-centered has-text-dark">Start My Free 7-Day Trial</p>
-                      <p className="subtitle is-6 has-text-centered has-text-dark">Design a system of habits to become successful.</p>
+                      <p className="title is-4 has-text-centered has-text-dark">Start My Free {BASIC_PLAN_TRIAL_LENGTH_DAYS}-Day Trial</p>
+                      <p className="subtitle is-6 has-text-centered has-text-dark">Get better every day and become a peak performing entrepreneur.</p>
                       <div className="field">
                         {this.state.error ? <label className="help is-danger has-text-centered">{this.state.error}</label> : undefined}
                         <label className="label">First Name</label>
@@ -112,7 +113,7 @@ class Signup extends React.Component {
                       </div>
                       <div className="field">
                         <p className="control">
-                          <input className="button is-medium is-fullwidth is-link" type="submit" value="Start My Free 7-Day Trial" />
+                          <input className="button is-medium is-fullwidth is-link" type="submit" value={`Start My Free ${BASIC_PLAN_TRIAL_LENGTH_DAYS}-Day Trial`} />
                           <label className="help has-text-centered">No Credit Card Required</label>
                           <label className="help has-text-centered">Already have an account? <Link to="/accounts/login" className="has-text-weight-semibold">Log In</Link></label>
                         </p>
