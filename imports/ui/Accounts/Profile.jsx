@@ -150,9 +150,9 @@ export default class Profile extends React.Component {
               </div>
               <div className="field">
                 <label className="label">Identity</label>
-                <label className="help">I wish to become a...</label>
+                <label className="help">I wish to become...</label>
                 <div className="control">
-                  <input className="input" type="text" name="identity" disabled={true} value={this.state.identity} placeholder="" />
+                  <input className="input" type="text" name="identity" value={this.state.identity} placeholder="" onChange={this.handleInputChange} />
                 </div>
               </div>
               <div className="field">

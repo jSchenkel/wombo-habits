@@ -7,53 +7,37 @@ export default class Subscription extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      subscription: null,
-      subscriptionError: '',
-      isSubscriptionLoading: false,
+      // account status
+      accountStatus: '',
+      accountStatusLoading: true, 
+      accountStatusError: '',
     }
-
-    this.fetchSubscription = this.fetchSubscription.bind(this);
-
-    // data
-
   }
 
   componentDidMount() {
-    // fetch user with stripe info
-    // Meteor.call('getCurrentUserProfile', (err, res) => {
-    //   if (err) {
-    //     // console.log('getCurrentUserAccount err: ', err);
-    //     this.setState({
-    //       subscriptionError: err.reason,
-    //       isSubscriptionLoading: false
-    //     });
-    //   } else {
-    //     // fetch subscription
-    //     const planId = res.planId;
-    //     this.fetchSubscription(planId);
-    //   }
-    // });
-  }
-
-  fetchSubscription(planId) {
-    this.setState({
-      isSubscriptionLoading: true
-    });
-    Meteor.call('getSubscriptionForPlan', planId, (err, res) => {
+    // get user account status
+    Meteor.call('getCurrentUserAccountStatus', (err, res) => {
       if (err) {
-        // console.log('getCurrentUserAccount err: ', err);
+        // console.log('getCurrentUserAccountStatus err: ', err);
         this.setState({
-          subscriptionError: err.reason,
-          isSubscriptionLoading: false
-        });
+            accountStatus: '',
+            accountStatusLoading: false,
+            accountStatusError: err.reason
+          });
       } else {
-        // console.log('getCurrentUserAccount res: ', res);
-        this.setState({
-          subscription: res,
-          isSubscriptionValid: ['trialing', 'active'].includes(res.status),
-          subscriptionError: '',
-          isSubscriptionLoading: false
-        });
+        if (res) {
+          // console.log('getCurrentUserAccountStatus res: ', res);
+          // determine status:
+          // trial_active -> valid (no modal)
+          // trial_expired -> invalid, create new subscription (yes modal)
+          // plan_active -> valid (no modal)
+          // plan_inactive -> invalid, create new subscription (yes modal)
+          this.setState({
+            accountStatus: res,
+            accountStatusLoading: false,
+            accountStatusError: ''
+          });
+        }
       }
     });
   }
@@ -62,7 +46,7 @@ export default class Subscription extends React.Component {
     // console.log('subscription: ', this.state.subscription);
     // console.log('isSubscriptionValid: ', this.state.isSubscriptionValid);
 
-    if (this.state.isSubscriptionLoading) {
+    if (this.state.accountStatusLoading) {
       return (
         <LoadingIcon />
       );
@@ -71,7 +55,8 @@ export default class Subscription extends React.Component {
     return (
       <div className="columns is-centered">
         <div className="column is-half">
-          <p className="has-text-centered">Coming soon. Email us at support@wombo.io if you have any questions or need assistance.</p>
+          {this.state.accountStatusError ? <p className="help is-danger">{this.state.accountStatusError}</p> : null}
+          {this.state.accountStatus ? <p className="has-text-centered">Account status: <span className="has-text-weight-semibold">{this.state.accountStatus.replace('_', ' ')}</span></p> : null}
         </div>
       </div>
     );

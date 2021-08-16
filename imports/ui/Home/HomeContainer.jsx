@@ -32,7 +32,7 @@ class HomeContainer extends React.Component {
       activeModal: '',
       modalError: '',
       // user data/ form
-      identity: 'peak performing entrepreneur',
+      identity: '',
       outcomes: [],
       // day completed
       day: null,
@@ -271,7 +271,7 @@ class HomeContainer extends React.Component {
                         <p>Get Better Every Day</p>
                       </div>
                       <div className="message-body">
-                        <span>I wish to become a {this.state.identity} and achieve {arrayToCommaSeparatedString(this.state.outcomes)}.</span>
+                        <span>I wish to become {this.state.identity} and achieve {arrayToCommaSeparatedString(this.state.outcomes)}.</span>
                       </div>
                     </article>
                   ) : null}

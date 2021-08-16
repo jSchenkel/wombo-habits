@@ -91,7 +91,7 @@ class Signup extends React.Component {
                   <div>
                     <form className="" onSubmit={this.handleSubmit} noValidate>
                       <p className="title is-4 has-text-centered has-text-dark">Start My Free {BASIC_PLAN_TRIAL_LENGTH_DAYS}-Day Trial</p>
-                      <p className="subtitle is-6 has-text-centered has-text-dark">Get better every day and become a peak performing entrepreneur.</p>
+                      <p className="subtitle is-6 has-text-centered has-text-dark">Perform at your peak and become successful.</p>
                       <div className="field">
                         {this.state.error ? <label className="help is-danger has-text-centered">{this.state.error}</label> : undefined}
                         <label className="label">First Name</label>

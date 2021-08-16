@@ -63,6 +63,36 @@ export const LISTS_DAILY_HABIT = {
   ]
 }
 
+export const LISTS_WEEKLY_HABIT = {
+  title: 'Weekly Goals',
+  description: `Write a list of goals for the next week. Review your weekly goals every day. Focus your mind and crush your work for the week.`,
+  events: [
+    {
+      startTimeHour: '4',
+      startTimeMinute: '20',
+      startTimePeriod: 'PM',
+      duration: '20',
+      targetDuration: null,
+      day: SUNDAY
+    },
+  ]
+}
+
+export const LISTS_MONTHLY_HABIT = {
+  title: 'Monthly Goals',
+  description: `Write a list of goals for the next month. Review your monthly goals every day. Focus your mind and level up every month.`,
+  events: [
+    {
+      startTimeHour: '4',
+      startTimeMinute: '00',
+      startTimePeriod: 'PM',
+      duration: '20',
+      targetDuration: null,
+      day: SUNDAY
+    },
+  ]
+}
+
 export const LISTS_GOALS_HABIT = {
   title: '3-6month Goals',
   description: `Write a list of your goals for the 3-6month time frame. Review it every day. Stay focused on what's important and achieve your goals.`,

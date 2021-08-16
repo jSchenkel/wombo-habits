@@ -81,7 +81,7 @@ class Login extends React.Component {
                     <div className="field">
                       <p className="control">
                         <input className="button is-medium is-fullwidth is-link" type="submit" value="Log In" />
-                        <label className="help has-text-centered">Not a Wombo member? <Link to="/pricing" className="has-text-weight-semibold">Start Free Trial</Link></label>
+                        <label className="help has-text-centered">Not a Wombo member? <Link to="/accounts/signup" className="has-text-weight-semibold">Start Free Trial</Link></label>
                         <label className="help has-text-centered">Forgot your password? <Link to="/accounts/forgot-password" className="has-text-weight-semibold">Reset Password</Link></label>
                       </p>
                     </div>

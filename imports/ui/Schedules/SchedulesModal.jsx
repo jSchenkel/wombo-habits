@@ -18,9 +18,9 @@ const SchedulesModal = (props) => {
       <div className="box">
         <p className="title is-3">Welcome to the Habit System Builder!</p>
         <p className="subtitle is-6">
-          Now it's time to design a system of habits to become a <b>{props.identity}</b>.
-          A system of habits is a process for becoming your dream self.
-          It is the blueprint which, if implemented consistently, will lead you to success.
+          Now it's time to design a system of habits to become <b>{props.identity}</b>.
+          A system of habits is a process for becoming successful.
+          Stick to your system every day and you will become successful.
         </p>
         <button className="button is-link" onClick={() => {
           props.handleModalOpen('essentials');
@@ -29,7 +29,7 @@ const SchedulesModal = (props) => {
             layout: 'na'
           });
         }}>
-          <span>Start With The Essentials For Peak Performance</span>
+          <span>Start With The Basics For Health and Performance</span>
           <span className="icon">
             <i className="fas fa-chevron-right"></i>
           </span>
@@ -39,12 +39,12 @@ const SchedulesModal = (props) => {
   } else if (props.isModalOpen && props.activeModal === 'essentials') {
     return (
       <div className="box">
-        <p className="title is-3">Essentials</p>
+        <p className="title is-3">Basics</p>
         <p className="subtitle is-6">
-          The Essentials are a comprehensive set of habits designed to help you perform at your <b>peak</b>.
+          The Basics are a comprehensive set of habits designed to help you perform at your <b>peak</b>.
           A common mistake people make is that they are working hard but not <b>smart</b>.
           Ultimately, input does <b>not</b> equal output. 
-          The Essentials focus on the overall health of your <b>mind</b> and <b>body</b> so that you can feel energized, think clearly, and make good judgments throughout the day.
+          The Basics focus on the overall health of your <b>mind</b> and <b>body</b> so that you can feel energized, think clearly, and make good judgments throughout the day.
           Add or <b>customize</b> the following habits to make them fit into your system.
         </p>
         <hr />

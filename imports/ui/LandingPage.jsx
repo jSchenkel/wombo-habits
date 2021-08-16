@@ -7,10 +7,15 @@ import Navbar from './Navbar/Navbar';
 import Footer from './Footer';
 
 const LandingPage = () => {
-  const TITLE = (<span>Become A <span className="has-text-link">Peak</span> Performing Entrepreneur</span>);
+  const TITLE = (<span>Perform At Your <span className="has-text-link">Peak</span> And Become Successful</span>);
+  {/*const TITLE = (<span>Succeed At What You Do <span className="has-text-link">Every</span> Day And Perform At Your <span className="has-text-link">Peak</span></span>);*/}
+  // const TITLE = (<span>Become A <span className="has-text-link">Peak</span> Performer</span>);
   {/*const TITLE = (<span>A Habit <span className="has-text-link">System</span> For Entrepreneurs</span>);*/}
   // const TITLE = (<span>Get Better <span className="has-text-link">Every</span> Day And Become Successful</span>);
-  const SUBTITLE = `Success is the product of daily habits not once in a lifetime transformations. Design a system of habits to get better every day and become a peak performing entrepreneur.`;
+  // const SUBTITLE = `Improve your health, gain lazer focus, and consistently execute on your goals.`;
+  // const SUBTITLE = `Follow the Wombo health and productivity system to perform at your peak and consistently makes progress on your goals.`;
+  const SUBTITLE = `Wombo gives you a system of habits to perform at your peak. Customize and extend the Basic habits to create your own system for success.`;
+  // const SUBTITLE = `Success is the product of daily habits not once in a lifetime transformations. Design a system of habits to perform at your peak and become successful.`;
   const BUTTON_TEXT = 'Get Started';
   const CTA_LINK = '/accounts/signup'
   
@@ -61,7 +66,7 @@ const LandingPage = () => {
       <section className="hero has-background-link">
         <div className="hero-body">
           <div className="container">
-            <div className="columns is-centered">
+            <div className="columns is-centered py-6">
               <div className="column is-half">
                 <div className="notification">
                   <article className="media">
@@ -74,9 +79,9 @@ const LandingPage = () => {
                       <div className="content">
                         <p>
                           <span className="is-size-7"><b>Jules Schenkel, creator of Wombo</b></span>
-                          <br />"I built Wombo to help me build good habits and perform at my best. 
+                          <br />"I built Wombo to help me build good habits and perform at my peak. 
                           I use Wombo every single day to stay focused and consistently make progress towards my goals.
-                          Now I want to help other entrepreneurs do the same!"
+                          Now I want to help others do the same!"
                         </p>
                       </div>
                     </div>
@@ -145,10 +150,10 @@ const LandingPage = () => {
                 <div className="">
                   <p className="title is-3">With Wombo You Will...</p>
                   <p className="subtitle is-6">
-                    <br/><br/><b>Design</b> a system of habits to become a peak performing entrepreneur.
+                    <br/><br/><b>Design</b> a system of habits to perform at your peak and become successful.
                     <br/><br/>Get <b>extreme clarity</b> around your habits with a simple daily plan.
-                    <br/><br/><b>Stick</b> to your system of habits and become a peak performing entrepreneur.
-                    <br/><br/>+ <b>13 essential</b> habit templates to prime your body and mind for peak performance.
+                    <br/><br/>Stay focused and motivated as you make progress <b>every</b> day.
+                    <br/><br/>+ <b>13 basic</b> habit templates to improve your health and performance.
                     <br/><br/>+ <b>3 expert</b> habit templates to be productive and get things done.
                   </p>
                 </div>
@@ -174,7 +179,7 @@ const LandingPage = () => {
           <div className="container has-text-centered">
             <p className="title is-2">What are you waiting for?</p>
             <p className="subtitle is-4">
-              Get better every day and become a peak performing entrepreneur.
+              Design a system of habits to perform at your peak and become successful.
             </p>
             <Link to={CTA_LINK} className="button is-link is-medium" onClick={() => {
               analytics.track('CTA Button Clicked', {

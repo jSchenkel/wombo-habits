@@ -56,7 +56,7 @@ export default class SchedulesContainer extends React.Component {
       // user profile
       isUserProfileLoading: false,
       userProfileError: '',
-      identity: 'entrepreneur',
+      identity: '',
       outcomes: []
     };
 
@@ -426,7 +426,7 @@ export default class SchedulesContainer extends React.Component {
         <div className="columns">
           <div className="column is-half">
             <div className="notification is-white has-text-centered has-text-white has-pointer" onClick={() => this.handleModalOpen('essentials')} style={{background: `url('/images/park3.png')`, backgroundSize: 'cover', height: '5rem'}}>
-              <p className="title is-5">Essentials</p>
+              <p className="title is-5">Basics</p>
             </div>
           </div>
           <div className="column">

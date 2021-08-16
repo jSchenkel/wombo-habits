@@ -68,13 +68,11 @@ export default class AccountStatusModal extends React.Component {
               </p>
               <div className="content">
                 <ol>
-                  <li>Designed a system of habits to get the results that you want.</li>
-                  <li>Completed your habits with a simple daily plan.</li>
+                  <li>Designed a system of habits to perform at your peak and become successful.</li>
+                  <li>Stuck to your system with a simple daily plan.</li>
                   {this.props.identity && this.props.outcomes ? (
-                      <li>Started to become a {this.props.identity} and achieve {arrayToCommaSeparatedString(this.props.outcomes)}.</li>
-                    ) : (
-                      <li>Stuck to your good habits and made progress towards getting the results that you want.</li>
-                    )
+                      <li>Started to become {this.props.identity} and achieve {arrayToCommaSeparatedString(this.props.outcomes)}.</li>
+                    ) : null
                   }
                 </ol>
               </div>
@@ -91,6 +89,7 @@ export default class AccountStatusModal extends React.Component {
                   <i className="fas fa-chevron-right"></i>
                 </span>
               </Link>
+              <p className="is-size-7 has-text-centered has-text-grey is-italic mt-3">Have questions or need help with your account? Please contact: support@wombo.io</p>
             </div>
           </div>
         </div>

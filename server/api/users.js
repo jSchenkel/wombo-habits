@@ -184,8 +184,8 @@ Accounts.onCreateUser((options, user) => {
   // Add custom data to user account
   // NOTE: Make sure to think about new and existing users with changes to collection (adding data fields)
   user.name = name;
-  // target identity (i.e. entrepreneur)
-  user.identity = 'peak performing entrepreneur';
+  // target identity (i.e. a successful entrepreneur)
+  user.identity = '';
   // outcomes from achieving target identity (i.e. health, wealth, sex)
   user.outcomes = [];
 
