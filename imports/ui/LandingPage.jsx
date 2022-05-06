@@ -7,7 +7,7 @@ import Navbar from './Navbar/Navbar';
 import Footer from './Footer';
 
 const LandingPage = () => {
-  const TITLE = (<span>Build a habit system for success</span>);
+  const TITLE = (<span>Design a system to become your dream self</span>);
   const SUBTITLE = `We are what we repeatedly do. Wombo makes it easy to design and follow a system of habits. Perform at your best and become your dream self.`;
   const BUTTON_TEXT = `Design Your System - It's Free`;
   const CTA_LINK = '/accounts/signup'
