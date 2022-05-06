@@ -59,9 +59,14 @@ export default class Profile extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     const outcomes = this.state.outcomes;
+    const identity = this.state.identity;
 
     if (this.state.isAboutSaved || this.state.isSavingAbout) {
       return;
+    }
+
+    if (identity.length < 1) {
+      return this.setState({aboutError: 'Please enter an identity.'});
     }
 
     if (outcomes.length < 1) {
@@ -72,7 +77,7 @@ export default class Profile extends React.Component {
       isSavingAbout: true
     });
 
-    Meteor.call('updateCurrentUserProfile', {outcomes}, (err, res) => {
+    Meteor.call('updateCurrentUserProfile', {outcomes, identity}, (err, res) => {
       if (err) {
         // console.log('updateCurrentUserProfile err: ', err);
         this.setState({aboutError: err.reason, isSavingAbout: false, isAboutSaved: false});
