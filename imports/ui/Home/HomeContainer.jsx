@@ -5,7 +5,6 @@ import { withRouter } from 'react-router';
 import moment from 'moment';
 
 import LoggedInNavbar from './../Navbar/LoggedInNavbar';
-import AccountStatusModal from './../Blocks/AccountStatusModal';
 import TodaysHabits from './TodaysHabits';
 import PastDays from './PastDays';
 import HomeModal from './HomeModal';
@@ -319,7 +318,6 @@ class HomeContainer extends React.Component {
                 />
               </div>
             </div>
-            <AccountStatusModal identity={this.state.identity} outcomes={this.state.outcomes} />
           </div>
           <Footer />
         </section>

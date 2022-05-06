@@ -27,21 +27,6 @@ const LoggedInNavbar = () => {
           </div>
           {/* RIGHT */}
           <div className="level-right">
-            {/* {upgrade} */}
-            {/* <Link to="/accounts/home" className="level-item" title="Home">
-              <p className="button is-white">
-                <span className="icon is-medium has-text-dark">
-                  <i className="fas fa-home fa-lg" aria-hidden="true"></i>
-                </span>
-              </p>
-            </Link> */}
-            {/* <Link to="/system" className="level-item" title="My System">
-              <p className="button is-white">
-                <span className="icon is-medium has-text-dark">
-                  <i className="fas fa-th fa-lg" aria-hidden="true"></i>
-                </span>
-              </p>
-            </Link> */}
             <Link to="/home" className="level-item" title="Home">
               <span className="button is-light is-small">
                 Home

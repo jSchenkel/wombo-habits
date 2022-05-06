@@ -267,7 +267,7 @@ export const signupEmail = () => {
                     <tr>
                       <td>
                         <h2>Welcome to Wombo</h2>
-                        <p>Click "Get Started" below and design a system of habits to perform at your peak and become successful.</p>
+                        <p>Click "Design My System" below and design a system of habits to perform at your best and become your dream self.</p>
                         <table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
                           <tbody>
                             <tr>
@@ -275,7 +275,7 @@ export const signupEmail = () => {
                                 <table border="0" cellpadding="0" cellspacing="0">
                                   <tbody>
                                     <tr>
-                                      <td> <a href="${url}" target="_blank">Get Started</a> </td>
+                                      <td> <a href="${url}" target="_blank">Design My System</a> </td>
                                     </tr>
                                   </tbody>
                                 </table>

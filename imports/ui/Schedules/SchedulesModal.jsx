@@ -19,8 +19,8 @@ const SchedulesModal = (props) => {
         <p className="title is-3">Welcome to the Habit System Builder!</p>
         <p className="subtitle is-6">
           Now it's time to design a system of habits to become <b>{props.identity}</b>.
-          A system of habits is a process for becoming successful.
-          Stick to your system every day and you will become successful.
+          A carefully designed system of habits is a reliable path to becoming your dream self.
+          Stick to your system every day and you will become your dream self.
         </p>
         <button className="button is-link" onClick={() => {
           props.handleModalOpen('essentials');
@@ -41,9 +41,7 @@ const SchedulesModal = (props) => {
       <div className="box">
         <p className="title is-3">Basics</p>
         <p className="subtitle is-6">
-          The Basics are a comprehensive set of habits designed to help you perform at your <b>peak</b>.
-          A common mistake people make is that they are working hard but not <b>smart</b>.
-          Ultimately, input does <b>not</b> equal output. 
+          The Basics are a comprehensive set of habits designed to help you perform at your <b>best</b>.
           The Basics focus on the overall health of your <b>mind</b> and <b>body</b> so that you can feel energized, think clearly, and make good judgments throughout the day.
           Add or <b>customize</b> the following habits to make them fit into your system.
         </p>
@@ -82,7 +80,8 @@ const SchedulesModal = (props) => {
       <div className="box">
         <p className="title is-3">Productivity</p>
         <p className="subtitle is-6">
-          Your goal is to spend as much of your day in <b>flow</b> as possible. Use Lists or Planned Work to help you stay focused and get things done.
+          Your goal is to spend as much of your day in <b>flow</b> as possible. 
+          Use Lists or Planned Work to help you stay focused and get things done.
         </p>
         <hr />
         {SYSTEM_PRODUCTIVITY.map((category) => {

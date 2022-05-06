@@ -7,9 +7,9 @@ const HomeModal = (props) => {
   if (props.isModalOpen && props.activeModal === 'welcome') {
     return (
       <div className="box">
-        <p className="title is-3">Welcome to Wombo!</p>
+        <p className="title is-4">Welcome to Wombo</p>
         <p className="subtitle is-6">
-          Design a system of habits to perform at your peak and become successful.
+          Design a system of habits to perform at your best and become your dream self.
         </p>
         <div className="content">
           <blockquote>
@@ -41,12 +41,14 @@ const HomeModal = (props) => {
   } else if (props.isModalOpen && props.activeModal === 'welcome-1') {
     return (
       <div className="box">
-        <p className="title is-3">How To Succeed With Wombo</p>
-        <p className="subtitle is-6">
-          1) Define who you wish to become and the results that you want to achieve.
-          <br/><br/>2) Design a system of habits to perform at your peak and become successful.
-          <br/><br/>3) Open Wombo every day to complete your simple habit plan and make consistent progress.
-        </p>
+        <p className="title is-4 mb-0">How To Succeed With Wombo</p>
+        <div className="content">
+          <ol>
+            <li>Define who you wish to become and the results that you want to achieve.</li>
+            <li>Design a system of habits to become your dream self.</li>
+            <li>Complete your simple plan and make progress every day.</li>
+          </ol>
+        </div>
         <nav className="level">
           <div className="level-left">
             <button className="button is-link" onClick={() => props.handleModalOpen('welcome')}>
@@ -78,7 +80,7 @@ const HomeModal = (props) => {
   } else if (props.isModalOpen && props.activeModal === 'welcome-2') {
     return (
       <div className="box">
-        <p className="title is-3">Identity</p>
+        <p className="title is-4">Identity</p>
         <p className="subtitle is-6">
           The most effective way to change your habits is to focus on who you wish to become.
           By focusing on who you wish to become you will be motivated to stick to your system of habits.
@@ -122,10 +124,10 @@ const HomeModal = (props) => {
   } else if (props.isModalOpen && props.activeModal === 'welcome-3') {
     return (
       <div className="box">
-        <p className="title is-3">Outcomes</p>
+        <p className="title is-4">Outcomes</p>
         <p className="subtitle is-6">
           Outcomes are the results that you want to achieve.
-          By becoming <b>{props.identity}</b> you will get the results that you want.
+          By becoming <b>{props.identity}</b> you will get the outcomes that you want.
           Outcomes are an additional source of motivation to stick to your system of habits.
         </p>
         <div className="field">
@@ -165,7 +167,7 @@ const HomeModal = (props) => {
                 });
                 props.handleWelcomeSubmit();
               }}>
-                <span>Design My System Of Habits</span>
+                <span>Design Habit System</span>
                 <span className="icon">
                   <i className="fas fa-chevron-right"></i>
                 </span>

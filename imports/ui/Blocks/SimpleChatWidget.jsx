@@ -9,8 +9,8 @@ const SimpleChatWidget = (props) => {
   
   const subjectIconMap = {
     'question': (
-      <span class="icon">
-        <i class="fas fa-question-circle"></i>
+      <span className="icon">
+        <i className="fas fa-question-circle"></i>
       </span>
     )
   }

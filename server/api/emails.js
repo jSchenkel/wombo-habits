@@ -16,7 +16,7 @@ Meteor.methods({
       }
     }).validate({to});
     const emailFrom = 'Wombo <jules@wombo.io>';
-    const emailSubject = 'Welcome to Wombo!';
+    const emailSubject = 'Welcome to Wombo';
     const emailHTML = signupEmail();
     // Let other method calls from the same client start running, without
     // waiting for the email sending to complete.

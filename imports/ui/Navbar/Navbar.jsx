@@ -1,5 +1,4 @@
 import React from 'react';
-import { Meteor } from 'meteor/meteor';
 import { Link } from 'react-router-dom';
 
 import NavbarBrandImage from './NavbarBrandImage';
@@ -19,45 +18,13 @@ const Navbar = () => {
             </Link>
           </div>
           {/* RIGHT */}
-          <div className="level-right is-hidden-mobile">
-            <Link to="/pricing" className="level-item">
-              <p className="button is-text">Pricing</p>
-            </Link>
+          <div className="level-right">
             <Link to="/accounts/login" className="level-item">
               <p className="button is-text">Log In</p>
             </Link>
-            {/* <Link to="/accounts/request-invite" className="level-item">
-              <p className="button is-link">
-                <span>Request Invite</span>
-                <span className="icon">
-                  <i className="fas fa-chevron-right"></i>
-                </span>
-              </p>
-            </Link> */}
-          </div>
-          <div className="level-right is-hidden-tablet">
-            <div className="level-item">
-              <div className="dropdown is-hoverable is-right">
-                <div className="dropdown-trigger">
-                  <button className="button is-white" aria-haspopup="true" aria-controls="dropdown-menu">
-                    <span className="icon is-medium has-text-dark">
-                      <i className="fas fa-bars fa-lg" aria-hidden="true"></i>
-                    </span>
-                  </button>
-
-                </div>
-                <div className="dropdown-menu" id="dropdown-menu" role="menu">
-                  <div className="dropdown-content">
-                    <Link to="/pricing" className="dropdown-item">
-                      <p className="button is-text">Pricing</p>
-                    </Link>
-                    <Link to="/accounts/login" className="dropdown-item">
-                      <p className="button is-text">Log In</p>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <Link to="/accounts/signup" className="level-item">
+              <p className="button is-link">Sign Up</p>
+            </Link>
           </div>
         </div>
       </div>

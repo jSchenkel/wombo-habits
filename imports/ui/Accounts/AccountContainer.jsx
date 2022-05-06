@@ -41,12 +41,6 @@ export default class AccountEdit extends React.Component {
                     <ul className="menu-list">
                       <li><a className={this.state.selectedTab === 'profile' ? 'is-active' : ''} onClick={() => this.setState({selectedTab: 'profile'})}>Edit Profile</a></li>
                     </ul>
-                    <p className="menu-label">
-                      Billing
-                    </p>
-                    <ul className="menu-list">
-                      <li><a className={this.state.selectedTab === 'subscription' ? 'is-active' : ''} onClick={() => this.setState({selectedTab: 'subscription'})}>Manage Subscription</a></li>
-                    </ul>
                   </aside>
                 </div>
                 <div className="column">

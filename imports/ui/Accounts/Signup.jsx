@@ -57,8 +57,8 @@ class Signup extends React.Component {
       return this.setState({error: "You missed a spot! Don't forget to add your password."});
     }
 
-    if (password.length < 8) {
-      return this.setState({error: 'Your password is too short! You need 8+ characters.'});
+    if (password.length < 6) {
+      return this.setState({error: 'Your password is too short! You need 6+ characters.'});
     }
 
     const profile = {
@@ -90,8 +90,8 @@ class Signup extends React.Component {
                 <div className="column is-one-third">
                   <div>
                     <form className="" onSubmit={this.handleSubmit} noValidate>
-                      <p className="title is-4 has-text-centered has-text-dark">Start My Free {BASIC_PLAN_TRIAL_LENGTH_DAYS}-Day Trial</p>
-                      <p className="subtitle is-6 has-text-centered has-text-dark">Perform at your peak and become successful.</p>
+                      <p className="title is-4 has-text-centered has-text-dark">Create Account</p>
+                      <p className="subtitle is-6 has-text-centered has-text-dark">Design a system of habits to perform at your best and become your dream self.</p>
                       <div className="field">
                         {this.state.error ? <label className="help is-danger has-text-centered">{this.state.error}</label> : undefined}
                         <label className="label">First Name</label>
@@ -113,8 +113,7 @@ class Signup extends React.Component {
                       </div>
                       <div className="field">
                         <p className="control">
-                          <input className="button is-medium is-fullwidth is-link" type="submit" value={`Start My Free ${BASIC_PLAN_TRIAL_LENGTH_DAYS}-Day Trial`} />
-                          <label className="help has-text-centered">No Credit Card Required</label>
+                          <input className="button is-medium is-fullwidth is-link" type="submit" value={`Create Account`} />
                           <label className="help has-text-centered">Already have an account? <Link to="/accounts/login" className="has-text-weight-semibold">Log In</Link></label>
                         </p>
                       </div>
