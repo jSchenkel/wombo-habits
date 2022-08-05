@@ -83,9 +83,6 @@ class HomeContainer extends React.Component {
     });
     // get day with completed state
     this.fetchDay(now.format('MM-DD-YYYY'));
-
-    // fetch past days
-    this.fetchPastDays();
   }
 
   fetchHabits(dayString) {
@@ -279,9 +276,23 @@ class HomeContainer extends React.Component {
                     isDaysLoading={this.state.isDaysLoading}
                     daysError={this.state.daysError}
                   />
-                  <div className="notification is-white has-text-centered has-text-white" style={{background: `url('/images/park3.png')`, backgroundSize: 'cover', height: '6rem'}}>
-                    <p className="title is-4">{timeFormatted}</p>
-                    <p className="subtitle is-6">{dateFormatted}</p>
+                  <div className="notification" style={{background: `url('/images/park3.png')`, backgroundSize: 'cover', height: '6rem'}}>
+                    <div className="media">
+                      <div className="media-left">
+                        <span className="icon has-text-white has-pointer" onClick={() => this.fetchDay(now.format('MM-DD-YYYY'))}>
+                          <i className="fas fa-redo"></i>
+                        </span>
+                      </div>
+                      <div className="media-content is-white has-text-centered has-text-white">
+                        <p className="title is-4">{timeFormatted}</p>
+                        <p className="subtitle is-6">{dateFormatted}</p>
+                      </div>
+                      {/*<div className="media-right">
+                        <span className="icon has-text-white has-pointer">
+                          <i className="fas fa-redo"></i>
+                        </span>
+                      </div>*/}
+                    </div>
                   </div>
                   {this.state.day ? <progress className="progress is-link" value={this.state.day.numCompletedEvents} max={this.state.day.numTotalEvents} title={`${Math.round(this.state.day.numCompletedEvents/this.state.day.numTotalEvents*100)}%`}></progress> : null}
                   <TodaysHabits
