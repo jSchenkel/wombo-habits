@@ -18,10 +18,10 @@ const LoggedInNavbar = () => {
         <div className="level is-mobile my-1">
           {/* LEFT */}
           <div className="level-left">
-            <Link to="/accounts/home" className="level-item is-hidden-mobile">
+            <Link to="/home" className="level-item is-hidden-mobile">
               <NavbarBrandImage />
             </Link>
-            <Link to="/accounts/home" className="level-item is-hidden-tablet">
+            <Link to="/home" className="level-item is-hidden-tablet">
               <NavbarBrandImage />
             </Link>
           </div>

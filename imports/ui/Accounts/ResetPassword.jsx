@@ -59,7 +59,7 @@ class ResetPassword extends React.Component {
       } else {
         // console.log('password reset success');
         // automatically rerouted from router
-        this.props.history.replace('/accounts/home');
+        this.props.history.replace('/home');
       }
     });
   }

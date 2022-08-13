@@ -7,7 +7,7 @@ import NavbarBrandImage from './NavbarBrandImage';
 import { isAuthenticated } from './../../helpers/auth.js';
 
 const SimpleNavbar = () => {
-  const logoLink = isAuthenticated() ? '/accounts/home' : '/';
+  const logoLink = isAuthenticated() ? '/home' : '/';
   return (
     <div className="hero-head">
       <div className="container">

@@ -17,7 +17,7 @@ class HomeContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      dayString: '',
+      date: moment(),
       // user profile
       isUserProfileLoading: true,
       userProfileError: '',
@@ -52,19 +52,14 @@ class HomeContainer extends React.Component {
 
     this.handleOutcomeSelected = this.handleOutcomeSelected.bind(this);
     this.handleOutcomeRemoved = this.handleOutcomeRemoved.bind(this);
+    this.handleDateChange = this.handleDateChange.bind(this);
 
     this.handleHabitEventCompleted = this.handleHabitEventCompleted.bind(this);
   }
 
   componentDidMount() {
-    const now = moment();
-    const dayOfWeekCode = now.day();
-    const dayString = DAY_OF_WEEK_CODE_INT_TO_DAY_STRING[dayOfWeekCode];
-    this.setState({
-      dayString
-    });
     // get habits
-    this.fetchHabits(dayString);
+    this.fetchHabits();
     // get current user profile
     Meteor.call('getCurrentUserProfile', (err, res) => {
       if (err) {
@@ -82,10 +77,14 @@ class HomeContainer extends React.Component {
       }
     });
     // get day with completed state
-    this.fetchDay(now.format('MM-DD-YYYY'));
+    this.fetchDay();
   }
 
-  fetchHabits(dayString) {
+  fetchHabits() {
+    const {date} = this.state;
+    const dayOfWeekCode = date.day();
+    const dayString = DAY_OF_WEEK_CODE_INT_TO_DAY_STRING[dayOfWeekCode];
+
     this.setState({
       isHabitsLoading: true
     });
@@ -127,7 +126,9 @@ class HomeContainer extends React.Component {
     });
   }
 
-  fetchDay(dateString) {
+  fetchDay() {
+    const {date} = this.state;
+    const dateString = date.format('MM-DD-YYYY')
     this.setState({
       isDayLoading: true
     });
@@ -167,6 +168,15 @@ class HomeContainer extends React.Component {
           isDaysLoading: false
         });
       }
+    });
+  }
+
+  handleDateChange(numDays) {
+    this.setState({
+      date: moment(this.state.date).add(numDays, 'days')
+    }, () => {
+      this.fetchHabits();
+      this.fetchDay();
     });
   }
 
@@ -243,15 +253,15 @@ class HomeContainer extends React.Component {
             habitEventId,
             numTotalEvents
           });
-        this.fetchDay(moment().format('MM-DD-YYYY'))
+        this.fetchDay()
       }
     })
   }
 
   render() {
-    const now = moment();
-    const timeFormatted = now.format('h:mm a');
-    const dateFormatted = now.format('dddd, MMMM D, YYYY');
+    const {date} = this.state;
+    const timeFormatted = moment().isSame(date, 'day') ? date.format('h:mm a') : '';
+    const dateFormatted = date.format('dddd, MMMM D, YYYY');
 
     return (
       <div>
@@ -276,22 +286,31 @@ class HomeContainer extends React.Component {
                     isDaysLoading={this.state.isDaysLoading}
                     daysError={this.state.daysError}
                   />
-                  <div className="notification" style={{background: `url('/images/park3.png')`, backgroundSize: 'cover', height: '6rem'}}>
-                    <div className="media">
-                      <div className="media-left">
-                        <span className="icon has-text-white has-pointer" onClick={() => this.fetchDay(now.format('MM-DD-YYYY'))}>
-                          <i className="fas fa-redo"></i>
-                        </span>
+                  <div className="columns is-vcentered">
+                    <div className="column is-1">
+                      <span className="icon has-pointer" onClick={() => this.handleDateChange(-1)}>
+                        <i className="fas fa-lg fa-chevron-circle-left"></i>
+                      </span>
+                    </div>
+                    <div className="column">
+                      <div className="notification" style={{background: `url('/images/park3.png')`, backgroundSize: 'cover', height: '6rem'}}>
+                        <div className="media">
+                          <div className="media-left">
+                            <span className="icon has-text-white has-pointer" onClick={() => this.fetchDay()}>
+                              <i className="fas fa-redo"></i>
+                            </span>
+                          </div>
+                          <div className="media-content is-white has-text-centered has-text-white">
+                            <p className="title is-4">{timeFormatted}</p>
+                            <p className="subtitle is-6">{dateFormatted}</p>
+                          </div>
+                        </div>
                       </div>
-                      <div className="media-content is-white has-text-centered has-text-white">
-                        <p className="title is-4">{timeFormatted}</p>
-                        <p className="subtitle is-6">{dateFormatted}</p>
-                      </div>
-                      {/*<div className="media-right">
-                        <span className="icon has-text-white has-pointer">
-                          <i className="fas fa-redo"></i>
-                        </span>
-                      </div>*/}
+                    </div>
+                    <div className="column is-1">
+                      <span className="icon has-pointer" onClick={() => this.handleDateChange(1)}>
+                        <i className="fas fa-lg fa-chevron-circle-right"></i>
+                      </span>
                     </div>
                   </div>
                   {this.state.day ? <progress className="progress is-link" value={this.state.day.numCompletedEvents} max={this.state.day.numTotalEvents} title={`${Math.round(this.state.day.numCompletedEvents/this.state.day.numTotalEvents*100)}%`}></progress> : null}

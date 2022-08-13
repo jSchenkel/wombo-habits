@@ -420,7 +420,7 @@ export default class SchedulesContainer extends React.Component {
           <span className="icon">
             <i className="fas fa-info-circle"></i>
           </span>
-          <span>When your system of habits is ready, view your daily plan on the home page: <Link to="/home">here</Link></span>
+          <span>Design your system of habits. When your system is ready, view your daily plan on the home page <Link to="/home">here</Link></span>
         </div>
         <div className="columns">
           <div className="column is-half">

@@ -48,7 +48,7 @@ class Login extends React.Component {
         this.setState({error: 'The information you entered is incorrect. Please try again.'});
       } else {
         this.setState({error: ''});
-        this.props.history.replace(`/accounts/home`);
+        this.props.history.replace(`/home`);
       }
     });
   }
