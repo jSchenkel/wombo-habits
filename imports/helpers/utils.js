@@ -1,5 +1,3 @@
-
-
 // input: list of strings
 // output: formatted string with comma separated items WITH and before last item
 export const arrayToCommaSeparatedString = (items) => {

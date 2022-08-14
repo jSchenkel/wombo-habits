@@ -1,4 +1,5 @@
 import { Meteor } from 'meteor/meteor';
+import { check } from 'meteor/check';
 
 import { DDPRateLimiter } from 'meteor/ddp-rate-limiter';
 import SimpleSchema from 'simpl-schema';
@@ -35,6 +36,10 @@ numTotalEvents -> Int
 
 numCompletedEvents -> Int
 
+morningNote -> Str
+
+eveningNote -> Str
+
 */
 
 Meteor.methods({
@@ -69,6 +74,8 @@ Meteor.methods({
         completedEvents: [],
         numCompletedEvents: 0,
         numTotalEvents: 1,
+        morningNote: '',
+        eveningNote: '',
         created: timestamp,
         updated: timestamp
       };
@@ -118,6 +125,25 @@ Meteor.methods({
     });
 
     return true
+  },
+  'days.update'(dayId, args) {
+    if (!this.userId) {
+      throw new Meteor.Error('not-authorized');
+    }
+
+    check(args, {
+      morningNote: Match.Maybe(String),
+      eveningNote: Match.Maybe(String),
+    });
+
+    Days.update({
+      _id: dayId,
+      userId: this.userId,
+    }, {
+      '$set': args
+    });
+
+    return true;
   },
   getPastDays(numPastDays) {
     if (!this.userId) {

@@ -6,6 +6,7 @@ import moment from 'moment';
 
 import LoggedInNavbar from './../Navbar/LoggedInNavbar';
 import TodaysHabits from './TodaysHabits';
+import DayJournal from './DayJournal';
 import PastDays from './PastDays';
 import HomeModal from './HomeModal';
 import Footer from './../Footer';
@@ -259,7 +260,7 @@ class HomeContainer extends React.Component {
   }
 
   render() {
-    const {date} = this.state;
+    const {date, day} = this.state;
     const timeFormatted = moment().isSame(date, 'day') ? date.format('h:mm a') : '';
     const dateFormatted = date.format('dddd, MMMM D, YYYY');
 
@@ -272,21 +273,21 @@ class HomeContainer extends React.Component {
               <div className="columns is-centered">
                 <div className="column is-half">
                   {this.state.identity && this.state.outcomes && this.state.outcomes.length > 0 ? (
-                    <article className="message is-link is-small">
+                    <div className="message is-link is-small">
                       <div className="message-header">
-                        <p>Get Better Every Day</p>
+                        <p>Become your dream self</p>
                       </div>
                       <div className="message-body">
-                        <span>I wish to become {this.state.identity} and achieve {arrayToCommaSeparatedString(this.state.outcomes)}.</span>
+                        <span>I will become {this.state.identity} and achieve {arrayToCommaSeparatedString(this.state.outcomes)}.</span>
                       </div>
-                    </article>
+                    </div>
                   ) : null}
                   <PastDays
                     days={this.state.days}
                     isDaysLoading={this.state.isDaysLoading}
                     daysError={this.state.daysError}
                   />
-                  <div className="columns is-vcentered">
+                  <div className="columns is-vcentered is-mobile">
                     <div className="column is-1">
                       <span className="icon has-pointer" onClick={() => this.handleDateChange(-1)}>
                         <i className="fas fa-lg fa-chevron-circle-left"></i>
@@ -314,6 +315,7 @@ class HomeContainer extends React.Component {
                     </div>
                   </div>
                   {this.state.day ? <progress className="progress is-link" value={this.state.day.numCompletedEvents} max={this.state.day.numTotalEvents} title={`${Math.round(this.state.day.numCompletedEvents/this.state.day.numTotalEvents*100)}%`}></progress> : null}
+                  <DayJournal day={day} />
                   <TodaysHabits
                     // data
                     events={this.state.events}
