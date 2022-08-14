@@ -32,9 +32,6 @@ const DayJournal = ({day}) => {
   }
 
   const updateDay = (day, newMorningNote, newEveningNote) => {
-    console.log('morningNote: ', newMorningNote);
-    console.log('eveningNote: ', newEveningNote);
-    console.log('day: ', day);
     Meteor.call('days.update', day._id, {morningNote: newMorningNote, eveningNote: newEveningNote}, (err, res) => {
       if (err) {
         setError(err.reason);
