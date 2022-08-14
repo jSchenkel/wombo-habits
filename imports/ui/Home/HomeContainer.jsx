@@ -287,7 +287,7 @@ class HomeContainer extends React.Component {
                     isDaysLoading={this.state.isDaysLoading}
                     daysError={this.state.daysError}
                   />
-                  <div className="columns is-vcentered is-mobile">
+                  <div className="columns is-vcentered is-mobile is-centered">
                     <div className="column is-1">
                       <span className="icon has-pointer" onClick={() => this.handleDateChange(-1)}>
                         <i className="fas fa-lg fa-chevron-circle-left"></i>
@@ -309,13 +309,13 @@ class HomeContainer extends React.Component {
                       </div>
                     </div>
                     <div className="column is-1">
-                      <span className="icon has-pointer" onClick={() => this.handleDateChange(1)}>
+                      <span className="icon has-pointer pr-3" onClick={() => this.handleDateChange(1)}>
                         <i className="fas fa-lg fa-chevron-circle-right"></i>
                       </span>
                     </div>
                   </div>
                   {this.state.day ? <progress className="progress is-link" value={this.state.day.numCompletedEvents} max={this.state.day.numTotalEvents} title={`${Math.round(this.state.day.numCompletedEvents/this.state.day.numTotalEvents*100)}%`}></progress> : null}
-                  <DayJournal day={day} />
+                  <DayJournal day={day} isDayLoading={this.state.isDayLoading} />
                   <TodaysHabits
                     // data
                     events={this.state.events}

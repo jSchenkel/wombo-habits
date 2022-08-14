@@ -8,7 +8,7 @@ import LoadingIcon from '../LoadingIcon';
 const MORNING = 'morning';
 const EVENING = 'evening';
 
-const DayJournal = ({day}) => {
+const DayJournal = ({day, isDayLoading}) => {
   const defaultNoteType = moment().hour() < 18 ? MORNING : EVENING;
 
   let [morningNote, setMorningNote] = useState('');
@@ -41,6 +41,10 @@ const DayJournal = ({day}) => {
     });
   }
   const debouncedUpdateDay = useCallback(_.debounce(updateDay, 1000, false), []);
+
+  if (isDayLoading) {
+    return <LoadingIcon />;
+  }
 
   return (
     <div className="mb-5">
