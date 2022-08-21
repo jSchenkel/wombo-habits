@@ -3,13 +3,11 @@ import { Meteor } from 'meteor/meteor';
 import { _ } from 'meteor/underscore';
 import moment from 'moment';
 
-import LoadingIcon from '../LoadingIcon';
-
 const MORNING = 'morning';
 const EVENING = 'evening';
 
 const DayJournal = ({day, isDayLoading}) => {
-  const defaultNoteType = moment().hour() < 18 ? MORNING : EVENING;
+  const defaultNoteType = moment().hour() < 20 ? MORNING : EVENING;
 
   let [morningNote, setMorningNote] = useState('');
   let [eveningNote, setEveningNote] = useState('');
@@ -43,7 +41,7 @@ const DayJournal = ({day, isDayLoading}) => {
   const debouncedUpdateDay = useCallback(_.debounce(updateDay, 1000, false), []);
 
   if (isDayLoading) {
-    return <LoadingIcon />;
+    return null;
   }
 
   return (
