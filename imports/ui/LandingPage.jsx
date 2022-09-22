@@ -50,35 +50,6 @@ const LandingPage = () => {
           </div>
         </div>
       </section>
-      <section className="hero has-background-link">
-        <div className="hero-body">
-          <div className="container">
-            <div className="columns is-centered py-6">
-              <div className="column is-half">
-                <div className="notification">
-                  <article className="media">
-                    <figure className="media-left">
-                      <p className="image is-48x48">
-                        <img className="is-rounded image-not-draggable" src="/images/profile.jpg" />
-                      </p>
-                    </figure>
-                    <div className="media-content">
-                      <div className="content">
-                        <p>
-                          <span className="is-size-7"><b>Jules Schenkel, creator of Wombo</b></span>
-                          <br />"I built Wombo to help me build good habits and perform at my best. 
-                          I use Wombo every single day to stay focused and consistently make progress towards my goals.
-                          I want to help others do the same."
-                        </p>
-                      </div>
-                    </div>
-                  </article>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
       <section className="hero has-background-white is-fullheight">
         <div className="hero-body">
           <div className="container">
